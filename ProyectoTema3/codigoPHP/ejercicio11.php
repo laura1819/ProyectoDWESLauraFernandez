@@ -20,7 +20,7 @@
 		//Ejercicio que no esta hecho 
             echo "ejercicio sin hacer";
               
-           highlight_file("../codigoPHP/ej11.php");
+           highlight_file("../codigoPHP/ejercicio11.php");
           ?>   
         
     </body>

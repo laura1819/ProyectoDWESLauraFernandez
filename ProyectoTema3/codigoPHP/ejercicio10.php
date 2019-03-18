@@ -20,7 +20,7 @@ Fecha 02/10/2018
 -->
         <?php
         //Muestra el contenido del fichero que se esta ejecutando
-        highlight_file("ej10.php");
+        highlight_file("ejercicio10.php");
         ?>
         
     </body>

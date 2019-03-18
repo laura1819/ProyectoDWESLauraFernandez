@@ -24,8 +24,8 @@ and open the template in the editor.
             <table border="1">
                 <tr>
                     <td>0.-Hola mundo y phpinfo().</td>
-                    <td><a href="codigoPHP/ej00.php">Ejecutar</a></td>
-                    <td><a href="mostrarCodigo/mostrarEjercicio00.php">Mostrar código</a></td>
+                    <td><a href="codigoPHP/ejercicio00.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio00.php">Mostrar código</a></td>
                     
                 </tr>
                         
@@ -80,7 +80,7 @@ and open the template in the editor.
                 <tr>
                     <td>10.-Mostrar el contenido del fichero que se está ejecutando</td>
                     <td><a href="codigoPHP/ejercicio10.php">Ejecutar</a></td>
-                    <td><a href="mostrarCodigo/muestraEjercicio10.php">Mostrar código</a></td>
+                  
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>11.-Mostrar el documento PHPDoc del proyecto que se está ejecutando generado con PHP Documentor o ApiGen.</td>

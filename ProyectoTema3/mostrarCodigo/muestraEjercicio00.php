@@ -1,3 +1,3 @@
 <?php
-    highlight_file("../codigoPHP/ej00.php");
+    highlight_file("../codigoPHP/ejercicio00.php");
 ?>
