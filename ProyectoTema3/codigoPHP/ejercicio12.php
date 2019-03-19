@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
@@ -43,6 +43,9 @@
         print_r($_REQUEST);
         echo "<h3>" . "Variable ENV" . "</h3>";
         print_r($_ENV);
+        
+        
+        
         echo "<h2>" . "Variables superglobales con foreach" . "</h2>";
         echo "<h3>" . "Variable GLOBALS" . "</h3>";
         foreach ($GLOBALS as $nombre => $valor) { //Recorre todo el array $GLOBALS y lo divide en nombre de la variable y valor.

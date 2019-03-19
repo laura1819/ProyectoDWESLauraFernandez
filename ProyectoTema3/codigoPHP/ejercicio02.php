@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
@@ -26,6 +26,8 @@
 		añadimos lineas de codigo y finalizamos la variable heredoc introduciendo
 		el mismo nombre de la variable pero sin tabular como vemos y finalmente con un print
 		mostramos por pantalla**/
+        
+        //poner una sentencia sql en la variable
 		
         $a = <<<cadena
             DAW2<br/>

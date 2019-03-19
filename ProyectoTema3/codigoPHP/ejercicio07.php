@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
@@ -24,7 +24,7 @@
 		
       
         echo "Path completo: ".$_SERVER['PHP_SELF'] . "<br>"; // saca por pantalla el path completo del archivo que se esta ejecutando
-        echo "Nombre fichero: ".array_pop(explode('/', $_SERVER['PHP_SELF'])); // saca por pantalla el nombre completo del archivo que se esta ejecutando
+        echo "<p>Nombre fichero: " . array_pop(explode('/', $_SERVER['PHP_SELF']))."</p>"; // saca por pantalla el nombre completo del archivo que se esta ejecutando
         ?>
         
     </body>
