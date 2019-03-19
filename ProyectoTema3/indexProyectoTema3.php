@@ -132,6 +132,31 @@ and open the template in the editor.
                     <td></td>
                     <td><a href="mostrarCodigo/muestraEjercicio20.php">Mostrar código</a></td>
                 </tr>
+                <tr style="background-color:#8896C7">
+                    <td>21.-Construir un formulario para recoger un cuestionario realizado a una persona y enviarlo a una página Tratamiento.php para que muestre las preguntas y las respuestas recogidas.</td>
+                     <td><a href="codigoPHP/ejercicio21.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio21.php">Mostrar código</a></td>
+                </tr>
+                <tr>
+                    <td>22.-Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas.</td>
+                    <td><a href="codigoPHP/ejercicio22.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio22.php">Mostrar código</a></td>
+                </tr>
+                <tr  style="background-color:#8896C7">
+                    <td>23.-Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente.</td>
+                    <td><a href="codigoPHP/ejercicio23.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio23.php">Mostrar código</a></td>
+                </tr>
+                <tr>
+                    <td>24.-Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas.</td>
+                    <td><a href="codigoPHP/ejercicio24.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio24.php">Mostrar código</a></td>
+                </tr>
+                <tr style="background-color:#8896C7">
+                    <td>25.-Trabajar en PlantillaFormulario.php mi plantilla para hacer formularios como churros.</td>
+                    <td><a href="codigoPHP/ejercicio25.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio25.php">Mostrar código</a></td>
+                </tr>
             </table>
 	
      </body>
