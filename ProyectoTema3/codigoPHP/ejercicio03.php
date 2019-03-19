@@ -18,7 +18,7 @@
 			
 			/*
 			Autor: Laura Fernandez
-			Fecha 02/10/2018
+			Fecha 17/03/2019
 			Comentarios: mostramos la hora en españa formateada en castellano;
 				*/
 

@@ -18,7 +18,7 @@
 		
 		/**
 		Autor: Laura Fernandez
-		Fecha 02/10/2018
+		Fecha 17/03/2019
 		Comentaios: el programa inicializa y muestra una variable Heredoc:
 		**/
 		

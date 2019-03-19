@@ -92,6 +92,46 @@ and open the template in the editor.
                     <td><a href="codigoPHP/ejercicio12.php">Ejecutar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio12.php">Mostrar código</a></td>
                 </tr>
+                <tr style="background-color:#8896C7">
+                    <td>13.-Crear una función que cuente el número de visitas a la página actual desde una fecha concreta.</td>
+                    <td><a href="codigoPHP/ejercicio13.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio13.php">Mostrar código</a></td>
+                </tr>
+                <tr>
+                    <td>14.-Comprobar las librerías que estás utilizando en tu entorno de desarrollo y explotación. Crear tu propia librería de funciones y estudiar la forma de usarla en el entorno de desarrollo y en el de explotación.</td>
+                    <td><a href="codigoPHP/ejercicio14.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio14.php">Mostrar código</a></td>
+                </tr>
+                <tr style="background-color:#8896C7">
+                    <td>15.-Crear e inicializar un array con el sueldo percibido de lunes a domingo. Recorrer el array para calcular el sueldo percibido durante la semana. (Array asociativo con los nombres de los días de la semana).</td>
+                    <td><a href="codigoPHP/ejercicio15.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio15.php">Mostrar código</a></td>
+                </tr>
+                <tr>
+                    <td>16.-Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
+                    <td><a href="codigoPHP/ejercicio16.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio16.php">Mostrar código</a></td>
+                </tr>
+                <tr style="background-color:#8896C7">
+                    <td>17.-Inicializar un array (bidimensional con dos índices numéricos) donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. (Inicializamos el array ocupando únicamente 5 asientos). Recorrer el array con distintas técnicas (foreach(), while(), for()) para mostrar los asientos ocupados en cada fila y las personas que lo ocupan.</td>
+                     <td><a href="codigoPHP/ejercicio17.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio17.php">Mostrar código</a></td>
+                </tr>
+                <tr>
+                    <td>18.-Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
+                     <td><a href="codigoPHP/ejercicio18.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio18.php">Mostrar código</a></td>
+                </tr>
+                <tr style="background-color:#8896C7">
+                    <td>19.-Construir una librería de funciones de validación de campos de formularios (LibreríaValidacionFormularios.php) para utilizarla en los siguientes ejercicios.</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>20.-Convertir la LibreriaValidacionFormularios.php en una clase ValidacionFormularios.php.</td>
+                    <td></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio20.php">Mostrar código</a></td>
+                </tr>
             </table>
 	
      </body>

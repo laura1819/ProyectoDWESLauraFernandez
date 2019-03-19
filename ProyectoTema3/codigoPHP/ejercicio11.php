@@ -13,7 +13,7 @@
 		
 		<!--
 			Autor: Laura Fernandez
-			Fecha 02/10/2018
+			Fecha 19/03/2019
 			Comentarios: en este programa se inicializan y muestran variables de distintos tipos.
 -->
         <?php   

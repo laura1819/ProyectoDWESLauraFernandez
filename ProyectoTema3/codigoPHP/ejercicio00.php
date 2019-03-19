@@ -12,7 +12,7 @@
         <?php
 		/**
 			Autor: Laura Fernandez
-			Fecha 02/10/2018
+			Fecha 17/03/2019
 			Comentarios: en este programa se muestra un hola mundo e info de PHP.
 		**/
 	

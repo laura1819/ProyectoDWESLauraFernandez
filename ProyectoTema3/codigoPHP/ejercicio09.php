@@ -17,7 +17,7 @@
 		
 		/*
 		Autor: Laura Fernandez
-		Fecha 02/10/2018
+		Fecha 17/03/2019
 		Comentarios: este programa muestra una variable global con el directrio donde esta este programa
 		*/
 		

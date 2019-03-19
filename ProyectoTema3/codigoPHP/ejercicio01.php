@@ -16,7 +16,7 @@
 
         <!--
                 Autor: Laura Fernandez
-                Fecha 02/10/2018
+                Fecha 17/03/2019
                 Comentarios: inicializamos las variables y mostramos variables de distintos tipos;
         -->
         

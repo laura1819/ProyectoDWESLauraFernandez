@@ -18,7 +18,7 @@
 		
 		/*
 			Autor: Laura Fernandez
-			Fecha 02/10/2018
+			Fecha 17/03/2019
 			Comentaerios: este programa muestra la fecha y el dia en 60 dias
 		*/
 		
