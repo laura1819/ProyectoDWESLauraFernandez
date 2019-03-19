@@ -17,13 +17,13 @@ and open the template in the editor.
 		
                 
                
-        <h1 style="text-align: center">Ejercicios del Tema 3333</h1>
+        <h1 style="text-align: center">Ejercicios del Tema 3</h1>
 		
                 
         <div>
             <table border="1">
                 <tr>
-                    <td>0.-Hola mundo y phpinfo().</td>
+                    <td>0.-Hola mundo y phpinfoooo().</td>
                     <td><a href="codigoPHP/ejercicio00.php">Ejecutar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio00.php">Mostrar código</a></td>
                     
