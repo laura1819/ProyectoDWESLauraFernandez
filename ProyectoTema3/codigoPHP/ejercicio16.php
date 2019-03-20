@@ -29,12 +29,13 @@
 
         $salarioSemanal = 0; //inicializamos el salario semanal a 0
 
-        
+
         echo "<h2>Salario semanal con foreach</h2>"; //sacamos un mensaje por pantalla   
-        echo "<em>foreach — foreach() podemos recorrer los diferentes tipos de arrays y objetos de una manera controlada.</em>";  
+        echo "<em>foreach — foreach() podemos recorrer los diferentes tipos de arrays y objetos de una manera controlada.</em>";
         foreach ($salario as $clave => $valor) { // con foreach metemos el array en la variable clave 
-        echo "Dia : $clave; Salario: $valor<br />\n"; // y vamos recorriendo el array para que salgan todos
+            echo "Dia : $clave; Salario: $valor<br />\n"; // y vamos recorriendo el array para que salgan todos
         }
+
 
 
 
@@ -46,8 +47,8 @@
         }
 
         echo "<h3>El salario total de la semana es de " . $salarioSemanal . " euros</h3>"; //sacamos por pantalla el salario semanal
-        $salarioSemanal = 0;
-        reset($salario);
+
+
 
 
 
@@ -82,6 +83,9 @@
         } else { // y si no lo encontrara
             echo "<p>No existe el valor introducido</p>"; //mostraria este mensaje por pantalla
         }
+
+
+       
         ?>
 
 

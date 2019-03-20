@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
@@ -29,10 +29,10 @@
         
     $entradaOK=true; //Inicialización de la variable que nos indica que todo va bien 
     //Inicialización del array donde recogemos los errores 
-   $aErrores=array(eNombre=>"" //Guarda los errores que pueda tener el campo nombre
-                   ,eApellido1=>"", //Guarda los errores que pueda tener el campo de los apellidos
-                    eApellido2=>"", //Guarda los errores que pueda tener el campo de los apellidos
-                    eEdad=>""); //Guarda los errores que pueda tener el campo edad
+   $aErrores=array("eNombre"=>"", //Guarda los errores que pueda tener el campo nombre
+                   "eApellido1"=>"", //Guarda los errores que pueda tener el campo de los apellidos
+                    "eApellido2"=>"", //Guarda los errores que pueda tener el campo de los apellidos
+                    "eEdad"=>""); //Guarda los errores que pueda tener el campo edad
    
     if(isset($_POST['enviar'])){ //Cargar valores por defecto en los campos del formulario 
         if($_POST['nombre']==null||$_POST['nombre']==""){ //  

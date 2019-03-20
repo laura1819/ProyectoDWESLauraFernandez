@@ -26,7 +26,7 @@
         $fecha = new DateTime(); // inicializa la variable fecha como variable de datetime con la fecha y la hora
         $fecha->setTimestamp(1552901586); // fijamos el timestamp a la variable $fecha
         echo "Timestamp: " . $fecha->getTimestamp(); //imprimimos por pantalla el timestamp como valor entero
-        echo "<br>";// metemos un salto de linea
+        echo "<br>"; // metemos un salto de linea
         echo "Fecha: " . $fecha->format('Y-m-d H:i:s'); //formatea el timestamp como una variable de tipo date y forma la fecha
         ?>
         
