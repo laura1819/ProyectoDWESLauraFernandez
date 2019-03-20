@@ -17,7 +17,7 @@ and open the template in the editor.
 		
                 
                
-        <h1 style="text-align: center">Ejercicios del Tema 333</h1>
+        <h1 style="text-align: center">Ejercicios del Tema 3</h1>
 		
                 
         <div>
