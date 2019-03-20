@@ -38,7 +38,7 @@
             $teatro[13][7]="persona2"; // valores para la persona 2
             $teatro[2][9]="persona3"; // valores para la persona 3
             $teatro[11][12]="persona4"; // valores para la persona 4
-            $teatro[1][15]="persona5"; // valores para la persona 5
+            $teatro[1][14]="persona5"; // valores para la persona 5
             
              echo "<br><h2> Asientos ocupados:</h2><br>";
             echo "<br><h3> Con el bucle for:</h3><br>"; //Sacamos un mensajito por pantalla
