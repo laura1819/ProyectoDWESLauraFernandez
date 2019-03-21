@@ -16,7 +16,7 @@
 		
 			<p>Nombre:<input type="text" name="nombre"/>*</p>
 			<p>Apellidos:<input type="text" name="apellidos"/>*</p>
-			<p>Cooreo Electronico:<input type="text" name="correo"/>*</p>
+			<p>Correo Electronico:<input type="text" name="correo"/>*</p>
 			<p>Contraseña:<input type="text" name="contraseña"/>*</p>
 			<p><input type="submit" value="enviar"/></p>
 		</form>
