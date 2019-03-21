@@ -53,6 +53,11 @@
             "radiobutton" => null // guarda el valor del campo cuando este es correcto
         ];
 
+        $button = [
+            'opcion1',
+            'opcion2'
+        ];
+
 
         if (!empty($_POST['enviar'])) { //Para cada campo del formulario: Validar entrada y actuar en consecuencia 
             $aErrores["alfb"] = validacionFormularios::comprobarAlfabetico($_POST['alfb'], 25, 3, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
@@ -66,7 +71,7 @@
             $aErrores["dni"] = validacionFormularios::validarDni($_POST['dni'], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
             $aErrores["cp"] = validacionFormularios::validarCp($_POST["cp"], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
             $aErrores["contraseña"] = validacionFormularios::comprobarAlfanumerico($_POST['contraseña'], 50, 3, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores["radiobutton"] = validacionFormularios::validarRadioB($_POST["radiobutton"], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
+            $aErrores["radiobutton"] = validacionFormularios::validarElementoEnLista($_POST['radiobutton'], $button, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
 
             foreach ($aErrores as $error) { // Busca algun mensaje de error en el recorriendo el array de errores
                 if ($error != null) {
@@ -111,87 +116,109 @@
 
             Comprobar alfabetico: 
             <input type="text" name="alfb" 
-                   value="<?php if (isset($_POST["alfb"]) && is_null($aErrores["alfb"])) {
-            echo $_POST["alfb"];
-        } ?>"/> 
+                   value="<?php
+                   if (isset($_POST["alfb"]) && is_null($aErrores["alfb"])) {
+                       echo $_POST["alfb"];
+                   }
+                   ?>"/> 
             <label style="color: red;"><?php echo $aErrores["alfb"]; ?>*</label><br><br>
 
             Comprobar alfanumerico:
             <input type="text" name="alfn" 
-                   value="<?php if (isset($_POST["alfn"]) && is_null($aErrores["alfn"])) {
-            echo $_POST["alfn"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["alfn"]) && is_null($aErrores["alfn"])) {
+                       echo $_POST["alfn"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["alfn"]; ?>*</label><br><br>
 
             Comprobar entero:
             <input type="text" name="entero" 
-                   value="<?php if (isset($_POST["entero"]) && is_null($aErrores["entero"])) {
-            echo $_POST["entero"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["entero"]) && is_null($aErrores["entero"])) {
+                       echo $_POST["entero"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["entero"]; ?>*</label><br><br>
 
             Comprobar float:
             <input type="text" name="float" 
-                   value="<?php if (isset($_POST["float"]) && is_null($aErrores["float"])) {
-            echo $_POST["float"];
-        } ?>"/>
+                   value="<?php
+               if (isset($_POST["float"]) && is_null($aErrores["float"])) {
+                   echo $_POST["float"];
+               }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["float"]; ?>*</label><br><br>
 
             Comprobar email:
             <input type="text" name="email"  
-                   value="<?php if (isset($_POST["email"]) && is_null($aErrores["email"])) {
-            echo $_POST["email"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["email"]) && is_null($aErrores["email"])) {
+                       echo $_POST["email"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["email"]; ?>*</label><br><br>
 
 
             Comprobar URL:
             <input type="text" name="url"  
-                   value="<?php if (isset($_POST["url"]) && is_null($aErrores["url"])) {
-            echo $_POST["url"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["url"]) && is_null($aErrores["url"])) {
+                       echo $_POST["url"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["url"]; ?>*</label><br><br>
 
             Comprobar Fecha:
             <input type="text" name="fecha"  
-                   value="<?php if (isset($_POST["fecha"]) && is_null($aErrores["fecha"])) {
-            echo $_POST["fecha"];
-        } ?>"/>
+                   value="<?php
+               if (isset($_POST["fecha"]) && is_null($aErrores["fecha"])) {
+                   echo $_POST["fecha"];
+               }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["fecha"]; ?>*</label><br><br>
 
             Comprobar telefono: 
             <input type="text" name="tel"  
-                   value="<?php if (isset($_POST["tel"]) && is_null($aErrores["tel"])) {
-            echo $_POST["tel"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["tel"]) && is_null($aErrores["tel"])) {
+                       echo $_POST["tel"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["tel"]; ?>*</label><br><br>
 
             Comprobar dni: 
             <input type="text" name="dni"  
-                   value="<?php if (isset($_POST["dni"]) && is_null($aErrores["dni"])) {
-            echo $_POST["dni"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["dni"]) && is_null($aErrores["dni"])) {
+                       echo $_POST["dni"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["dni"]; ?>*</label><br><br>			
 
             Comprobar Codigo postal: 
             <input type="text" name="cp"  
-                   value="<?php if (isset($_POST["cp"]) && is_null($aErrores["cp"])) {
-            echo $_POST["cp"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["cp"]) && is_null($aErrores["cp"])) {
+                       echo $_POST["cp"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["cp"]; ?>*</label><br><br>
 
             Comprobar Contraseña: 
             <input type="password" name="contraseña"  
-                   value="<?php if (isset($_POST["contraseña"]) && is_null($aErrores["contraseña"])) {
-            echo $_POST["contraseña"];
-        } ?>"/>
+                   value="<?php
+                   if (isset($_POST["contraseña"]) && is_null($aErrores["contraseña"])) {
+                       echo $_POST["contraseña"];
+                   }
+                   ?>"/>
             <label style="color: red;"><?php echo $aErrores["contraseña"]; ?>*</label><br><br>	
 
 
 
             <label>Radio button </label>
-            <input type="radio" name="radiobutton" value="opcion 1" <?php if (isset($_POST["radiobutton"])) echo "checked"; ?>><label>Opcion 1</label>
-            <input type="radio" name="radiobutton" value="opcion 2" <?php if (isset($_POST["radiobutton"])) echo "checked"; ?>><label>Opcion 2</label>
+            <input type="radio" name="radiobutton" value="opcion1" <?php echo (isset($_REQUEST['radiobutton']) && $_REQUEST['radiobutton'] == 'opcion1' ? 'checked' : ''); ?> checked><label>Opcion 1</label>
+            <input type="radio" name="radiobutton" value="opcion2" <?php echo (isset($_REQUEST['radiobutton']) && $_REQUEST['radiobutton'] == 'opcion2' ? 'checked' : ''); ?>><label>Opcion 2</label>
             <label style="color: red;"><?php echo $aErrores["radiobutton"] ?>*</label><br><br>
 
 
