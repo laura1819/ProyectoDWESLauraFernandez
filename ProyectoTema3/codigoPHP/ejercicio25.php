@@ -17,7 +17,7 @@
         <?php
         /**
           Autor: Laura Fernandez
-          @since: 23/10/2018
+          @since: 19/03/2019
           Comentarios: el programa crea un formulario y muestra los datos introducidos en la misma página verificando las entradas de datos.
          */
         require_once "../core/181024validacionFormularios.php"; // la libreria en comun para validar los datos

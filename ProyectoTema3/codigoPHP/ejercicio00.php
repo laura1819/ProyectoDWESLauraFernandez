@@ -16,7 +16,7 @@
 			Comentarios: en este programa se muestra un hola mundo e info de PHP.
 		**/
 	
-			echo '<p>Hola Mundo0</p>'; //Sacamos por pantalla un mensaje con echo			
+			echo '<p>Hola Mundo</p>'; //Sacamos por pantalla un mensaje con echo			
 			echo '<p>Soy Laura Fernandez</p>'; //Sacamos por pantalla un mensaje con echo
 		?>
 			<?php phpinfo(); //aqui mostramos la informacion de PHP
