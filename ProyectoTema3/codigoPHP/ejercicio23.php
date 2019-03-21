@@ -23,7 +23,7 @@
    
    /**
 		Autor: Laura Fernandez
-		Realizado:22:10:2018;
+		Realizado:  19/03/2019
 		Comentarios:El programa muestra los datos que hemos introducido en la misma pagina y verifica las entradas
 	*/
         
