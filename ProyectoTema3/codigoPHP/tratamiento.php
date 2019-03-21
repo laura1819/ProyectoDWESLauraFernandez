@@ -14,7 +14,7 @@
         <?php
         /**
           Autor: Laura Fernandez
-          Realizado:22:10:2018;
+          Realizado:22:10:2019;
           Comentarios:El programa muestra los datos que hemos introducido en el formulario anterior;
          */
         echo "<h2>Datos recogidos</h2>"; //Titulo del formulario
