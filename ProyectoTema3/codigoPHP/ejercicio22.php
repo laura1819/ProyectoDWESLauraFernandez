@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
                 font-family: 'Charmonman', cursive;

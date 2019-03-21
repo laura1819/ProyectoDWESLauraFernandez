@@ -43,7 +43,7 @@
         echo "<br>"; // ponemos un salto de linea
         print "La variable $ boolean, contiene" . $boolean . " es de tipo " . gettype($boolean); // sacamos por pantalla el valor de la variable y con gettype su tipo
         echo "<br>"; // ponemos un salto de linea
-        print "La variable $ varArray, contiene" . $varArray . " es de tipo " . gettype($varArray); // sacamos por pantalla el valor de la variable y con gettype su tipo
+        
     
         echo "<br>"; // ponemos un salto de linea
         echo "<br>"; // ponemos un salto de linea

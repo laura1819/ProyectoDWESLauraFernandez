@@ -22,7 +22,7 @@
 		*/
 		
            
-        echo "El path del archivo actual es: " . $_SERVER['PATH']; // muestra el path del archivo actual
+        echo "El path del archivo actual es: " . $_SERVER['PHP_SELF']; // muestra el path del archivo actual
         ?>
        
     </body>
