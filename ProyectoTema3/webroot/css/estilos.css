@@ -5,6 +5,7 @@ body {
     background-color: #1E5799;	
     margin: 0;
     padding: 0;
+      margin-left: 4px;
     font-size: 100%;
 } 
 
@@ -54,10 +55,10 @@ footer {
    
 }
 
-
-
-
-
+.formu{
+    margin-left: 1%;
+ 
+}
 
 
 
