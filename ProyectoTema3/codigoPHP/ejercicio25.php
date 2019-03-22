@@ -24,74 +24,74 @@
 
         $entradaOK = true; //Inicialización de la variable que nos indica que todo va bien 
         $aErrores = [//Inicialización del array donde recogemos los errores 
-            'alfb' => null, // guarda los errores del campo 
-            'alfn' => null, // guarda los errores del campo 
-            'entero' => null, // guarda los errores del campo 
-            'float' => null, // guarda los errores del campo 
-            'email' => null, // guarda los errores del campo 
-            'url' => null, // guarda los errores del campo 
-            'fecha' => null, // guarda los errores del campo 
-            'tel' => null, // guarda los errores del campo 
-            'dni' => null, // guarda los errores del campo
-            'cp' => null, // guarda los errores del campo
-            'pass' => null, // guarda los errores del campo
-            'radiobutton' => null,  // guarda los errores del campo
-            'select' => null, // guarda los errores del campo
-            'textArea' => null, // guarda los errores del campo
+            'alfb' => null, // campo errores alfabetico
+            'alfn' => null, // campo errores alfanumerico
+            'entero' => null, // campo errores entero 
+            'float' => null, // campo errores para un numero float 
+            'email' => null, // campo errores para el email 
+            'url' => null, // campo errores para la url 
+            'fecha' => null, // campo errores para la fecha 
+            'tel' => null, // campo errores para el telefono 
+            'dni' => null, // campo errores para el dni
+            'cp' => null, // campo errores para el codigo postal
+            'pass' => null, // campo errores para la contraseña
+            'radiobutton' => null,  // campo errores para el radiobutton
+            'select' => null, // campo errores para la listbox
+            'textArea' => null, // campo errores para el text area
             
-            'alfbNoOb' => null, // guarda los errores del campo 
-            'alfnNoOb' => null, // guarda los errores del campo 
-            'enteroNoOb' => null, // guarda los errores del campo 
-            'floatNoOb' => null, // guarda los errores del campo 
-            'emailNoOb' => null, // guarda los errores del campo 
-            'urlNoOb' => null, // guarda los errores del campo 
-            'fechaNoOb' => null, // guarda los errores del campo 
-            'telNoOb' => null, // guarda los errores del campo 
-            'dniNoOb' => null, // guarda los errores del campo
-            'cpNoOb' => null, // guarda los errores del campo
-            'passNoOb' => null, // guarda los errores del campo
-            'textAreaNoOb' => null // guarda los errores del campo
+            'alfbNoOb' => null, // campo de errores para el alfabetico no obligatorio
+            'alfnNoOb' => null, // campo de errores para el alfanumerico no obligatorio
+            'enteroNoOb' => null, // campo de errores para el entero no obligatorio
+            'floatNoOb' => null, // campo de errores para el float no obligatorio
+            'emailNoOb' => null, // campo de errores para el email no obligatorio
+            'urlNoOb' => null, //  campo de errores para el url no obligatorio
+            'fechaNoOb' => null, // campo de errores para el fecha obligatorio
+            'telNoOb' => null, // campo de errores para el telefono no obligatorio
+            'dniNoOb' => null, // campo de errores para el dni no obligatorio
+            'cpNoOb' => null, // campo de errores para el codigo postal no obligatorio
+            'passNoOb' => null, // campo de errores para la contraseña no obligatorio
+            'textAreaNoOb' => null // campo de errores para el textarea no obligatorio
             
           
         ];
 
         $aFormulario = [// array de los valores que contienen los campos del formulario cuando estos estan bien
-            'alfb' => null, // guarda el valor del campo cuando este es correcto
-            'alfn' => null, // guarda el valor del campo cuando este es correcto
-            'entero' => null, // guarda el valor del campo cuando este es correcto
-            'float' => null, // guarda el valor del campo cuando este es correcto
-            'email' => null, // guarda el valor del campo cuando este es correcto
-            'url' => null, // guarda el valor del campo cuando este es correcto
-            'fecha' => null, // guarda el valor del campo cuando este es correcto
-            'tel' => null, // guarda el valor del campo cuando este es correcto
-            'dni' => null, // guarda el valor del campo cuando este es correcto
-            'cp' => null, // guarda el valor del campo cuando este es correcto
-            'pass' => null, // guarda el valor del campo cuando este es correcto
-            'radiobutton' => null, // guarda el valor del campo cuando este es correcto
-            'select' => null, // guarda el valor del campo cuando este es correcto
-            'textArea' => null, // guarda el valor del campo cuando este es correcto
+            'alfb' => null, // campo  alfabetico
+            'alfn' => null, // campo  alfanumerico
+            'entero' => null, // campo  entero 
+            'float' => null, // campo  para un numero float 
+            'email' => null, // campo  para el email 
+            'url' => null, // campo  para la url 
+            'fecha' => null, // campo  para la fecha 
+            'tel' => null, // campo  para el telefono 
+            'dni' => null, // campo  para el dni
+            'cp' => null, // campo  para el codigo postal
+            'pass' => null, // campo  para la contraseña
+            'radiobutton' => null,  // campo  para el radiobutton
+            'select' => null, // campo  para la listbox
+            'textArea' => null, // campo  para el text area
             
-            'alfbNoOb' => null, // guarda los errores del campo 
-            'alfnNoOb' => null, // guarda los errores del campo 
-            'enteroNoOb' => null, // guarda los errores del campo 
-            'floatNoOb' => null, // guarda los errores del campo 
-            'emailNoOb' => null, // guarda los errores del campo 
-            'urlNoOb' => null, // guarda los errores del campo 
-            'fechaNoOb' => null, // guarda los errores del campo 
-            'telNoOb' => null, // guarda los errores del campo 
-            'dniNoOb' => null, // guarda los errores del campo
-            'cpNoOb' => null, // guarda los errores del campo
-            'passNoOb' => null, // guarda los errores del campo
-            'textAreaNoOb' => null // guarda los errores del campo
+             'alfbNoOb' => null, // campo de  para el alfabetico no obligatorio
+            'alfnNoOb' => null, // campo de  para el alfanumerico no obligatorio
+            'enteroNoOb' => null, // campo de  para el entero no obligatorio
+            'floatNoOb' => null, // campo de  para el float no obligatorio
+            'emailNoOb' => null, // campo de  para el email no obligatorio
+            'urlNoOb' => null, //  campo de  para el url no obligatorio
+            'fechaNoOb' => null, // campo de  para el fecha obligatorio
+            'telNoOb' => null, // campo de  para el telefono no obligatorio
+            'dniNoOb' => null, // campo de  para el dni no obligatorio
+            'cpNoOb' => null, // campo de  para el codigo postal no obligatorio
+            'passNoOb' => null, // campo de  para la contraseña no obligatorio
+            'textAreaNoOb' => null // campo de  para el textarea no obligatorio
             
         ];
 
-        $button = [
+        $button = [ // un array para guardar las opciones del radioButton
             'opcion1',
             'opcion2'
         ];
         
-        $a_select = [
+        $a_select = [ // un array para guardar las opciones para la listBox
             'opcion1',
             'opcion2',
             'opcion3',
@@ -101,38 +101,38 @@
         
 
         if (!empty($_POST['enviar'])) { //Para cada campo del formulario: Validar entrada y actuar en consecuencia 
-            
-            $aErrores['alfb'] = validacionFormularios::comprobarAlfabetico($_POST['alfb'], 25, 3, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['alfn'] = validacionFormularios::comprobarAlfanumerico($_POST['alfn'], 25, 3, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['entero'] = validacionFormularios::comprobarEntero($_POST['entero'], 10, 1, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['float'] = validacionFormularios::comprobarFloat($_POST['float'], 10, 1, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['email'] = validacionFormularios::validarEmail($_POST['email'], 25, 4, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['url'] = validacionFormularios::validarURL($_POST['url'], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['fecha'] = validacionFormularios::validarFecha($_POST['fecha'], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['tel'] = validacionFormularios::validaTelefono($_POST['tel'], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['dni'] = validacionFormularios::validarDni($_POST['dni'], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['cp'] = validacionFormularios::validarCp($_POST['cp'], 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['pass'] = validacionFormularios::comprobarAlfanumerico($_POST['pass'], 50, 3, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['radiobutton'] = validacionFormularios::validarElementoEnLista($_POST['radiobutton'], $button, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $a_errores['select'] = validacionFormularios::validarElementoEnLista($_POST['select'], $a_select, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['textArea'] = validacionFormularios::comprobarAlfanumerico($_POST['textArea'], 25, 3, 1); //el array de los errores coje el mensaje de error para el campo de la libreria
+            // para cada elemento del campo le pasamos su comprobacion de la libreria
+            $aErrores['alfb'] = validacionFormularios::comprobarAlfabetico($_POST['alfb'], 25, 3, 1); 
+            $aErrores['alfn'] = validacionFormularios::comprobarAlfanumerico($_POST['alfn'], 25, 3, 1); 
+            $aErrores['entero'] = validacionFormularios::comprobarEntero($_POST['entero'], 10, 1, 1); 
+            $aErrores['float'] = validacionFormularios::comprobarFloat($_POST['float'], 10, 1, 1); 
+            $aErrores['email'] = validacionFormularios::validarEmail($_POST['email'], 25, 4, 1); 
+            $aErrores['url'] = validacionFormularios::validarURL($_POST['url'], 1); 
+            $aErrores['fecha'] = validacionFormularios::validarFecha($_POST['fecha'], 1); 
+            $aErrores['tel'] = validacionFormularios::validaTelefono($_POST['tel'], 1);
+            $aErrores['dni'] = validacionFormularios::validarDni($_POST['dni'], 1); 
+            $aErrores['cp'] = validacionFormularios::validarCp($_POST['cp'], 1); 
+            $aErrores['pass'] = validacionFormularios::comprobarAlfanumerico($_POST['pass'], 50, 3, 1); 
+            $aErrores['radiobutton'] = validacionFormularios::validarElementoEnLista($_POST['radiobutton'], $button, 1);
+            $a_errores['select'] = validacionFormularios::validarElementoEnLista($_POST['select'], $a_select, 1); 
+            $aErrores['textArea'] = validacionFormularios::comprobarAlfanumerico($_POST['textArea'], 25, 3, 1); 
           
-            $aErrores['alfbNoOb'] = validacionFormularios::comprobarAlfabetico($_POST['alfbNoOb'], 25, 3, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['alfnNoOb'] = validacionFormularios::comprobarAlfanumerico($_POST['alfnNoOb'], 25, 3, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['enteroNoOb'] = validacionFormularios::comprobarEntero($_POST['enteroNoOb'], 10, 1, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['floatNoOb'] = validacionFormularios::comprobarFloat($_POST['floatNoOb'], 10, 1, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['emailNoOb'] = validacionFormularios::validarEmail($_POST['emailNoOb'], 25, 4, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['urlNoOb'] = validacionFormularios::validarURL($_POST['urlNoOb'], 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['fechaNoOb'] = validacionFormularios::validarFecha($_POST['fechaNoOb'], 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['telNoOb'] = validacionFormularios::validaTelefono($_POST['telNoOb'], 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['dniNoOb'] = validacionFormularios::validarDni($_POST['dniNoOb'], 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['cpNoOb'] = validacionFormularios::validarCp($_POST['cpNoOb'], 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['passNoOb'] = validacionFormularios::comprobarAlfanumerico($_POST['passNoOb'], 50, 3, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
-            $aErrores['textAreaNoOb'] = validacionFormularios::comprobarAlfanumerico($_POST['textAreaNoOb'], 25, 3, 0); //el array de los errores coje el mensaje de error para el campo de la libreria
+            $aErrores['alfbNoOb'] = validacionFormularios::comprobarAlfabetico($_POST['alfbNoOb'], 25, 3, 0); 
+            $aErrores['alfnNoOb'] = validacionFormularios::comprobarAlfanumerico($_POST['alfnNoOb'], 25, 3, 0); 
+            $aErrores['enteroNoOb'] = validacionFormularios::comprobarEntero($_POST['enteroNoOb'], 10, 1, 0); 
+            $aErrores['floatNoOb'] = validacionFormularios::comprobarFloat($_POST['floatNoOb'], 10, 1, 0); 
+            $aErrores['emailNoOb'] = validacionFormularios::validarEmail($_POST['emailNoOb'], 25, 4, 0); 
+            $aErrores['urlNoOb'] = validacionFormularios::validarURL($_POST['urlNoOb'], 0); 
+            $aErrores['fechaNoOb'] = validacionFormularios::validarFecha($_POST['fechaNoOb'], 0); 
+            $aErrores['telNoOb'] = validacionFormularios::validaTelefono($_POST['telNoOb'], 0); 
+            $aErrores['dniNoOb'] = validacionFormularios::validarDni($_POST['dniNoOb'], 0); 
+            $aErrores['cpNoOb'] = validacionFormularios::validarCp($_POST['cpNoOb'], 0); 
+            $aErrores['passNoOb'] = validacionFormularios::comprobarAlfanumerico($_POST['passNoOb'], 50, 3, 0); 
+            $aErrores['textAreaNoOb'] = validacionFormularios::comprobarAlfanumerico($_POST['textAreaNoOb'], 25, 3, 0); 
             
 
             foreach ($aErrores as $error) { // Busca algun mensaje de error en el recorriendo el array de errores
-                if ($error != null) {
+                if ($error != null) { 
                     $entradaOK = false; //si encuentra algun error se cambiaria a false la entradaok
                 }
             }
@@ -143,66 +143,66 @@
 
 
         if ($entradaOK) {  //Tratamiento de datos OK
+             // recogemos el valor de cada campo una vez que este es correcto
+            $aFormulario['alfb'] = $_POST['alfb']; 
+            $aFormulario['alfn'] = $_POST['alfn'];
+            $aFormulario['entero'] = $_POST['entero']; 
+            $aFormulario['float'] = $_POST['float']; 
+            $aFormulario['email'] = $_POST['email']; 
+            $aFormulario['url'] = $_POST['url']; 
+            $aFormulario['fecha'] = $_POST['fecha']; 
+            $aFormulario['tel'] = $_POST['tel'];
+            $aFormulario['dni'] = $_POST['dni']; 
+            $aFormulario['cp'] = $_POST['cp']; 
+            $aFormulario['pass'] = $_POST['pass']; 
+            $aFormulario['radiobutton'] = $_POST['radiobutton']; 
+            $aFormulario['select'] = $_POST['select'];
+            $aFormulario['textArea'] = $_POST['textArea']; 
              
-            $aFormulario['alfb'] = $_POST['alfb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['alfn'] = $_POST['alfn']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['entero'] = $_POST['entero']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['float'] = $_POST['float']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['email'] = $_POST['email']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['url'] = $_POST['url']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['fecha'] = $_POST['fecha']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['tel'] = $_POST['tel']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['dni'] = $_POST['dni']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['cp'] = $_POST['cp']; // recoge el valor del campo una vez que ya ha pasado la validacion		
-            $aFormulario['pass'] = $_POST['pass']; // recoge el valor del campo una vez que ya ha pasado la validacion		
-            $aFormulario['radiobutton'] = $_POST['radiobutton']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['select'] = $_POST['select']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['textArea'] = $_POST['textArea']; // recoge el valor del campo una vez que ya ha pasado la validacion
-             
-            $aFormulario['alfbNoObNoOb'] = $_POST['alfbNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['alfnNoOb'] = $_POST['alfnNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['enteroNoOb'] = $_POST['enteroNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['floatNoOb'] = $_POST['floatNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['emailNoOb'] = $_POST['emailNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['urlNoOb'] = $_POST['urlNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['fechaNoOb'] = $_POST['fechaNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['telNoOb'] = $_POST['telNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['dniNoOb'] = $_POST['dniNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['cpNoOb'] = $_POST['cpNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion		
-            $aFormulario['passNoOb'] = $_POST['passNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
-            $aFormulario['textAreaNoOb'] = $_POST['textAreaNoOb']; // recoge el valor del campo una vez que ya ha pasado la validacion
+            $aFormulario['alfbNoObNoOb'] = $_POST['alfbNoOb']; 
+            $aFormulario['alfnNoOb'] = $_POST['alfnNoOb']; 
+            $aFormulario['enteroNoOb'] = $_POST['enteroNoOb']; 
+            $aFormulario['floatNoOb'] = $_POST['floatNoOb']; 
+            $aFormulario['emailNoOb'] = $_POST['emailNoOb']; 
+            $aFormulario['urlNoOb'] = $_POST['urlNoOb']; 
+            $aFormulario['fechaNoOb'] = $_POST['fechaNoOb']; 
+            $aFormulario['telNoOb'] = $_POST['telNoOb']; 
+            $aFormulario['dniNoOb'] = $_POST['dniNoOb']; 
+            $aFormulario['cpNoOb'] = $_POST['cpNoOb']; 
+            $aFormulario['passNoOb'] = $_POST['passNoOb']; 
+            $aFormulario['textAreaNoOb'] = $_POST['textAreaNoOb']; 
         
             
             //Imprimimos los datos correctamente
              echo '<h2>Campos que eran obligatorios</h2>';
-            print 'alfb: ' . $aFormulario['alfb'] . '<br />';   //saca por pantalla el valor del campo alfabetico
-            print 'alfn: ' . $aFormulario['alfn'] . '<br />'; //saca por pantalla el valor del campo alfanumerico
-            print 'entero: ' . $aFormulario['entero'] . '<br />'; //saca por pantalla el valor del campo entero
-            print 'float: ' . $aFormulario['float'] . '<br />'; //saca por pantalla el valor del campo float
-            print 'email: ' . $aFormulario['email'] . '<br />'; //saca por pantalla el valor del campo email
-            print 'url: ' . $aFormulario['url'] . '<br />'; //saca por pantalla el valor del campo url
-            print 'fecha: ' . $aFormulario['fecha'] . '<br />'; //saca por pantalla el valor del campo fecha
-            print 'Telefono: ' . $aFormulario['tel'] . '<br />'; //saca por pantalla el valor del campo telefono
-            print 'Dni: ' . $aFormulario['dni'] . '<br />'; //saca por pantalla el valor del campo dni
-            print 'Codigo postal: ' . $aFormulario['cp'] . '<br />'; //saca por pantalla el valor del campo cp
-            print 'Contraseña: ' . $aFormulario['pass'] . '<br />'; //saca por pantalla el valor del campo cp
-            print 'Campo Radiobuton: ' . $aFormulario['radiobutton'] . '<br />'; //saca por pantalla el valor del campo cp
-            print 'Campo select: ' . $aFormulario['select'] . '<br />'; //saca por pantalla el valor del campo cp
-            print 'Campo TextArea: ' . $aFormulario['textArea'] . '<br />'; //saca por pantalla el valor del campo cp
+            print 'alfb: ' . $aFormulario['alfb'] . '<br />';  
+            print 'alfn: ' . $aFormulario['alfn'] . '<br />'; 
+            print 'entero: ' . $aFormulario['entero'] . '<br />'; 
+            print 'float: ' . $aFormulario['float'] . '<br />'; 
+            print 'email: ' . $aFormulario['email'] . '<br />'; 
+            print 'url: ' . $aFormulario['url'] . '<br />'; 
+            print 'fecha: ' . $aFormulario['fecha'] . '<br />'; 
+            print 'Telefono: ' . $aFormulario['tel'] . '<br />'; 
+            print 'Dni: ' . $aFormulario['dni'] . '<br />'; 
+            print 'Codigo postal: ' . $aFormulario['cp'] . '<br />'; 
+            print 'Contraseña: ' . $aFormulario['pass'] . '<br />'; 
+            print 'Campo Radiobuton: ' . $aFormulario['radiobutton'] . '<br />'; 
+            print 'Campo select: ' . $aFormulario['select'] . '<br />'; 
+            print 'Campo TextArea: ' . $aFormulario['textArea'] . '<br />'; 
             
             echo '<h2>Campos que no eran obligatorios</h2>';
-            print 'alfbNoOb: ' . $aFormulario['alfbNoOb'] . '<br />';   //saca por pantalla el valor del campo alfabetico
-            print 'alfnNoOb: ' . $aFormulario['alfnNoOb'] . '<br />'; //saca por pantalla el valor del campo alfanumerico
-            print 'enteroNoOb: ' . $aFormulario['enteroNoOb'] . '<br />'; //saca por pantalla el valor del campo entero
-            print 'floatNoOb: ' . $aFormulario['floatNoOb'] . '<br />'; //saca por pantalla el valor del campo float
-            print 'emailNoOb: ' . $aFormulario['emailNoOb'] . '<br />'; //saca por pantalla el valor del campo email
-            print 'urlNoOb: ' . $aFormulario['urlNoOb'] . '<br />'; //saca por pantalla el valor del campo url
-            print 'fechaNoOb: ' . $aFormulario['fechaNoOb'] . '<br />'; //saca por pantalla el valor del campo fecha
-            print 'TelefonoNoOb: ' . $aFormulario['telNoOb'] . '<br />'; //saca por pantalla el valor del campo telefono
-            print 'DniNoOb: ' . $aFormulario['dniNoOb'] . '<br />'; //saca por pantalla el valor del campo dni
-            print 'Codigo postalNoOb: ' . $aFormulario['cpNoOb'] . '<br />'; //saca por pantalla el valor del campo cp
-            print 'ContraseñaNoOb: ' . $aFormulario['passNoOb'] . '<br />'; //saca por pantalla el valor del campo cp
-             print 'textAreaNoOb: ' . $aFormulario['textAreaNoOb'] . '<br />'; //saca por pantalla el valor del campo cp
+            print 'alfbNoOb: ' . $aFormulario['alfbNoOb'] . '<br />';   
+            print 'alfnNoOb: ' . $aFormulario['alfnNoOb'] . '<br />'; 
+            print 'enteroNoOb: ' . $aFormulario['enteroNoOb'] . '<br />'; 
+            print 'floatNoOb: ' . $aFormulario['floatNoOb'] . '<br />'; 
+            print 'emailNoOb: ' . $aFormulario['emailNoOb'] . '<br />'; 
+            print 'urlNoOb: ' . $aFormulario['urlNoOb'] . '<br />'; 
+            print 'fechaNoOb: ' . $aFormulario['fechaNoOb'] . '<br />'; 
+            print 'TelefonoNoOb: ' . $aFormulario['telNoOb'] . '<br />'; 
+            print 'DniNoOb: ' . $aFormulario['dniNoOb'] . '<br />'; 
+            print 'Codigo postalNoOb: ' . $aFormulario['cpNoOb'] . '<br />'; 
+            print 'ContraseñaNoOb: ' . $aFormulario['passNoOb'] . '<br />'; 
+             print 'textAreaNoOb: ' . $aFormulario['textAreaNoOb'] . '<br />'; 
             
             
         } else {
@@ -246,7 +246,7 @@
                 <label style='color: red;'><?php echo $aErrores['alfn']; ?>*</label><br><br>
                 
                 Comprobar entero:
-                <input type='text' name='enteroNoOb' class='primero'
+                <input type='text' name='enteroNoOb' class='primero' size="5"
                        value='<?php
                        if (isset($_POST['enteroNoOb']) && is_null($aErrores['enteroNoOb'])) {
                            echo $_POST['enteroNoOb'];
@@ -255,7 +255,7 @@
                 <label style='color: red;'><?php echo $aErrores['enteroNoOb']; ?></label>
                 
                 Comprobar entero:
-                <input type='text' name='entero' 
+                <input type='text' name='entero'  size="5"
                        value='<?php
                        if (isset($_POST['entero']) && is_null($aErrores['entero'])) {
                            echo $_POST['entero'];
@@ -265,7 +265,7 @@
                 
                 
                 Comprobar float:
-                <input type='text' name='floatNoOb' class='primero'
+                <input type='text' name='floatNoOb' class='primero' size="5"
                        value='<?php
                    if (isset($_POST['floatNoOb']) && is_null($aErrores['floatNoOb'])) {
                        echo $_POST['floatNoOb'];
@@ -274,7 +274,7 @@
                 <label style='color: red;'><?php echo $aErrores['floatNoOb']; ?></label>
                 
                 Comprobar float:
-                <input type='text' name='float' 
+                <input type='text' name='float'  size="5"
                        value='<?php
                    if (isset($_POST['float']) && is_null($aErrores['float'])) {
                        echo $_POST['float'];
@@ -322,7 +322,7 @@
                 
                 
                 Comprobar Fecha:
-                <input type='text' name='fechaNoOb'  class='primero'
+                <input type='text' name='fechaNoOb'  class='primero' size="6"
                        value='<?php
                    if (isset($_POST['fechaNoOb']) && is_null($aErrores['fechaNoOb'])) {
                        echo $_POST['fechaNoOb'];
@@ -331,7 +331,7 @@
                 <label style='color: red;'><?php echo $aErrores['fechaNoOb']; ?></label>
                 
                 Comprobar Fecha:
-                <input type='text' name='fecha'  
+                <input type='text' name='fecha'  size="7"
                        value='<?php
                    if (isset($_POST['fecha']) && is_null($aErrores['fecha'])) {
                        echo $_POST['fecha'];
@@ -341,7 +341,7 @@
                 
                 
                 Comprobar telefono: 
-                <input type='text' name='telNoOb'  class='primero'
+                <input type='text' name='telNoOb'  class='primero' size="10"
                        value='<?php
                        if (isset($_POST['telNoOb']) && is_null($aErrores['telNoOb'])) {
                            echo $_POST['telNoOb'];
@@ -350,7 +350,7 @@
                 <label style='color: red;'><?php echo $aErrores['telNoOb']; ?></label>
                 
                 Comprobar telefono: 
-                <input type='text' name='tel'  
+                <input type='text' name='tel'  size="10"
                        value='<?php
                        if (isset($_POST['tel']) && is_null($aErrores['tel'])) {
                            echo $_POST['tel'];
@@ -360,7 +360,7 @@
                 
                 
                  Comprobar dni: 
-                <input type='text' name='dniNoOb'  class='primero'
+                <input type='text' name='dniNoOb'  class='primero' size="9"
                        value='<?php
                        if (isset($_POST['dniNoOb']) && is_null($aErrores['dniNoOb'])) {
                            echo $_POST['dniNoOb'];
@@ -370,7 +370,7 @@
                 
                 
                 Comprobar dni: 
-                <input type='text' name='dni'  
+                <input type='text' name='dni'  size="9"
                        value='<?php
                        if (isset($_POST['dni']) && is_null($aErrores['dni'])) {
                            echo $_POST['dni'];
