@@ -23,7 +23,7 @@ and open the template in the editor.
         <div>
             <table border="1">
                 <tr>
-                    <td>0.-Hola mundo y phpinfoooo().</td>
+                    <td>0.-Hola mundo y phpinfo().</td>
                     <td><a href="codigoPHP/ejercicio00.php">Ejecutar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio00.php">Mostrar código</a></td>
                     
@@ -156,6 +156,11 @@ and open the template in the editor.
                     <td>25.-Trabajar en PlantillaFormulario.php mi plantilla para hacer formularios como churros.</td>
                     <td><a href="codigoPHP/ejercicio25.php">Ejecutar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio25.php">Mostrar código</a></td>
+                </tr>
+                <tr>
+                    <td>26.-Encuesta climatica.</td>
+                    <td><a href="codigoPHP/ejercicio26.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio26.php">Mostrar código</a></td>
                 </tr>
             </table>
 	

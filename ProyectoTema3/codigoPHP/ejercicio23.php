@@ -37,19 +37,19 @@
     if(isset($_POST['enviar'])){ //Cargar valores por defecto en los campos del formulario 
         if($_POST['nombre']==null||$_POST['nombre']==""){ //  
             $entradaOK=false; //Cambiamos la variable de entradaok a false para indicar que algo no va bien
-            $aErrores[eNombre]="Error en el nombre"; //Y si se da el error mostraremos el mensaje adecuado de error
+            $aErrores['eNombre']="Error en el nombre"; //Y si se da el error mostraremos el mensaje adecuado de error
         } 
         if($_POST['apellido1']==null||$_POST['apellido1']==""){ 
             $entradaOK=false; //Cambiamos la variable de entradaok a false para indicar que algo no va bien
-            $aErrores[eApellido1]="Error en el primer apellido"; //Y si se da el error mostraremos el mensaje adecuado de error
+            $aErrores['eApellido1']="Error en el primer apellido"; //Y si se da el error mostraremos el mensaje adecuado de error
         } 
         if($_POST['apellido2']==null||$_POST['apellido2']==""){ 
             $entradaOK=false; //Cambiamos la variable de entradaok a false para indicar que algo no va bien
-            $aErrores[eApellido2]="Error en el segundo apellido"; //Y si se da el error mostraremos el mensaje adecuado de error
+            $aErrores['eApellido2']="Error en el segundo apellido"; //Y si se da el error mostraremos el mensaje adecuado de error
         } 
         if($_POST['edad']==null||$_POST['edad']==""){ 
             $entradaOK=false; //Cambiamos la variable de entradaok a false para indicar que algo no va bien
-            $aErrores[eEdad]="Error en la edad"; //Y si se da el error mostraremos el mensaje adecuado de error
+            $aErrores['eEdad']="Error en la edad"; //Y si se da el error mostraremos el mensaje adecuado de error
         } 
     }else{ 
         $entradaOK=false;     
@@ -72,21 +72,21 @@
              
             Nombre:
 			<input type="text" name="nombre" value="" />
-			<?php if(($aErrores['eNombre']!="")){echo '<span style="color:red;">'.$aErrores["eNombre"].'</span>';} ?>
+			<?php echo '<span style="color:red;">'.$aErrores["eNombre"].'</span>'; ?>
             <br><br> 
 			
             Primer Apellido:
 			<input type="text" name="apellido1" value="" />
-			<?php if(($aErrores['eApellido1']!="")){echo '<span style="color:red;">'.$aErrores['eApellido1'].'</span>';} ?> 
+			<?php echo '<span style="color:red;">'.$aErrores['eApellido1'].'</span>'; ?> 
             <br><br> 
 			
             Segundo Apellido:
 			<input type="text" name="apellido2" value="" />
-			<?php if(($aErrores['eApellido2']!="")){echo '<span style="color:red;">'.$aErrores['eApellido2'].'</span>';} ?> 
+			<?php echo '<span style="color:red;">'.$aErrores['eApellido2'].'</span>'; ?> 
             <br><br> 
 			
             Edad:<input type="text" name="edad" value="" />
-			<?php if(($aErrores['eEdad']!="")){echo  '<span style="color:red;">'.$aErrores['eEdad'].'</span>';} ?> 
+			<?php echo  '<span style="color:red;">'.$aErrores['eEdad'].'</span>'; ?> 
             <br><br> 
 			
             <input type="submit" value="enviar" name="enviar"/>    

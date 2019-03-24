@@ -76,43 +76,24 @@
             <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"/>
 
             Introduzca su nombre: 
-            <input type="text" name="nombre" 
-                   value="<?php if (isset($_POST["nombre"]) && is_null($aErrores["nombre"])) {
-            echo $_POST["nombre"];
-        } ?>"/> 
+            <input type="text" name="nombre" value="<?php echo $_POST["nombre"];?>"/> 
             <label style="color: red;"><?php echo $aErrores["nombre"]; ?>*</label><br><br>
 
             Introduzca sus apellidos:
-            <input type="text" name="apellidos" 
-                   value="<?php if (isset($_POST["apellidos"]) && is_null($aErrores["apellidos"])) {
-            echo $_POST["apellidos"];
-        } ?>"/>
+            <input type="text" name="apellidos" value="<?php echo $_POST["apellidos"];?>"/>
             <label style="color: red;"><?php echo $aErrores["apellidos"]; ?>*</label><br><br>
 
             Introduzca su email:
-            <input type="text" name="email"  
-                   value="<?php if (isset($_POST["email"]) && is_null($aErrores["email"])) {
-            echo $_POST["email"];
-        } ?>"/>
+            <input type="text" name="email" value="<?php echo $_POST["email"];?>"/>
             <label style="color: red;"><?php echo $aErrores["email"]; ?>*</label><br><br>
 
             Introduzca su telefonoefono: 
-            <input type="text" name="telefono"  
-                   value="<?php if (isset($_POST["telefono"]) && is_null($aErrores["telefono"])) {
-            echo $_POST["telefono"];
-        } ?>"/>
+            <input type="text" name="telefono" value="<?php echo $_POST["telefono"];?>"/>
             <label style="color: red;"><?php echo $aErrores["telefono"]; ?>*</label><br><br>
 
             Introduzca su dni: 
-            <input type="text" name="dni"  
-                   value="<?php if (isset($_POST["dni"]) && is_null($aErrores["dni"])) {
-            echo $_POST["dni"];
-        } ?>"/>
+            <input type="text" name="dni" value="<?php echo $_POST["dni"];?>"/>
             <label style="color: red;"><?php echo $aErrores["dni"]; ?>*</label><br><br>
-
-
-
-
 
             <input type="submit" value="Enviar" name="enviar"/>
 
