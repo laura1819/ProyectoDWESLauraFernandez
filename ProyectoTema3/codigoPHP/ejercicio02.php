@@ -2,7 +2,7 @@
 ﻿﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>Laura Fernandez</title>
+        <title>Laura Fernandez </title>
         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
