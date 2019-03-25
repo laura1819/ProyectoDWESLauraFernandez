@@ -41,8 +41,8 @@
 
 
         if (!empty($_POST['enviar'])) { // si pulsamos el boton enviar se va realizar las siguientes instruciones
-            $aErrores["nombre"] = validacionFormularios::comprobarAlfabetico($_POST['nombre'], 20, 3, 3); //el array de los errores coje el mensaje de error para el campo nombre de la libreria
-            $aErrores["apellidos"] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'], 20, 3, 3); //el array de los errores coje el mensaje de error para el campo apellidos de la libreria
+            $aErrores["nombre"] = validacionFormularios::comprobarAlfabetico($_POST['nombre'], 20, 3, 1); //el array de los errores coje el mensaje de error para el campo nombre de la libreria
+            $aErrores["apellidos"] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'], 20, 3, 1); //el array de los errores coje el mensaje de error para el campo apellidos de la libreria
             $aErrores["email"] = validacionFormularios::validarEmail($_POST['email'], 30, 3, 1); //el array de los errores coje el mensaje de error para el campo email de la libreria
             $aErrores["telefono"] = validacionFormularios::validaTelefono($_POST['telefono'], 1); //el array de los errores coje el mensaje de error para el campo telefonoefono de la libreria
             $aErrores["dni"] = validacionFormularios::validarDni($_POST['dni'], 1); //el array de los errores coje el mensaje de error para el campo dni de la libreria

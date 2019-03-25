@@ -18,7 +18,9 @@ body {
       margin-left: 4px;
     font-size: 100%;
 } 
-
+em {
+    color: red; 
+}
 h1{
     font-family: 'Charmonman', cursive;
     font-size:2em;

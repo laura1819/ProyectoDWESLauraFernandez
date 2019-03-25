@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-         <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
         <style>
             h1{
                 font: normal 3.4em "fb", "Trebuchet MS", Helvetica, Arial;
@@ -10,165 +10,95 @@
         </style>
     </head>
     <body>
-        <h1>Ejercicio 27</h1>
-		<h2>Consulta climatica</h2>
-		
-		 <?php
-       
+        <h1>Encuesta climatica</h1>
+
+
+        <?php
         require "../core/181025validacionFormularios.php"; //Incluye la librería de validación.
-		 $entradaOK = true;
-		 
-        define("OBLIGATORIO", 1);
-        define("NOOBLIGATORIO", 0);
-        define("MAXIMONUMERO", 100);
-        define("MINIMONUMERO", 100);
-        define("LONGMAXTEXTOLIBRE", 50);
-        define("LONGMINTEXTOLIBRE", 3);
-        $entradaOK = true;
-        //Inicializa un array de valores con tantas posiciones como campos de datos tenga el formulario.
-        $aFormulario = ['hoy' => null, //Almacena el valor del campo nombre cuando éste sea correcto.
-            'ayer' => null, //Almacena el valor del campo alfabético cuando éste sea correcto.
-            'presion' => null, //Almacena el valor del campo contraseña cuando éste sea correcto.
-            'estado' => null, //Almacena el valor del campo decimal cuando éste sea correcto.
-            'plan' => null, //Almacena el valor del texto libre cuando éste sea correcto.
-            'seleccionMultiple' => null, //Almacena el valor del campo checkbox cuando éste sea correcto.
-            'cielo' => null]; //Almacena el valor del elemento dentro de una lista cuando éste sea correcto.
-        $aOpcionesLista=['soleado', 'nublado', 'lluvioso']; //Se inicializan las posibles opciones de la lista.
-        //Se inicializa un array de errores con tantas posiciones como campos de entrada de datos tenga el formulario.
-        $aErrores = ['hoy' => null, //Guarda posibles errores en el campo alfabético.
-            'ayer' => null, //Guarda posibles errores en el campo alfanumérico.
-            'presion' => null, //Guarda posibles errores en el campo pass.
-            'estado' => null, //Guarda posibles errores en el campo decimal.
-            'plan' => null, //Guarda posibles errores en el campo email.
-            'seleccionMultiple' => null, //Guarda posibles errores en el campo url.
-            'cielo' => null]; //Guarda posibles errores en el campo que puede tener ciertos valores.
-        if (isset($_POST['Registrarse'])) { //Si se pulsa el botón submit se realizan las siguientes intrucciones.
-            $aErrores['hoy'] = validacionFormularios::comprobarEntero($_POST["hoy"], MAXIMONUMERO, MINIMONUMERO, OBLIGATORIO);
-            $aErrores['ayer'] = validacionFormularios::comprobarEntero($_POST["ayer"], MAXIMONUMERO, MINIMONUMERO, OBLIGATORIO);
-            $aErrores['presion'] = validacionFormularios::comprobarEntero($_POST["presion"], MAXIMONUMERO, MINIMONUMERO, OBLIGATORIO);
-            $aErrores['cielo'] = validacionFormularios::validarElementoEnLista($_POST['cielo'], $aOpcionesLista, OBLIGATORIO); //La posición del array de errores recibe el mensaje de error de la librería de validación si éste se produjera.
-            $aErrores['estado'] = validacionFormularios::validarRadioB($_POST["estado"], OBLIGATORIO);
-            $aErrores['plan'] = validacionFormularios::comprobarAlfaNumerico($_POST["plan"], LONGMAXTEXTOLIBRE, LONGMINTEXTOLIBRE, OBLIGATORIO);
-           
-            foreach ($aErrores as $campo=>$error) { //Recorre el array de errores en busca de algún mensaje de error.
-                if ($error != null) {
-                    $entradaOK = false; //Si encuentra algún mensaje de error cambia el valor de la variable $entradaOK a false.
-                    $_POST[$campo]="";
+
+        $entradaOk = true; // ponemos la entrada a true al principio
+        
+        
+        $aErrores = array ( 
+            'temHoy' => null,
+            'temAyer' => null,
+            'presion' => null,
+            'estadoCielo' => null,
+            'estadoAnimo' => null,
+            'planHoy' => null
+        );
+        
+        $aFormulario = array( 
+             'temHoy' => null,
+            'temAyer' => null,
+            'presion' => null,
+            'estadoCielo' => null,
+            'estadoAnimo' => null,
+            'planHoy' => null
+        );
+        
+        $aOpcionesLista = array (
+            'soleado',
+            'nublado',
+            'despejado'
+        );
+        
+        if(isset($_POST['enviar'])){
+            $aErrores['temHoy'] = validacionFormularios::comprobarEntero($_POST['temHoy'],100,2,1);
+            $aErrores['temAyer'] = validacionFormularios::comprobarEntero($_POST['temAyer'],100,2,1);
+            $aErrores['presion'] = validacionFormularios::comprobarEntero($_POST['presion'],100,2,1);
+            $aErrores['estadoCielo'] = validacionFormularios::validarElementoEnLista($_POST['estadoCielo'],$aOpcionesLista,1);
+            $aErrores['estadoAnimo'] = validacionFormularios::validarRadioB($_POST['estadoAnimo'],1);
+            $aErrores['planHoy'] = validacionFormularios::comprobarAlfaNumerico($_POST['planHoy'],30,5,1);
+            
+            foreach ($aErrores as $error){
+                if($error !=null){
+                    $entradaOk = false;
                 }
             }
-        } else {
-            $entradaOK = false; //Si no se ha pulsado el botón submit la variable booleana tendrá valor false, ya que los campos estarán vacíos.
+            
+        }else{
+                $entradaOk = false;
+            }
+            
+        
+        if ($entradaOk){
+            $aFormulario['temHoy'] = $_POST['temHoy'];
+            $aFormulario['temAyer'] = $_POST['temAyer'];
+            $aFormulario['presion'] = $_POST['presion'];
+            $aFormulario['estadoCielo'] = $_POST['estadoCielo'];
+            $aFormulario['estadoAnimo'] = $_POST['estadoAnimo'];
+            $aFormulario['planHoy'] = $_POST['planHoy'];
+            
+            echo "La temperatura de hoy es : " . $aFormulario['temHoy'] . "</br>";
+            echo "La temperatura de ayer es : " . $aFormulario['temAyer'] . "</br>";
+            echo "La presion es : " . $aFormulario['presion'] . "</br>";
+            echo "El estado del cielo es : " . $aFormulario['estadoCielo'] . "</br>";
+            echo "El estado de animo es : " .$aFormulario['estadoAnimo'] . "</br>";
+            echo "El plan para hoy es : " .$aFormulario['planHoy'] . "</br>";
+        }else{    
+            
+        ?>
+
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            Temperatura hoy : <input type="text" name="temHoy" value="<?php echo $_POST['temHoy']; ?>"><?php echo "<em>" . $aErrores['temHoy'] . "</em>"; ?></br></br>
+            Temperatura ayer : <input type="text" name="temAyer" value="<?php echo $_POST['temAyer']; ?>"><?php echo "<em>" . $aErrores['temAyer'] . "</em>" ?></br></br>
+            Presion Atmosferica : <input type="text" name="presion" value="<?php echo $_POST['presion']; ?>"><?php echo "<em>" . $aErrores['presion'] . "</em>" ?></br></br>
+            Estado del Cielo :
+            <select name="estadoCielo">
+                <option value="soleado" <?php echo (isset($_POST['estadoCielo']) && $_POST['estadoCielo'] == 'soleado' ? 'selected' : ''); ?>>Soleado</option>
+                <option value="despejado" <?php echo (isset($_POST['estadoCielo']) && $_POST['estadoCielo'] == 'nublado' ? 'selected' : ''); ?>>Despejado</option>
+                <option value="nublado" <?php echo (isset($_POST['estadoCielo']) && $_POST['estadoCielo'] == 'despejado' ? 'selected' : ''); ?>>Nublado</option>
+        </select><?php echo "<em>" . $aErrores['estadoCielo'] . "</em>" ?></br></br>
+        Estado de animo 
+        <input type="radio" name="estadoAnimo" value="bueno" <?php if($_POST['estadoAnimo']=='Bueno'){echo "checked";}?>>Bueno
+        <input type="radio" name="estadoAnimo" value="malo" <?php if($_POST['estadoAnimo']=='malo'){echo "checked";}?>>Malo
+        <input type="radio" name="estadoAnimo" value="como el tiempo" <?php if($_POST['estadoAnimo']=="como el tiempo"){echo "checked";}?>>Como el tiempo <?php echo $aErrores['estadoAnimo']; ?></br></br>
+        Plan para hoy <textarea name="planHoy" cols="30" rows="6" value="<?php echo $_POST['planHoy'];?>"></textarea><?php echo "<em>" . $aErrores['planHoy'] . "</em>" ?></br></br>
+        <input type="submit" value="enviar" name="enviar"/>
+    </form>
+        <?php
         }
-        if ($entradaOK) { //Si la entrada de datos es correcta se imprimen por pantalla los campos.
-            //Se meten los valores de la variable $POST en un array que recoge todos los datos del formulario.
-            $aFormulario[alfabetico]=$_POST['alfabetico']; //Recoge el valor del campo ya validado.
-            $aFormulario[alfanumerico]=$_POST['alfanumerico']; //Recoge el valor del campo ya validado.
-            $aFormulario[pass] = $_POST['pass']; //Recoge el valor del campo ya validado.
-            $aFormulario[entero] = $_POST['entero']; //Recoge el valor del campo ya validado.
-            $aFormulario[decimal] = $_POST['decimal']; //Recoge el valor del campo ya validado.
-            $aFormulario[email] = $_POST['email']; //Recoge el valor del campo ya validado.
-            $aFormulario[url] = $_POST['url']; //Recoge el valor del campo ya validado.
-            $aFormulario[fecha] = $_POST['fecha']; //Recoge el valor del campo ya validado.
-            $aFormulario[dni] = $_POST['dni']; //Recoge el valor del campo ya validado.
-            $aFormulario[codigoPostal] = $_POST['codigoPostal']; //Recoge el valor del campo ya validado.
-            $aFormulario[telefono] = $_POST['telefono']; //Recoge el valor del campo ya validado.
-            $aFormulario[textoLibre] =  $_POST['textoLibre']; //Recoge el valor del campo ya validado.
-            $aFormulario[campoRadio] =  $_POST['campoRadio']; //Recoge el valor del campo ya validado.
-            $aFormulario[seleccionMultiple] =  $_POST['seleccionMultiple1']." ".$_POST['seleccionMultiple2']; //Recoge el valor del campo ya validado.
-            $aFormulario[elementoLista] = $_POST['elementoLista']; //Recoge el valor del campo ya validado.
-            echo "<h2>Resultado</h2>";
-            echo "<p>Alfabético: " . $aFormulario[alfabetico] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Alfanumérico: " . $aFormulario[alfanumerico] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Contraseña: " . $aFormulario[pass] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Entero: " . $aFormulario[entero] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Decimal: " . $aFormulario[decimal] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Email: " . $aFormulario[email] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Url: " . $aFormulario[url] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Fecha: " . $aFormulario[fecha] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>DNI: " . $aFormulario[dni] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Código Postal: " . $aFormulario[codigoPostal] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Teléfono: " . $aFormulario[telefono] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Texto Libre: " . $aFormulario[textoLibre] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>Radio Button: " . $aFormulario[campoRadio] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-            echo "<p>CheckBox: " . $aFormulario[seleccionMultiple] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.          
-            echo "<p>Elemento en lista: " . $aFormulario[elementoLista] . "</p>"; //Imprime por pantalla el valor del campo dentro del array.
-        } else {
-            //Si la entrada de datos no es correcta se muestra el formulario que mostrará el resultado en la misma página.
-            ?>
-       
-	   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <div>
-                    <table>
-                        <caption>Datos</caption>
-                        <tr>
-                            <td>Temperatura hoy</td>
-                            <td><input type="text" name="hoy"  value="<?php echo $_POST['hoy'];?>">*
-                                <?php
-                                echo "<font color='#FF0000' size='1px'>$aErrores[hoy]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
-                                ?>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Temperatura ayerr</td>
-                            <td><input type="text" name="ayer"  value="<?php echo $_POST['ayer'];?>">*
-                                <?php
-                                echo "<font color='#FF0000' size='1px'>$aErrores[ayer]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
-                                ?>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Presión atmosférica</td>
-                            <td><input type="text" name="presion"  value="<?php echo $_POST['presion'];?>">*
-                                <?php
-                                echo "<font color='#FF0000' size='1px'>$aErrores[presion]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
-                                ?>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Estado del cielo</td>
-                            <td><select name="cielo">
-                                    <option value="soleado" <?php if($_POST['cielo']=='elemento1'){echo "selected";}?>>soleado</option>
-                                    <option value="nublado" <?php if($_POST['cielo']=='elemento2'){echo "selected";}?>>nublado</option>
-                                    <option value="lluvioso" <?php if($_POST['cielo']=='elemento2'){echo "selected";}?>>lluvioso</option>
-                                </select>*
-                                <?php
-                                echo "<font color='#FF0000' size='1px'>$aErrores[cielo]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
-                                ?>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Estado de ánimo</td>
-                            <td><input type="radio" name="estado" <?php if($_POST['estado']=="Bueno"){echo "checked";}?> value="Bueno">Bueno
-                                <input type="radio" name="estado" <?php if($_POST['estado']=="Malo"){echo "checked";}?> value="Malo">Malo
-                                <input type="radio" name="estado" <?php if($_POST['estado']=="Como el tiempo"){echo "checked";}?> value="Como el tiempo">Como el tiempo
-                                <?php
-                                echo "<font color='#FF0000' size='1px'>$aErrores[campoRadio]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
-                                ?>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Plan para hoy</td>
-                            <td><textarea name="textoLibre" cols="30" rows="6"><?php echo $_POST['textoLibre'];?></textarea>
-                                <?php
-                                echo "<font color='#FF0000' size='1px'>$aErrores[textoLibre]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
-                                ?>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                      
-                            <td><input type="submit" name="Registrarse"></td>
-                        </tr>
-                    </table>
-                </div>
-            </form>
-	  <?php } ?>
-	   
-	   
-    </body>
+       ?>
+</body>
 </html>

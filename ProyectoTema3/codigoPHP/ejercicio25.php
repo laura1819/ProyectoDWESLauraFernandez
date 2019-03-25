@@ -472,7 +472,7 @@
             <label style='color: red;'><?php echo $aErrores['radiobutton'] ?>*</label><br><br>
 
             <select name='select' value='<?php echo $_POST['select']; ?>'>
-                <option value='opcion1' value='opcion1' <?php echo (isset($_POST['select']) && $_POST['select'] == 'opcion1' ? 'selected' : ''); ?>>Opción 1</option>
+                <option value='opcion1' value='opcion1' <?php echo (isset($_POST['select']) && $_POST['select'] == 'opcion1' ? 'selected' : ''); ?>>Opción 1
                 <option value='opcion2' value='opcion2' <?php echo (isset($_POST['select']) && $_POST['select'] == 'opcion2' ? 'selected' : ''); ?>>Opción 2</option>
                 <option value='opcion3' value='opcion3' <?php echo (isset($_POST['select']) && $_POST['select'] == 'opcion3' ? 'selected' : ''); ?>>Opción 3</option>
                 <option value='opcion4' value='opcion4' <?php echo (isset($_POST['select']) && $_POST['select'] == 'opcion4' ? 'selected' : ''); ?>>Opción 4</option>

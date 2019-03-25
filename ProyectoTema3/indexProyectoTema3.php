@@ -159,7 +159,7 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>26.-Encuesta climatica.</td>
-                    <td><a href="#">Ejecutar</a></td>
+                    <td><a href="codigoPHP/ejercicio26.php">Ejecutar</a></td>
                     <td><a href="#">Mostrar código</a></td>
                 </tr>
                 <tr style="background-color:#8896C7">
