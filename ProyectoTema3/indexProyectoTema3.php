@@ -124,8 +124,8 @@ and open the template in the editor.
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>19.-Construir una librería de funciones de validación de campos de formularios (LibreríaValidacionFormularios.php) para utilizarla en los siguientes ejercicios.</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio19.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio19.php">Mostrar código</a></td>
                 </tr>
                 <tr>
                     <td>20.-Convertir la LibreriaValidacionFormularios.php en una clase ValidacionFormularios.php.</td>
@@ -159,8 +159,13 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>26.-Encuesta climatica.</td>
-                    <td><a href="codigoPHP/ejercicio26.php">Ejecutar</a></td>
-                    <td><a href="mostrarCodigo/muestraEjercicio26.php">Mostrar código</a></td>
+                    <td><a href="#">Ejecutar</a></td>
+                    <td><a href="#">Mostrar código</a></td>
+                </tr>
+                <tr style="background-color:#8896C7">
+                    <td>26.-Encuesta.</td>
+                    <td><a href="#">Ejecutar</a></td>
+                    <td><a href="#">Mostrar código</a></td>
                 </tr>
             </table>
 	

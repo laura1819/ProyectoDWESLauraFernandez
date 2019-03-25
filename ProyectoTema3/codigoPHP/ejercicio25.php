@@ -207,10 +207,10 @@
                         Comprobar alfabetico: 
                         <input type='text' name='alfbNoOb' class='primero' size="11"
                                value='<?php
-        if (isset($_POST['alfbNoOb']) && is_null($aErrores['alfbNoOb'])) {
-            echo $_POST['alfbNoOb'];
-        }
-        ?>'/> 
+                               if (isset($_POST['alfbNoOb']) && is_null($aErrores['alfbNoOb'])) {
+                                   echo $_POST['alfbNoOb'];
+                               }
+                               ?>'/> 
                         <label style='color: red;'><?php echo $aErrores['alfbNoOb']; ?></label>
                     </td>
                     <td>
@@ -449,10 +449,10 @@
                 <tr>
                     <td>
                         TextArea: <textarea rows='4' name='textAreaNoOb' cols='30' value='<?php
-                               if (isset($_POST['textAreaNoOb']) && is_null($aErrores['textAreaNoOb'])) {
-                                   echo $_POST['textAreaNoOb'];
-                               }
-                               ?>'></textarea>
+                        if (isset($_POST['textAreaNoOb']) && is_null($aErrores['textAreaNoOb'])) {
+                            echo $_POST['textAreaNoOb'];
+                        }
+                        ?>'></textarea>
                         <label style='color: red;'><?php echo $aErrores['textAreaNoOb'] ?></label>
                     </td>
                     <td>
@@ -487,9 +487,9 @@
             <input type='submit' value='Enviar' name='enviar'/>
 
         </form>
-    <?php
-}
-?>
+        <?php
+    }
+    ?>
 
 
 </body>

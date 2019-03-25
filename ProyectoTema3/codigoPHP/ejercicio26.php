@@ -110,7 +110,7 @@
                         </tr>
                         
                         <tr>
-                            <td>Temperatura ayer</td>
+                            <td>Temperatura ayerr</td>
                             <td><input type="text" name="ayer"  value="<?php echo $_POST['ayer'];?>">*
                                 <?php
                                 echo "<font color='#FF0000' size='1px'>$aErrores[ayer]</font>"; //Mostrará el mensaje de la variable en caso de que éste exista.
