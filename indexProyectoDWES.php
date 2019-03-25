@@ -13,17 +13,17 @@
                 <ul>
                     <li>
                         <a href="doc/070319EjerciciosTema1LauraFernandez.pdf" target="black">
-                            Tema1 <span>Caracteristicas entonrno servidor</span>
+                            Tema1 <span>Caracteristicas entonrno servidor </span>
                         </a>
                     </li>
                     <li>
                         <a href="doc/29012019DocumentacionMaquinas.pdf"  target="black">
-                            Tema2 <span>Configuracion Entornos</span>
+                            Tema2 <span>Configuracion Entornos </span>
                         </a>
                     </li>
                     <li>
                         <a href="ProyectoTema3/indexProyectoTema3.php">
-                            Tema3 <span>Caracteristicas PHP</span>
+                            Tema3 <span>Caracteristicas PHP </span>
                         </a>
                     </li>
                     <li>

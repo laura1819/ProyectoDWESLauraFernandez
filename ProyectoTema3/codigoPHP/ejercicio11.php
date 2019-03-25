@@ -9,7 +9,7 @@
         </style>
     </head>
     <body>
-        <h1>Ejercicio 11</h1>
+        <h1>Ejercicio 11 </h1>
 		
 		<!--
 			Autor: Laura Fernandez

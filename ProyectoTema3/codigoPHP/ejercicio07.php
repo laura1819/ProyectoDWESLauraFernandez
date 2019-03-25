@@ -24,7 +24,7 @@
 		
       
         echo "Path completo: ".$_SERVER['PHP_SELF'] . "<br>"; // saca por pantalla el path completo del archivo que se esta ejecutando
-        echo "<p>Nombre fichero: " . array_pop(explode('/', $_SERVER['PHP_SELF']))."</p>"; // saca por pantalla el nombre completo del archivo que se esta ejecutando
+        echo "<p>Nombre fichero:  " . array_pop(explode('/', $_SERVER['PHP_SELF']))."</p>"; // saca por pantalla el nombre completo del archivo que se esta ejecutando
         ?>
         
     </body>
