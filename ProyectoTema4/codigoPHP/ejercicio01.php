@@ -21,7 +21,7 @@
         echo "<h3>Conexion correcta</h3>" . "<br>"; // mostrar un mensaje por pantalla
 
         try { //si todo va bien hacer las siguientes instruciones
-            $miBD = new PDO('mysql:192.168.20.19;dbname=DAW210_DBdepartamentos', 'usuarioDAW210_DBdepartamentos', 'paso'); //iniciamos la variable con PDO y le pasamos la ip la base de datos, usuario y contraseña
+            $miBD = new PDO('mysql:127.0.0.1;DAW210_DBDepartamentos', 'usuarioDAW210DBDepartamentos', 'paso'); //iniciamos la variable con PDO y le pasamos la ip la base de datos, usuario y contraseña
             echo "Conexion realizada" . "<br>"; // si todo esta bien mostramos un mensaje de que la conexion esta realizada
         } catch (PDOException $mensajeError) { // si la conexion no se ha realizado correctamente realizaremos lo siguiente
             echo "Error " . $mensajeError->getMessage() . "<br>"; // mostraremos un mensaje de error de la excepcion 

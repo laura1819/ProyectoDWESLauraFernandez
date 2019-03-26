@@ -12,6 +12,4 @@
                                              ('VNT','Departamento Ventas'), 
                                              ('CNT','Departamento Contabilidad'), 
                                              ('GST','Departamento Gestion')
-                                             ('VNC','Departamento Coches'), 
-                                             ('CMM','Departamento Motos'), 
-                                             ('GCC','Departamento Camiones');
+                                             ;

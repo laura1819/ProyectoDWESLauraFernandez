@@ -20,12 +20,12 @@
          */
 
         try { 
-            $miBD = new PDO('mysql:host=192.168.20.19;dbname=DAW210_DBdepartamentos', 'usuarioDAW210_DBdepartamentos', 'paso'); // los parametros de la conexion
+            $miBD = new PDO('mysql:host=127.0.0.1;dbname=DAW210_DBDepartamentos', 'usuarioDAW210DBDepartamentos', 'paso'); // los parametros de la conexion
             echo "<h3>Conexion realizada" . "<br></h3>"; // mostramos un mensaje si la conexion esta bien
             $resultado = $miBD->query("SELECT * FROM Departamento"); // realizamos el query para que nos muestre los departamentos
 
             while ($registro = $resultado->fetchObject()) { // hacer un bucle para que salgan todas las tuplas de la base de datos
-                echo "Codigo del departamento: " . $registro->Cod_Departamento . "<br>";  // sacamos un mensaje con el codigo del departamento              
+                echo "Codigo del departamento: " . $registro->CodDepartamento . "<br>";  // sacamos un mensaje con el codigo del departamento              
                 echo "Descripcion del departamento: " . $registro->DescDepartamento . "<br>";  // sacamos un mensaje con el codigo del departamento
             }
 

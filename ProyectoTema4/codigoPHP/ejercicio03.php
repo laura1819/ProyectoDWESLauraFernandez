@@ -16,8 +16,8 @@
         require "../core/181025validacionFormularios.php"; //Incluye la librería de validación.
         
         //Definimos las constantes para la conexion a la base de datos                
-        define('IPDB', 'mysql:host=192.168.20.19;dbname=DAW210_DBdepartamentos');                  
-        define('USER', 'usuarioDAW210_DBdepartamentos'); 
+        define('IPDB', 'mysql:host=127.0.0.1;dbname=DAW210_DBDepartamentos');                  
+        define('USER', 'usuarioDAW210DBDepartamentos'); 
         define('PASS', 'paso');
         
         define("OBLIGATORIO", 1);
@@ -58,7 +58,7 @@
               
                 
             
-                $insertar = $miDB->prepare('INSERT INTO Departamento (Cod_Departamento,DescDepartamento) VALUES (:codigo,:nombre)');    //Realizamos una consulta preparada
+                $insertar = $miDB->prepare('INSERT INTO Departamento (CodDepartamento,DescDepartamento) VALUES (:codigo,:nombre)');    //Realizamos una consulta preparada
                 $insertar->bindParam(':codigo',$_POST['codigo']);   //Recogemos los datos en las variables de las consultas preparadas
                 $insertar->bindParam(':nombre',$_POST['nombre']);   //Recogemos los datos en las variables de las consultas preparadas
  
@@ -69,7 +69,7 @@
                 echo "<p><strong>Se ha insertado correctamente</strong> </p>"; 
                 echo "<p>Los registros de la tabla Departamento son: </p>"; 
                 while($resultados=$datos->fetchObject()){   //Creamos un objeto, el cual se va a usar para guardar los datos del query anterior
-                  echo "<p>" . $resultados->Cod_Departamento . " - " . $resultados->DescDepartamento . "</p>";  //Mostrar los datos de la tabla, dentro de un while
+                  echo "<p>" . $resultados->CodDepartamento . " - " . $resultados->DescDepartamento . "</p>";  //Mostrar los datos de la tabla, dentro de un while
                 }
                 echo "<br>";         
                 echo "El numero total de registros es: ".$datos->rowCount();    //Mostrar el numero total de registros de la tabla
@@ -99,7 +99,7 @@
                            
                             
                             
-                          <textarea rows='4' name='nombre' cols='30' value='<?php
+                          <textarea rows='2' name='nombre' cols='30' value='<?php
                         if (isset($_POST['nombrer']) && is_null($aErrores['textAreaNoOb'])) {
                             echo $_POST['nombre'];
                         }

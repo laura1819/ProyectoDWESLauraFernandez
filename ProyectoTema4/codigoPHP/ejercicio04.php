@@ -23,9 +23,9 @@
     $entradaOK = true; // ponemos la entrada a true 
           
           
-        define('IP', 'mysql:host=192.168.20.19;dbname=DAW210_DBdepartamentos'); // definimos los parametros de la conexion para conectarnos 
+        define('IP', 'mysql:host=127.0.0.1;dbname=DAW210_DBDepartamentos'); // definimos los parametros de la conexion para conectarnos 
         define('CONTR', 'paso'); // la contraseña de la base de datos 
-        define('USUARIO', 'usuarioDAW210_DBdepartamentos'); // el usuario de la base de datos 
+        define('USUARIO', 'usuarioDAW210DBDepartamentos'); // el usuario de la base de datos 
         define("OBLIGATORIO", 1); // y los parametros para validar los campos 
         define("NOOBLIGATORIO", 0); // y los parametros para validar los campos 
         define("LONGMAXDESC", 255); // y los parametros para validar los campos 
@@ -59,7 +59,7 @@
                     echo "<p>Se encontraron ".$consulta->rowCount()." registros</p>"; //pues los contamos y los sacamos por pantalla 
                 } 
                 while ($registro = $consulta->fetchObject()) { // hacemos un bucle para mostrar todas las tuplas 
-                    echo "<p>" . $registro->Cod_Departamento . "=" . $registro->DescDepartamento . "</p>";  //y las sacamos por pantalla el cod y la desc 
+                    echo "<p>" . $registro->CodDepartamento . "=" . $registro->DescDepartamento . "</p>";  //y las sacamos por pantalla el cod y la desc 
                 } 
             } catch (PDOException $error) { // si tenemos algun error  
                 echo "<p>Error " . $error->getMessage() . "</p>";  // mostraremos el mensaje de error 

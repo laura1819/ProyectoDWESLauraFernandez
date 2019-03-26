@@ -44,7 +44,7 @@ and open the template in the editor.
         <div>
             <table border="1">
                 <tr>
-                    <td>1.-Conexión a la base de datos con la cuenta usuario y tratamiento de errores..</td>
+                    <td>1.-Conexión a la base de datos con la cuenta usuario y tratamiento de errores.</td>
                     <td><a href="codigoPHP/ejercicio01.php">Ejecutar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio01.php">Mostrar código</a></td>
                     
@@ -70,23 +70,23 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>5.-Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio05.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio05.php">Mostrar código</a></td>
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>6.-Pagina web que cargue registros en la tabla Departamento desde un array departamentosnuevos utilizando una consulta preparada.</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio06.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio06.php">Mostrar código</a></td>
                 </tr>
                 <tr>
                     <td>7.-Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla Departamento de nuestra base de datos (IMPORTAR).</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio07.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio07.php">Mostrar código</a></td>
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>8.-Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un fichero departamento.xml (COPIA DE SEGURIDAD / EXPORTAR).</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio08.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio08.php">Mostrar código</a></td>
                 </tr>
                
             </table>
