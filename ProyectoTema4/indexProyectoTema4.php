@@ -13,12 +13,33 @@ and open the template in the editor.
 		<link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     </head>
+    <style>
+        h4{
+            color:white;
+            text-align: center;
+        }
+       
+    </style>
     <body>
 		
                 
                
         <h1 style="text-align: center">Ejercicios del Tema 4</h1>
-		
+	
+       
+        
+        
+        <table>
+                <tr>
+                    <td>Scripts de Creacion base de datos</td>
+                    <td><a href="scriptDB/crearBD.sql">Creacion</a></td>
+                    <td><a href="scriptDB/ejecutar.sql">Carga Inicial</a></td>
+                     <td><a href="scriptDB/borrarBD.sql">Borrado</a></td>
+                     <td><a href="mostrarCodigo/muestraScripts.php">MostrarCodigo</a></td>
+                </tr>
+                
+              
+        </table>        
                 
         <div>
             <table border="1">
@@ -31,21 +52,21 @@ and open the template in the editor.
                         
                 <tr style="background-color:#8896C7">
                     <td>2.-Mostrar el contenido de la tabla Departamento y el número de registros.</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio02.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio02.php">Mostrar código</a></td>
                    
                 </tr>
                                 
                 <tr>
                     <td>3.-Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio03.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio03.php">Mostrar código</a></td>
                     
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>4.-Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento).</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="codigoPHP/ejercicio04.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio04.php">Mostrar código</a></td>
                 </tr>
                 <tr>
                     <td>5.-Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.</td>

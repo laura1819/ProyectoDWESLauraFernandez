@@ -1,9 +1,8 @@
-
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Laura Fernandez </title>
-        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
+        <title>Laura Fernandez</title>
+        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
@@ -11,31 +10,38 @@
         </style>
     </head>
     <body>
-        <h1>Ejercicio 2</h1>
-		
+        <h1>Ejercicio 2</h1>		
 
         <?php
-		
-		/**
-		Autor: Laura Fernandez
-		Fecha 17/03/2019
-		Comentaios: el programa inicializa y muestra una variable Heredoc:
-		**/
-		
-        /*Inicializamos la varuiable heredoc con la estructura <<<'nombre_variable' luego
-		añadimos lineas de codigo y finalizamos la variable heredoc introduciendo
-		el mismo nombre de la variable pero sin tabular como vemos y finalmente con un print
-		mostramos por pantalla**/
-        
-        //poner una sentencia sql en la variable
-		
-        $a = <<<cadena
-            DAW2<br/>
-            DWES<br/>
-            Ejercicio Heredoc
-cadena;
-        print $a;
-        ?>
-        
+        /*
+          Autor: Laura Fernandez
+          Fecha 25/03/2019
+          Comentarios: conexion a la base de datos
+         */
+
+        try { 
+            $miBD = new PDO('mysql:host=192.168.20.19;dbname=DAW210_DBdepartamentos', 'usuarioDAW210_DBdepartamentos', 'paso'); // los parametros de la conexion
+            echo "<h3>Conexion realizada" . "<br></h3>"; // mostramos un mensaje si la conexion esta bien
+            $resultado = $miBD->query("SELECT * FROM Departamento"); // realizamos el query para que nos muestre los departamentos
+
+            while ($registro = $resultado->fetchObject()) { // hacer un bucle para que salgan todas las tuplas de la base de datos
+                echo "Codigo del departamento: " . $registro->Cod_Departamento . "<br>";  // sacamos un mensaje con el codigo del departamento              
+                echo "Descripcion del departamento: " . $registro->DescDepartamento . "<br>";  // sacamos un mensaje con el codigo del departamento
+            }
+
+            echo "<h3>Hay " . $resultado->rowCount() . " Departamentos</h3>"; //mostramos un mensaje por pantalla contando el numero de departamentos
+            
+        } catch (PDOException $mensajeError) { // y si la conexion sale mal
+            echo "Error" . $mensajeError->getMessage() . "<br>";    //nos mostrara un mensaje con el error
+            echo'Código de error: ' . $miExceptionPDO->getCode(); //aqui nos mostrara el codigo del error que tengamos
+        } finally { // y por ultimo
+            unset($miBD); //cerramos la conexion con la base de datos
+        }
+        ?> 
+
+
     </body>
 </html>
+
+
+

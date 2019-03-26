@@ -160,12 +160,12 @@ and open the template in the editor.
                 <tr>
                     <td>26.-Encuesta climatica.</td>
                     <td><a href="codigoPHP/ejercicio26.php">Ejecutar</a></td>
-                    <td><a href="#">Mostrar código</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio26.php">Mostrar código</a></td>
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>26.-Encuesta.</td>
-                    <td><a href="#">Ejecutar</a></td>
-                    <td><a href="#">Mostrar código</a></td>
+                    <td><a href="codigoPHP/ejercicio27.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio27.php">Mostrar código</a></td>
                 </tr>
             </table>
 	
