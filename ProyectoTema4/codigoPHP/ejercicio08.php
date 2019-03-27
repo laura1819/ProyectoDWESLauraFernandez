@@ -1,93 +1,50 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laura Fernandez</title>
-        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
-        <style>
-            h1{
-                font-family: 'Charmonman', cursive;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Ejercicio 8</h1>				
-      
-		 <?php 
-        /* 
-         *  @author: Laura Fernandez 
-         *   Fecha 25/03/2019 
-         *  Descripción: Exportar departamentos del examen 
-         */                         
-       define('IPDB', 'mysql:host=127.0.0.1;dbname=DAW210_DBDepartamentos');   // pasamos los parametros de conexion               
-        define('USER', 'usuarioDAW210DBDepartamentos'); // le pasamos el usuario de la base de datos
-        define('PASS', 'paso'); // le pasamos la contraseña
-        try {                            
-            $miDB = new PDO(IPDB, USER, PASS); // iniciamos la variable como pdo y le pasamos lo de la conexion
-            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);// si tenemos algun error que nos lo saque por pantalla
+<?php
+         /*
+          Autor: Laura Fernandez
+          Fecha 35/03/3019
+          Comentarios: conexion a la base de datos
+         */
+         include '../config/configBD.php';
+        try {
+            // parametros de la connexion a la base de datos
+            $myBD = new PDO(DSN, USER, PASS); 
+            $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //creamos un objeto del DOM 
+            $fichero = new DOMDocument(); 
+            $fichero->formatOutput = true; // le damos formato al fichero 
             
-            if (isset($_POST['Aceptar'])) {   // si hemos pulsado en aceptar entonces
-                    
-                    $fichero = new DOMDocument();   // creamos el objeto del dom
-                     
+            //CREACION DEL FICHERO
+                //creamos el elemento con un "hijo"
+            $departamentos = $fichero->createElement('departamentos'); 
+            $departamentos = $fichero->appendChild($departamentos); 
+            
+            //hacemos la consulta y la ejecutamos para sacar los campos
+            $consulta = $myBD->prepare('select * from Departamento'); 
+            $consulta->execute();
+            
+            $fechaHoy = date('Ymd'); // creamos una variable con la fecha para introducirla en el nombre del fichero
+            
+            while ($registro = $consulta->fetchObject()) {  // creamos un bucle para sacar todos los elementos en la estructura xml
+                $departamento = $fichero->createElement('departamento'); 
+                $departamento = $departamentos->appendChild($departamento); 
+                $CodDepartamento = $fichero->createElement('CodDepartamento', $registro->CodDepartamento); 
+                $CodDepartamento = $departamento->appendChild($CodDepartamento); 
+                $DescDepartamento = $fichero->createElement('DescDepartamento', $registro->DescDepartamento); 
+                $DescDepartamento = $departamento->appendChild($DescDepartamento); 
               
-                    $fichero->formatOutput = true; // al fichero le damos el formato xml
-                     
-               // CREAMOS LA ESTRUCTURA DEL XML
-                    $departamentos = $fichero->createElement('departamentos'); // crea,mos el elemento raiz que sera departaentos
-                    $departamentos = $fichero->appendChild($departamentos); // y le añadimos al hijo
-           
-                    $sql = $miDB->query('select * from Departamento');  // hacemos un select de departamentos 
-                    
-                    //Recorremos el todos los registros 
-                    while ($registro = $sql->fetchObject()) { // bucle para meter todos los departamentos
-                         
-                        //Creamos el elemento departamento por cada registro 
-                        $departamento = $fichero->createElement('departamento'); // creamos un departamento pot cada registro
-                        $departamento = $departamentos->appendChild($departamento); // le añadimos el hijo de su raiz
-                         
-                 
-                        $CodDepartamento = $fichero->createElement('CodDepartamento', $registro->CodDepartamento); // creamos el codigo para cada registro 
-                        $CodDepartamento = $departamento->appendChild($CodDepartamento);  // le añadimos como hijo de departamento
-                         
-                                 
-                        $DescDepartamento = $fichero->createElement('DescDepartamento', $registro->DescDepartamento); // creamos el elemento por cada descripcion 
-                        $DescDepartamento = $departamento->appendChild($DescDepartamento); // le añadimos al hijo del departamento
-                         
-                                   
-                        $FechaDeBaja = $fichero->createElement('FechaDeBaja', $registro->FechaDeBaja); // creamos fecha baja por cada registro
-                        $FechaDeBaja = $departamento->appendChild($FechaDeBaja); // le añadimos como hijo de departamento
-                    } 
-       
-                    $fichero->saveXML();  // lo guardamos como xml
-                     
-               
-                    if ($fichero->save('../tmp/tuplas.xml')!=0) { // la ruta donde se va guardar  
-                        echo "<p>Se ha guardado la base de datos en el servidor</p>";  // mensaje de que se ha guardado
-                    } else {  // y si no
-                        echo "<p>No pudo guardarse la base de datos</p>";  //sacamos el mensaje por pantalla de que no se guardo
-                    }  
-                }  
-                }catch(PDOException $e){ // y si tenemos algun error
-                    echo "Error: ".$e->getMessage()."<br>"; //Se muestra el mensaje de error 
-                    echo "Codigo de error: ".$e->getCode(); //Se muestra el código de error 
-                }finally{ 
-                    unset($miDB); // cerramos la conexion 
-                }      
-        ?> 
-        <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post"> 
-            <p>¿Quieres exportar la base de datos?</p>               
-            <input type="button" name="cancelar" value="Salir" onclick="location='../indexProyectoTema4.php'"> 
-            <input type="submit" name="Aceptar" value="Aceptar">     
-        </form> 
-            
-		 
-		 
-
-		 
-   
-		
-		
-		
-      </body>         
-</html>
-
+            }
+            // para guardar el fichero 
+            $fichero->saveXML(); // crea el fichero tras la representacion del DOM 
+            if ($fichero->save("../tmp/" . $fechaHoy . "Departamentos.xml") != 0) { //donde guardaremos en local el fichero
+                header('Content-Type: text/xml'); 
+                header("Content-Disposition: attachment; filename=" . $fechaHoy . "Departamentos.xml"); //descargar
+                readfile("../tmp/" . $fechaHoy . "Departamentos.xml"); // mostrar desde el fichero del servidor en el navegador el documento xml si este no se descarga
+            } else {
+                echo "<p>No pudo guardarse la base de datos</p>";
+            }
+        } catch (PDOException $error) {
+            echo "<p>Error " . $error->getMessage() . "</p>"; 
+        } finally {
+            unset($myBD); 
+        }
+        ?>

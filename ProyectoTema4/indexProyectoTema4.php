@@ -85,7 +85,7 @@ and open the template in the editor.
                 </tr>
                 <tr style="background-color:#8896C7">
                     <td>8.-Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un fichero departamento.xml (COPIA DE SEGURIDAD / EXPORTAR).</td>
-                    <td><a href="codigoPHP/ejercicio08.php">Ejecutar</a></td>
+                    <td><a href="codigoPHP/ejercicio08.php">Exportar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio08.php">Mostrar código</a></td>
                 </tr>
                

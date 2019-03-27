@@ -2,71 +2,90 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
             }
+
         </style>
     </head>
     <body>
-        <h1>Ejercicio 7</h1>				
-      
-		 <?php
+        <h1>Ejercicio 7</h1>	</br></br>
+        <?php
         /*
-        Autor: Laura Fernandez
-	 Fecha 25/03/2019
-       	Comentarios: Página web que cargue registros en la tabla Departamento desde un array datosNuevos utilizando una consulta preparada.
+          Autor: Laura Fernandez
+          Fecha 35/03/3019
+          Comentarios: conexion a la base de datos
          */
-		 
-		 
-		 try {
+        include '../config/configBD.php';
+        $entradaOk = true; 
+        try {
+            $myBD = new PDO(DSN, USER, PASS);  
+            $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            if (isset($_POST['Aceptar'])) { // si pulsamos aceptar iniciamos una transacion
+                $myBD->beginTransaction(); 
                 
-                
-                define('IP', 'mysql:host=127.0.0.1;dbname=DAW210_DBDepartamentos');   // definimos los parametros de la conexion               
-                define('USER', 'usuarioDAW210DBDepartamentos');  // pasamos el nombre del usuario de la base de datos
-                define('CONTR', 'paso'); // pasamos la contrasela de la base de datos
+                if (is_uploaded_file($_FILES['archivo']['tmp_name'])) { // vemos si el archivo fue subido para interpretar el fichero como objeto
+                    $fichero = simplexml_load_file($_FILES["archivo"]["tmp_name"]); 
+                    
+                    if (!is_null($fichero)) { // si el fichero no es null preparamos la consulta y metemos los datos pasados
+                        $consulta = $myBD->prepare("insert into Departamento (CodDepartamento, DescDepartamento) values (:codigo, :descripcion)"); 
+                        $consulta->bindParam(":codigo", $codigo); 
+                        $consulta->bindParam(":descripcion", $descripcion); 
+                        
+                        foreach ($fichero as $departamento) { // creamos un bucle para introducir todos los datos
+                            $codigo = $departamento->CodDepartamento; 
+                            $descripcion = $departamento->DescDepartamento; 
+                            if (!$consulta->execute()) { 
+                                $entradaOk = false; 
+                            }
+                        }
+                        
+                        if ($entradaOk) { // si la entrada es buena
+                            $myBD->commit();  // confirmamos la transacion
+                            echo "<h2>Base de datos importada con éxito</h2>";
+                            echo "<h2>Los registros son: </h2>";
 
-                $miDataBase=null; // creamos una variable para guardar los parametros
-                $resultadoConsulta=null; // metemos el resultado de la consulta sql
-                $fichero=null; // variable para meter el fichero
-                $CodDepartamento=null; // variable para el codigo de departamento
-                $DescDepartamento=null; // variable para la descripcion del departamento
-                $sql=null; // variable para la consulta sql
-                
-                $miDataBase=new PDO(IP, USER, CONTR); // le pasamos los parametros de la conexion
-                $fichero= simplexml_load_file("../tmp/tuplas.xml"); // ponemos la ruta
-
-                if(!is_null($fichero)){  
-                    echo "<p id=correcto>El fichero se ha importado correctamente en el servidor!</p>"; // sacamos el mensaje que se ha i,portardo correcdtamente
-                    foreach($fichero as $dep){ // hacemos un bucle para sacar los registros 
-                        $CodDepartamento=$dep->codDepartamento; // el codigo del departamento
-                        $DescDepartamento=$dep->descDepartamento; // la descripcion del departamento
-                        $sql="insert into Departamento values ('$CodDepartamento', '$DescDepartamento')"; 
-                        $resultadoConsulta=$miDataBase->exec($sql); // preparamos la consulta
+                            $consulta = $myBD->query("SELECT * FROM Departamento"); // mostramos los registros
+                            while ($registro = $consulta->fetchObject()) {
+                                echo "<b>Codigo de departamento</b>: " . $registro->CodDepartamento . "</br>";
+                                echo "<b>Descripcion de departamento</b>: " . $registro->DescDepartamento . "</br></br>";
+                            }
+                        } else {
+                            $myBD->rollBack(); // y si no revertimos los cambios
+                            echo "<p>No pudo importarse la base de datos</p>";
+                        }
                     }
-               }
-                else{ 
-                    echo "<p>No se ha podido importar el archivo!</p>"; // sacamos un mensaje de que no se ha podido importar
+                } else {
+                    echo "<p>No se pudo cargar el archivo</p>";
                 }
-				
-				
-            }catch(PDOException $pdoe){ // y si falla
-                echo "<label id=fallo>Error </label>".$pdoe->getMessage()."<br>"; //sacamos el error
-                echo "<label id=fallo>Codigo de error </label>".$pdoe->getCode(); // sacamos el codigo de error
-				
-				
-            }finally{
-                unset($miDataBase);
-                die;
+            } else {
+                ?>
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+
+                    Selecciona archivo
+                    <input type="file" name="archivo"></br></br></br></br>
+
+                    <input type="button" value="Cancelar" onclick="location = '../indexProyectoTema4.php'">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="submit" name="Aceptar" value="Aceptar">
+
+                </form>
+                <?php
             }
+        } catch (PDOException $error) {
+            echo "<p>Error " . $error->getMessage() . "</p>"; 
+        } finally {
+            unset($myBD); 
+        }
         ?>
-            		
-		
-      </body>         
+
+    </body>
+    <footer>
+          <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+            Volver al Index           
+            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        </footer>
 </html>
-
-
-
-
-

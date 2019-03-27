@@ -2,11 +2,13 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos.css"/>
+        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
             }
+            
         </style>
     </head>
     <body>
@@ -15,33 +17,42 @@
         <?php
         /*
           Autor: Laura Fernandez
-          Fecha 25/03/2019
+          Fecha 35/03/3019
           Comentarios: conexion a la base de datos
          */
-
-        try { 
-            $miBD = new PDO('mysql:host=127.0.0.1;dbname=DAW210_DBDepartamentos', 'usuarioDAW210DBDepartamentos', 'paso'); // los parametros de la conexion
-            echo "<h3>Conexion realizada" . "<br></h3>"; // mostramos un mensaje si la conexion esta bien
-            $resultado = $miBD->query("SELECT * FROM Departamento"); // realizamos el query para que nos muestre los departamentos
-
-            while ($registro = $resultado->fetchObject()) { // hacer un bucle para que salgan todas las tuplas de la base de datos
-                echo "Codigo del departamento: " . $registro->CodDepartamento . "<br>";  // sacamos un mensaje con el codigo del departamento              
-                echo "Descripcion del departamento: " . $registro->DescDepartamento . "<br>";  // sacamos un mensaje con el codigo del departamento
+        
+            include '../config/configBD.php';
+        
+            try {
+                $myBD = new PDO(DSN,USER,PASS);
+                 $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                echo "<h3>La conexion se ha realizado con exito!</h3> </br>";
+                $consulta = $myBD->query("SELECT * FROM Departamento");
+                
+                while($registro = $consulta->fetchObject()){
+                    echo  "<b>Codigo de departamento</b>: " . $registro->CodDepartamento . "</br>";
+                     echo "<b>Descripcion de departamento</b>: " . $registro->DescDepartamento .  "</br></br>";
+                }               
+            } catch (PDOException $exc) {
+               echo "Error" .$exc->getMessage();
+              
+            } finally {
+                unset($myBD);
             }
 
-            echo "<h3>Hay " . $resultado->rowCount() . " Departamentos</h3>"; //mostramos un mensaje por pantalla contando el numero de departamentos
             
-        } catch (PDOException $mensajeError) { // y si la conexion sale mal
-            echo "Error" . $mensajeError->getMessage() . "<br>";    //nos mostrara un mensaje con el error
-            echo'Código de error: ' . $miExceptionPDO->getCode(); //aqui nos mostrara el codigo del error que tengamos
-        } finally { // y por ultimo
-            unset($miBD); //cerramos la conexion con la base de datos
-        }
-        ?> 
+        ?>
 
 
     </body>
+    <footer>
+          <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+            Volver al Index           
+            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        </footer>
 </html>
+
+
 
 
 
