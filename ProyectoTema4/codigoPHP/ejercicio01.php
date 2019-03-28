@@ -14,9 +14,10 @@
         <h1>Ejercicio 1</h1>		
 
         <?php
+        
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/3019
+          Fecha 35/03/2019
           Comentarios: conexion a la base de datos
          */
         

@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Laura Fernandez</title>
@@ -13,119 +13,140 @@
     </head>
     <body>
         <h1>Ejercicio 5</h1>	
-        
-         
-       
+
+
+
         <?php
+        error_reporting(E_ALL);
+        ini_set('display_errors', '0');
+        
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/3019
+          Fecha 35/03/2019
           Comentarios: conexion a la base de datos
          */
 
         include '../config/configBD.php';
         include "../core/181025validacionFormularios.php"; //Incluye la librería de validación.
-        
-        
+
+
         $entradaOK = true;
-        
-        $inicio = 1;
-        while ($inicio <= 3) { 
-            $aErrores[$nDepto]['codDepartamento'] = null; 
-            $aErrores[$nDepto]['descDepartamento'] = null; 
+
+        $num = 1;
+        while ($num <= 3) {
+            $aErrores[$nDepto]['codDepartamento'] = null;
+            $aErrores[$nDepto]['descDepartamento'] = null;
             
-            $aFormulario[$nDepto]['codDepartamento'] = null;             
-            $aFormulario[$nDepto]['descDepartamento'] = null; 
-            
-            $inicio++; 
+            $aFormulario[$nDepto]['codDepartamento'] = null;          
+            $aFormulario[$nDepto]['descDepartamento'] = null;
+            $num++;
         }
-        $inicioero = $inicio;
-        if (isset($_POST['enviar'])) { 
-            for ($insercion = 1; $insercion < $inicioero; $insercion++) {
-                $aErrores[$insercion]['codDepartamento'] = validacionFormularios::comprobarAlfabetico($_POST['codDepartamento' . $insercion], 200,3,1); //La posición del array de errores recibe el mensaje de error de la librería de validación si éste se produjera.
-                $aErrores[$insercion]['descDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_POST['descDepartamento' . $insercion],200,3,1); //La posición del array de errores recibe el mensaje de error de la librería de validación si éste se produjera.    
+        $numero = $num;
+        if (isset($_POST['enviar'])) {
+            for ($nInserta = 1; $nInserta < $numero; $nInserta++) {
+                $aErrores[$nInserta]['codDepartamento'] = validacionFormularios::comprobarAlfabetico($_POST['codDepartamento' . $nInserta], 3, 3, 1);
+                $aErrores[$nInserta]['descDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_POST['descDepartamento' . $nInserta], 200, 3, 1);
             }
-            foreach ($aErrores as $inicio => $aRegistro) {
-                foreach ($aRegistro as $nDepto => $nombre) {
-                    if ($aErrores[$inicio][$nDepto] != null) {
-                        $entradaOK = false; 
-                        $_POST[$nDepto . $inicio] = ""; 
+            foreach ($aErrores as $num => $aRegisro) {
+                foreach ($aRegisro as $nDepto => $nombre) {
+                    if ($aErrores[$num][$nDepto] != null) {
+                        $entradaOK = false;
+                        $_POST[$nDepto . $num] = "";
                     }
                 }
             }
         } else {
-            $entradaOK = false; 
+            $entradaOK = false;
         }
-        if ($entradaOK) { 
-            
-            for ($insercion = 1; $insercion < $inicioero; $insercion++) {
-                $aFormulario[$insercion]['codDepartamento'] = strtoupper($_POST['codDepartamento' . $insercion]); 
-                $aFormulario[$insercion]['descDepartamento'] = $_POST['descDepartamento' . $insercion]; 
+        if ($entradaOK) {
+
+            for ($nInserta = 1; $nInserta < $numero; $nInserta++) {
+                $aFormulario[$nInserta]['codDepartamento'] = strtoupper($_POST['codDepartamento' . $nInserta]);
+                $aFormulario[$nInserta]['descDepartamento'] = $_POST['descDepartamento' . $nInserta];
             }
             try {
-                $myBD = new PDO(DSN, USER, PASS); 
+                $myBD = new PDO(DSN, USER, PASS);
                 $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-               
-                $todoOk = true; 
-                $myBD->beginTransaction(); 
+         
+                $todoOk = true;
+                $myBD->beginTransaction();
                 $consulta = $myBD->prepare("insert into Departamento (CodDepartamento, DescDepartamento) values (:codigo, :descripcion)"); //Prepara la consulta con dos incógnitas.
-                for ($insercion = 1; $insercion < $inicioero; $insercion++) { 
-                    $codigo = $aFormulario[$insercion]['codDepartamento']; 
-                    $descripcion = $aFormulario[$insercion]['descDepartamento']; 
-                    $consulta->bindParam(":codigo", $codigo); 
-                    $consulta->bindParam(":descripcion", $descripcion); 
-                    if (!$consulta->execute()) { 
-                        $todoOk = false; 
+                for ($nInserta = 1; $nInserta < $numero; $nInserta++) {
+                    $codigo = $aFormulario[$nInserta]['codDepartamento'];
+                    $descripcion = $aFormulario[$nInserta]['descDepartamento'];
+                    $consulta->bindParam(":codigo", $codigo);
+                    $consulta->bindParam(":descripcion", $descripcion);
+                    if (!$consulta->execute()) {
+                        $todoOk = false;
                     }
                 }
                 if ($todoOk) {
-                    $myBD->commit(); 
-                    echo "Transacción ejecutada con éxito";
-                    echo "Los registros son los siguientes: </br></br>";
-                            $consulta = $myBD->query("SELECT * FROM Departamento"); // mostramos los registros
+                    $myBD->commit();
+                    echo "<h2><b>Transacción ejecutada con éxito!!!</b></h2>";
+                    echo "<h2>Los registros son los siguientes</h2>";
+                    ?>
+                    <div style="text-align:center;">
+                        <table style="margin: 0 auto;"> 
+                            <tr> 
+                                <td><b>Código</b></td> 
+                                <td><b>Descripción</b></td>
+
+                            </tr>
+
+                            <?php 
+                            $consulta = $myBD->query("SELECT * FROM Departamento");
                             while ($registro = $consulta->fetchObject()) {
-                                echo "<b>Codigo de departamento</b>: " . $registro->CodDepartamento . "</br>";
-                                echo "<b>Descripcion de departamento</b>: " . $registro->DescDepartamento . "</br></br>";
-                            }
-                    
-                    
-                } else {
-                    $myBD->rollBack(); 
-                    echo "No pudo llevarse a cabo la transacción";
-                }
-            } catch (PDOException $error) {
-                echo "<p>Error " . $error->getMessage() . "</p>"; 
-            } finally {
-                unset($myBD); 
+                                ?>
+                                <tr>
+                                    <td><?php echo $registro->CodDepartamento; ?></td>
+                                    <td> <?php echo $registro->DescDepartamento; ?></td>
+                                </tr>    
+                            <?php } ?> 
+                    </div>
+                </table>
+
+
+                <?php
+            } else {
+                $myBD->rollBack();
+                echo "No pudo llevarse a cabo la transacción";
             }
-        } else {
-            
-            ?>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                
-                           Código de departamento*
-                            
-                            <?php for ($insercion = 1; $insercion < $inicioero; $insercion++) { ?>
-                                <td><input type="text" name="codDepartamento<?php echo $insercion ?>" value="<?php echo $_POST['codDepartamento' . $insercion] ?>"></td>
-                                <td><?php echo "<font color='#FF0000' size='1px'>" . $aErrores[$insercion]['codDepartamento'] . "</font>"; ?></td>
-                            <?php } ?></br></br>
-                       
-                                Descripción de departamento* 
-                            
-                            <?php for ($insercion = 1; $insercion < $inicioero; $insercion++) { ?>
-                                <td><input type="text" name="descDepartamento<?php echo $insercion ?>" value="<?php echo $_POST['descDepartamento' . $insercion] ?>"></td>
-                                <td><?php echo "<font color='#FF0000' size='1px'>" . $aErrores[$insercion]['descDepartamento'] . "</font>"; ?></td>
-                            <?php } ?></br></br>
-                      
-                        <input type="submit" name="enviar" value="enviar" class="boton">
-                                  
-            </form>
-         <?php } ?>
+        } catch (PDOException $error) {
+            echo "<p>Error " . $error->getMessage() . "</p>";
+        } finally {
+            unset($myBD);
+        }
+    } else {
+        ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <div style="text-align:center;">
+                <table style="margin: 0 auto;">
+                    <tr>
+                        <td>Código de departamento*</td>
+
+    <?php for ($nInserta = 1; $nInserta < $numero; $nInserta++) { ?>
+                            <td><input type="text" name="codDepartamento<?php echo $nInserta ?>" value="<?php echo $_POST['codDepartamento' . $nInserta] ?>"></td>
+                            <td><?php echo "<font color='#FF0000' size='1px'>" . $aErrores[$nInserta]['codDepartamento'] . "</font>"; ?></td>
+    <?php } ?>
+                    </tr>
+                    <tr>
+                        <td>Descripción de departamento*</td>
+
+                        <?php for ($nInserta = 1; $nInserta < $numero; $nInserta++) { ?>
+                            <td><input type="text" name="descDepartamento<?php echo $nInserta ?>" value="<?php echo $_POST['descDepartamento' . $nInserta] ?>"></td>
+                            <td><?php echo "<font color='#FF0000' size='1px'>" . $aErrores[$nInserta]['descDepartamento'] . "</font>"; ?></td>
+    <?php } ?>
+                    </tr>
+                    <tr><td><input type="submit" name="enviar" value="enviar" class="boton"></td></tr>
+                </table>
+            </div>                   
+        </form>
+<?php } ?>
     <footer>
-          <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-            Volver al Index           
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-        </footer>
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        Volver al Index           
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+    </footer>
 </html>
 
 

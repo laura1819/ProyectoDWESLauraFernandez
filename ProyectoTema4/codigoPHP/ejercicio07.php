@@ -14,9 +14,10 @@
     <body>
         <h1>Ejercicio 7</h1>	</br></br>
         <?php
+       
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/3019
+          Fecha 35/03/2019
           Comentarios: conexion a la base de datos
          */
         include '../config/configBD.php';

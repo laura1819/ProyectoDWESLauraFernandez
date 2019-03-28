@@ -12,83 +12,97 @@
         </style>
     </head>
     <body>
-        <h1>Ejercicio 4</h1>	
-        
-         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <b>Introduce Descripcion :</b> <input type="text" name="descripcion" value="<?php echo $_POST['descripcion'];?>" style="WIDTH: 328px;"><label style='color: red;'><?php echo $aErrores['descripcion']; ?></label></br></br>
-            <input type="submit" name="enviar" value="enviar"></br></br>
-        </form>
+        <?php
        
+        $aErrores = [
+            'descripcion' => ""
+        ];
+
+        $aFormulario = [
+            'descripcion' => ""
+        ];
+        ?>
+        <h1>Ejercicio 4</h1>	
+
+        
+
         <?php
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/3019
+          Fecha 35/03/2019
           Comentarios: conexion a la base de datos
          */
 
         include '../config/configBD.php';
         include "../core/181025validacionFormularios.php"; //Incluye la librería de validación.
-        
-        $aErrores = [
-            'descripcion' => ""
-        ];
-        
-        $aFormulario = [
-            'descripcion' => ""
-        ];
-        
+
+
+
+
+
         $entradaOk = true;
-        
-        if(isset($_POST['enviar'])){
-            $aErrores['descripcion'] = validacionFormularios::comprobarAlfanumerico($_POST['descripcion'],255,3,1);
-        
-        foreach ($aErrores as $campo=>$error){
-            if($error != null){
-                $entradaOk=false;
-                $_POST[$campo] = "";
+
+        if (isset($_POST['enviar'])) {
+            $aErrores['descripcion'] = validacionFormularios::comprobarAlfanumerico($_POST['descripcion'], 255, 1, 1);
+
+            foreach ($aErrores as $campo => $error) {
+                if ($error != null) {
+                    $entradaOk = false;
+                    $_POST[$campo] = "";
+                }
             }
-        }
-        }else{
+        } else {
             $entradaOk = false;
         }
         
-        if($entradaOk){
+        ?>
+        
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <b>Introduce Descripcion :</b> <input type="text" name="descripcion" 
+                                    value='<?php
+                               if (isset($_POST['descripcion']) && is_null($aErrores['descripcion'])) {
+                                   echo $_POST['descripcion'];
+                               }
+                               ?>'
+                                   style="WIDTH: 328px;"><label style='color: red;'><?php echo $aErrores['descripcion']; ?></label></br></br>
+            
+            <input type="submit" name="enviar" value="enviar"></br></br>
+        </form>
+        
+        <?php
+        
+
+        if ($entradaOk) {
             $aFormulario['descripcion'] = $_POST['descripcion'];
             try {
-                $myBD = new PDO(DSN,USER,PASS);
-                
+                $myBD = new PDO(DSN, USER, PASS);
+
                 $consulta = $myBD->query("select * from Departamento where DescDepartamento like '%$aFormulario[descripcion]%' or DescDepartamento like '$aFormulario[descripcion]%' or DescDepartamento like '%$aFormulario[descripcion]'");
-                
-                if($consulta->rowCount()==0){
+
+                if ($consulta->rowCount() == 0) {
                     echo "<label style='color: red;'>No hay ningun registro con esa descripcion</label>";
-                }else{
+                } else {
+                    
+                    
                     echo "<b>Registros encontrados : </b>" . $consulta->rowCount() . "</br></br>";
                 }
-                
-                while($registro = $consulta->fetchObject()){
-                    echo "<b>El codigo es :</b>" . $registro->CodDepartamento  . "<b>  Su descripcion es: </b>" . $registro->DescDepartamento . "</br>";
+
+                while ($registro = $consulta->fetchObject()) {
+                    echo "<b>El codigo es :</b>" . $registro->CodDepartamento . "<b>  Su descripcion es: </b>" . $registro->DescDepartamento . "</br>";
                 }
-                    
             } catch (PDOException $exc) {
                 echo $exc->getMessage();
             } finally {
                 unset($myBD);
             }
-
         }
-        
-        
-        
         ?>
-        
-       
-        
     </body>
     <footer>
-          <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-            Volver al Index           
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-        </footer>
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        Volver al Index           
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+    </footer>
 </html>
 
 

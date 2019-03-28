@@ -8,48 +8,62 @@
             h1{
                 font-family: 'Charmonman', cursive;
             }
+            table td{
+               padding-left: 40px;
             
+            }
+            
+           
+
         </style>
     </head>
     <body>
-        <h1>Ejercicio 2</h1>		
+        <h1>Ejercicio 2</h1>	
+
 
         <?php
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/3019
+          Fecha 35/03/2019
           Comentarios: conexion a la base de datos
          */
-        
-            include '../config/configBD.php';
-        
-            try {
-                $myBD = new PDO(DSN,USER,PASS);
-                 $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "<h3>La conexion se ha realizado con exito!</h3> </br>";
-                $consulta = $myBD->query("SELECT * FROM Departamento");
-                
-                while($registro = $consulta->fetchObject()){
-                    echo  "<b>Codigo de departamento</b>: " . $registro->CodDepartamento . "</br>";
-                     echo "<b>Descripcion de departamento</b>: " . $registro->DescDepartamento .  "</br></br>";
-                }               
-            } catch (PDOException $exc) {
-               echo "Error" .$exc->getMessage();
-              
-            } finally {
-                unset($myBD);
-            }
 
-            
+        include '../config/configBD.php';
+
+        try {
+            $myBD = new PDO(DSN, USER, PASS);
+            $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "<h3>La conexion se ha realizado con exito!</h3> </br>";
+            $consulta = $myBD->query("SELECT * FROM Departamento");
+        } catch (PDOException $exc) {
+            echo "Error" . $exc->getMessage();
+        } finally {
+            unset($myBD);
+        }
         ?>
+        <div style="text-align:center;">
+        <table style="margin: 0 auto;"> 
+            <tr> 
+                <td><b>Código</b></td> 
+                <td><b>Descripción</b></td>
+               
+            </tr>
 
-
+<?php while ($registro = $consulta->fetchObject()) {
+    ?>
+                <tr>
+                    <td><?php echo $registro->CodDepartamento ; ?></td>
+                    <td> <?php echo $registro->DescDepartamento ; ?></td>
+                </tr>    
+            <?php } ?> 
+        </div>
+        </table>
     </body>
     <footer>
-          <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-            Volver al Index           
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-        </footer>
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        Volver al Index           
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+    </footer>
 </html>
 
 

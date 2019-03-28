@@ -31,11 +31,17 @@ and open the template in the editor.
         
         <table>
                 <tr>
-                    <td>Scripts de Creacion base de datos</td>
+                    <td>Scripts de Creacion base de datos Desarrollo</td>
                     <td><a href="scriptDB/crearBD.sql">Creacion</a></td>
                     <td><a href="scriptDB/ejecutar.sql">Carga Inicial</a></td>
                      <td><a href="scriptDB/borrarBD.sql">Borrado</a></td>
                      <td><a href="mostrarCodigo/muestraScripts.php">MostrarCodigo</a></td>
+                </tr>
+                <tr>
+                    <td>Archivos de configuracion base de datos</td>
+                    <td><a href="mostrarCodigo/muestraConfig.php">Desarrollo</a></td>
+                    <td><a href="mostrarCodigo/muestraConfigE.php">Explotacion</a></td>
+                   
                 </tr>
                 
               
