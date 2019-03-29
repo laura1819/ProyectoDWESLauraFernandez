@@ -16,8 +16,8 @@
             
             //CREACION DEL FICHERO
                 //creamos el elemento con un "hijo"
-            $departamentos = $fichero->createElement('departamentos'); 
-            $departamentos = $fichero->appendChild($departamentos); 
+            $etiquetaDepartamentos = $fichero->createElement('Departamentos'); 
+            $etiquetaDepartamentos = $fichero->appendChild($etiquetaDepartamentos); 
             
             //hacemos la consulta y la ejecutamos para sacar los campos
             $consulta = $myBD->prepare('select * from Departamento'); 
@@ -26,12 +26,12 @@
             $fechaHoy = date('Ymd'); // creamos una variable con la fecha para introducirla en el nombre del fichero
             
             while ($registro = $consulta->fetchObject()) {  // creamos un bucle para sacar todos los elementos en la estructura xml
-                $departamento = $fichero->createElement('departamento'); 
-                $departamento = $departamentos->appendChild($departamento); 
+                $etiquetaDepartamento = $fichero->createElement('Departamento'); 
+                $etiquetaDepartamento = $etiquetaDepartamentos->appendChild($etiquetaDepartamento); 
                 $CodDepartamento = $fichero->createElement('CodDepartamento', $registro->CodDepartamento); 
-                $CodDepartamento = $departamento->appendChild($CodDepartamento); 
+                $CodDepartamento = $etiquetaDepartamento->appendChild($CodDepartamento); 
                 $DescDepartamento = $fichero->createElement('DescDepartamento', $registro->DescDepartamento); 
-                $DescDepartamento = $departamento->appendChild($DescDepartamento); 
+                $DescDepartamento = $etiquetaDepartamento->appendChild($DescDepartamento); 
               
             }
             // para guardar el fichero 
