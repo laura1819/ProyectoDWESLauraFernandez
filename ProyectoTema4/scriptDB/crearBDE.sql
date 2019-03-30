@@ -17,5 +17,5 @@
 				engine=innodb;
 		
                         -- LE damos los permisos al usuario
-                                grant all privileges on DAW210_DBDepartamentos to usuarioDAW210DBDepartamentos identified by 'paso';        
+                                grant all privileges on DAW210_DBDepartamentos to usuarioDAW210DBDepartamentos identified by 'pasoExplotacion';        
       

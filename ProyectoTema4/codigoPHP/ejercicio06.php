@@ -8,7 +8,23 @@
             h1{
                 font-family: 'Charmonman', cursive;
             }
+            table {
+                width: 800px;
+                border-collapse: collapse;
+                overflow: hidden;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            }
 
+            th,
+            td {
+                padding: 15px;
+                background-color: rgba(255,255,255,0.2);
+                color: #fff;
+            }
+
+            th {
+                text-align: left;
+            }
         </style>
     </head>
     <body>
@@ -64,17 +80,18 @@ ini_set('display_errors', '0');
                 $departamentosNuevo[$numInsert]['descDepartamento'] = $_POST['descDepartamento' . $numInsert]; 
             }
             try {
-                $baseDeDatos = new PDO(DSN, USER, PASS); 
-                $baseDeDatos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $myBD = new PDO(DSN, USER, PASS); 
+                $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 echo "<p>Conexión correcta</p>";
-                $consulta = $baseDeDatos->prepare("insert into Departamento (CodDepartamento, DescDepartamento) values (:codigo, :descripcion)");
+                $consulta = $myBD->prepare("insert into Departamento (CodDepartamento, DescDepartamento) values (:codigo, :descripcion)");
                 for ($numInsert = 1; $numInsert < $numero; $numInsert++) { 
                     $codigo = $departamentosNuevo[$numInsert]['codDepartamento']; 
                     $descripcion = $departamentosNuevo[$numInsert]['descDepartamento']; 
                     $consulta->bindParam(":codigo", $codigo); 
                     $consulta->bindParam(":descripcion", $descripcion); 
                     if ($consulta->execute()) {
-                        echo "<p>Se insertó el departamento con el código " . $codigo . " </p>"; 
+                        echo "<p>Se insertó el departamento con el código " . $codigo . "y con la descripcion: " . $descripcion . " </p></br>";
+                        
                         
                     } else {
                         echo "<p>No se pudo insertar el departamento con el código " . $codigo . " </p>"; 
@@ -83,7 +100,7 @@ ini_set('display_errors', '0');
             } catch (PDOException $error) {
                 echo "<p>Error " . $error->getMessage() . "</p>"; 
             } finally {
-                unset($baseDeDatos);
+                unset($myBD);
             }
         } else {
            

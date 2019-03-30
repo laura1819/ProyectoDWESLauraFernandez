@@ -11,9 +11,22 @@
              h1{
                 font-family: 'Charmonman', cursive;
             }
-            table td{
-               padding-left: 40px;
-            
+             table {
+                width: 800px;
+                border-collapse: collapse;
+                overflow: hidden;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            }
+
+            th,
+            td {
+                padding: 15px;
+                background-color: rgba(255,255,255,0.2);
+                color: #fff;
+            }
+
+            th {
+                text-align: center;
             }
         </style>
     </head>
@@ -100,7 +113,7 @@
                         echo $_POST['descripcion'];
                     }
                     ?>">* <label style='color: red;'><?php echo $aErrores['descripcion']; ?> </label></br></br>
-                    <input type="submit" name="enviar" value="enviar"></br></br>
+                    <input type="submit" name="enviar" value="Insertar"></br></br>
                     </br></br>
                 </form>
         <?php } ?>
@@ -108,8 +121,8 @@
                 <div style="text-align:center;">
                     <table style="margin: 0 auto;"> 
                         <tr> 
-                            <td><b>Código</b></td> 
-                            <td><b>Descripción</b></td>
+                            <td><b><u>Código</u></b></td> 
+                            <td><b><u>Descripción</u></b></td>
 
                         </tr>
 
