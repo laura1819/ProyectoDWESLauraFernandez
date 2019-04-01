@@ -18,8 +18,8 @@
 	
 			echo '<p>Hola Mundo0</p>'; //Sacamos por pantalla un mensaje con echo			
 			echo '<p>Soy Laura Fernandez</p>'; //Sacamos por pantalla un mensaje con echo
-		?>
-			<?php phpinfo(); //aqui mostramos la informacion de PHP
+		
+			phpinfo(); //aqui mostramos la informacion de PHP
 		?>
         
     </body>
