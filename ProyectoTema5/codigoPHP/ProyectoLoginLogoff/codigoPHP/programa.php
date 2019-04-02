@@ -8,23 +8,7 @@
             h1{
                 font-family: 'Charmonman', cursive;
             }
-            table {
-                width: 800px;
-                border-collapse: collapse;
-                overflow: hidden;
-                box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            }
-
-            th,
-            td {
-                padding: 15px;
-                background-color: rgba(255,255,255,0.2);
-                color: #fff;
-            }
-
-            th {
-                text-align: left;
-            }
+           
         </style>
     </head>
     <body>
@@ -41,11 +25,68 @@
           Comentarios: conexion a la base de datos
          */
 
-        include '../config/configBD.php';
-        include "../core/181025validacionFormularios.php"; //Incluye la librería de validación.
+        include "core/181025validacionFormularios.php"; // incluimos la libreria de validacion
+        include "config/configuracionDB.php";
+        
+         setlocale(LC_TIME, 'es_ES.UTF-8'); // introducimos la hora que queremos utilizar
+        date_default_timezone_set('Europe/Madrid'); // introducimos la situacion geografica
+        
+   
+        session_start(); // iniciamos la sesion
+        
+    
+        if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
+            Header("Location: login.php"); //  nos mandara al login 
+        }
+        
+ 
+        if (isset($_POST['Cerrar_sesión'])) { // si le damos a cerrar sesion 
+            unset($_SESSION['usuario_DAW210_Login']); // cierra la sesion del usuario 
+            session_destroy(); // destruye la sesion 
+            Header("Location: ../login.php"); // y te manda al login 
+        }
+        
+     
+        if (isset($_POST['Detallar'])) { // si pulsamos en detalles 
+            Header("Location: detalle.php"); // nos llevara a detalles 
+        }
+        
+
+        
+      
+        $CodUsuario = $_SESSION['usuario_DAW210_Login']; // creamos una variable para meter el nombre del usuario 
+        try{                   
+      
+            $miDB=new PDO(DSN,USER,PASS);      // creamos una variable con pdo para guardar la conexion 
+            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // si hay algun error que nos lo muestre 
+            
+          
+            $ultConexion=date('d-m-Y H:i:s', $_SESSION['ultConexion_DAW210_Login']); // recogemos la ultima conexion pasada por la variable sesion
+            
+            
+            if ($_SESSION['visitas_DAW210_Login'] == 0) { // si esta variable recoge 0 visitas 
+                echo '<h3><font color=blue>Bienvenido '.$CodUsuario. ' por primera vez </font></h3>'; //sacara por pantalla este mensaje 
+            } else { // y si no 
+                echo '<h3><font color=blue>Bienvenido ' . $CodUsuario . '</font></h3>'; // mostrara el mensaje de bienvenida 
+                echo '<h3><font color=blue>Número de visitas anteriores: ' . $_SESSION['visitas_DAW210_Login'].'</font></h3>';   // con el numero de visitas              
+                echo '<h3><font color=blue>La última conexión: ' . $ultConexion. '</font></h3>'; // y con la hora de conexion correspondiente
+            }
+                                
+        }catch(PDOException $e){ // si se produce algun error 
+            print "Error de: " . $e->getMessage() . "<br/>"; // mostrara el codigo de error 
+        }finally{ // y finalmente 
+            unset($miDB); // cierra la sesion
+        }
+        ?> 
+       
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+            <input type="submit" name="Detallar" value="Detallar"/> 
+            <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
+        </form> 
         
         
-        ?>
+        
+        
     <footer>
           <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
             Volver al Index           

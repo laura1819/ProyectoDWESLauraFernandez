@@ -10,10 +10,11 @@
             }
         </style>
     </head>
-    <body>
-        <h1>Ejercicio 1</h1>		
+    <body>	
 
         <?php
+        
+        
         
         /*
           Autor: Laura Fernandez
@@ -28,27 +29,25 @@
             exit; //cerramos la conexion
         }
 		
-		 ?>
-                        <br> <br><input type="button" value="Salir" name="salir" onclick="location='../indexProyectoTema5.php'">
-         <?php
+	
 
-        
+        echo "<h3>El usuario es PHP_AUTH_USER: " . $_SERVER['PHP_AUTH_USER'] . "</h3><br>"; 
+        echo "<h3>La contraseña es PHP_AUTH_PW: " . $_SERVER['PHP_AUTH_PW'] . "</h3>";
 
-        phpinfo(); //sacamos por pantalla la informacion de php
+        phpinfo();
         ?> 
         
         
-           ?>
+          
 
 
     </body>
      <footer>
-          <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+          <a href="../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
             Volver al Index           
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+            <a href="../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
         </footer>
 </html>
-
 
 
 

@@ -7,7 +7,7 @@
     -- Primero creamos la base de datos userEjercicio2
 create database DAW210_DBProyectoTema5;
 -- Entramos a la base de datos sobre la que vamos a trabajar con la sentencia use 'nombre'.
-use DAW203_DBProyectoTema5;
+use DAW210_DBProyectoTema5;
 -- Por último creamos la tabla
 create table usuario(codUsuario varchar(255) primary key, descripcion varchar(250), pass varchar(255), perfil varchar(50))engine=innodb;
 -- Damos permisos al usuario
