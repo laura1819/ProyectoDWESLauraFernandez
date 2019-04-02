@@ -1,21 +1,15 @@
 
 	/* Autor: Laura Fernandez
-		Fecha: 25/03/19
+		Fecha: 01/04/19
 		Comentarios: Crear una base de datos y añadir una tabla
 		*/
 
-        
-			-- Creamos la base de datos
-				create database if not exists DAW210_DBDepartamentos; 
-				
-			-- Usamos la base de datos que acabamos de crear
-				use DAW210_DBDepartamentos; 
-					
-			-- Creamos la tabla
-				create table if not exists Departamento(CodDepartamento varchar(3) primary key,
-								        DescDepartamento varchar(255))
-				engine=innodb;
-		
-                        -- LE damos los permisos al usuario
-                                grant all privileges on DAW210_DBDepartamentos to usuarioDAW210DBDepartamentos identified by 'paso';        
+    -- Primero creamos la base de datos userEjercicio2
+create database DAW210_DBProyectoTema5;
+-- Entramos a la base de datos sobre la que vamos a trabajar con la sentencia use 'nombre'.
+use DAW203_DBProyectoTema5;
+-- Por último creamos la tabla
+create table usuario(codUsuario varchar(255) primary key, descripcion varchar(250), pass varchar(255), perfil varchar(50))engine=innodb;
+-- Damos permisos al usuario
+grant all privileges on DAW210_DBProyectoTema5.* to 'usuarioDBProyectoTema5'@'%' identified by 'paso'; 
       

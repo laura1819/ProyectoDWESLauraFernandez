@@ -8,23 +8,6 @@
             h1{
                 font-family: 'Charmonman', cursive;
             }
-             table {
-                width: 800px;
-                border-collapse: collapse;
-                overflow: hidden;
-                box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            }
-
-            th,
-            td {
-                padding: 15px;
-                background-color: rgba(255,255,255,0.2);
-                color: #fff;
-            }
-
-            th {
-                text-align: center;
-            }
             
            
 
@@ -37,45 +20,63 @@
         <?php
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/2019
+          Fecha 01/04/2019
           Comentarios: conexion a la base de datos
          */
 
         include '../config/configBD.php';
 
-        try {
-            $myBD = new PDO(DSN, USER, PASS);
-            $myBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "<h3>La conexion se ha realizado con exito!</h3> </br>";
-            $consulta = $myBD->query("SELECT * FROM Departamento");
-        } catch (PDOException $exc) {
-            echo "Error" . $exc->getMessage();
-        } finally {
-            unset($myBD);
+   
+        if (isset($_POST['Cancelar'])) {
+            $_SERVER[PHP_AUTH_USER] = '';
+            $_SERVER[PHP_AUTH_PW] = '';
+        }
+        if (!isset($_SERVER['PHP_AUTH_USER'])) { //Si no se ha autenticado el usuario, se piden los datos.
+            header('WWW-Authenticate: Basic realm="DAW210"');
+            header("HTTP/1.0 401 Unauthorized");
+            exit;
+        } else { //Si lo ha hecho ya comprobamos los datos con la base de datos.
+            try {
+                $baseDeDatos = new PDO(DSN, USER, PASS); //Se inicia la variable como un elemento PDO y se establece la conexión.
+                $baseDeDatos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $pass = hash('sha256', $_SERVER[PHP_AUTH_PW]); //Se vuelva en una variable el hash generado con sha256 de la contraseña introducida por el usuario.
+                $query = "select * from usuario where codUsuario=:codUsuario and pass=:pass";
+                $consulta = $baseDeDatos->prepare($query); //Se prepara la consulta.
+                $consulta->bindParam(':codUsuario', $_SERVER[PHP_AUTH_USER]);
+                $consulta->bindParam(':pass', $pass);
+                $consulta->execute(); //Se ejecuta la consulta.
+                if ($consulta->rowCount() == 0) { //Evalúa si se ha producido algún resultado, si no lo ha hecho no se muestra el contenido.
+                    header('WWW-Authenticate: Basic realm="Contenido restringido"');
+                    header("HTTP/1.0 401 Unauthorized");
+                    exit;
+                } else {
+                    session_start();
+                    $_SESSION['usuario'] = $_SERVER[PHP_AUTH_USER];
+                    
+                    Header("Location: ejercicio00.php");
+                    ?>
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        <table>
+                            <tr>
+                                <td><input type="submit" name="Cancelar" value="Cancelar"></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <?php
+                }
+            } catch (PDOException $error) {
+                echo "<p>Error " . $error->getMessage() . "</p>"; //Si se produce algún error en la conexión se muestra el mensaje de la excepción.
+            } finally {
+                unset($baseDeDatos); //Se cierra la conexión con la base de datos.
+            }
         }
         ?>
-        <div style="text-align:center;">
-        <table style="margin: 0 auto;"> 
-            <tr> 
-                <td><b><u>Código</u></b></td> 
-                <td><b><u>Descripción</u></b></td>
-               
-            </tr>
-
-<?php while ($registro = $consulta->fetchObject()) {
-    ?>
-                <tr>
-                    <td><?php echo $registro->CodDepartamento ; ?></td>
-                    <td> <?php echo $registro->DescDepartamento ; ?></td>
-                </tr>    
-            <?php } ?> 
-        </div>
-        </table>
+        
     </body>
     <footer>
-        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-        Volver al Index           
-        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        <a href="../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
+        Volver al Index       
+        <a href="../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
     </footer>
 </html>
 
