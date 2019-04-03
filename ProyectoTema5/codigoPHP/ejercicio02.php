@@ -8,8 +8,8 @@
             h1{
                 font-family: 'Charmonman', cursive;
             }
-            
-           
+
+
 
         </style>
     </head>
@@ -25,53 +25,64 @@
          */
 
         include '../config/configBD.php';
-
-   
-        if (isset($_POST['Cancelar'])) {
-            $_SERVER[PHP_AUTH_USER] = '';
-            $_SERVER[PHP_AUTH_PW] = '';
-        }
-        if (!isset($_SERVER['PHP_AUTH_USER'])) { //Si no se ha autenticado el usuario, se piden los datos.
-            header('WWW-Authenticate: Basic realm="DAW210"');
+        session_start(); //inicia sesion
+        
+        if (isset($_POST['Cerrar_Sesion'])) { //si le damos a cerrar sesion destruira la sesion  
+                    unset($_SERVER['PHP_AUTH_USER']);
+                    session_destroy();
+                    Header("Location: ../indexProyectoTema5.php");
+                }
+        
+        
+        if (!isset($_SERVER['PHP_AUTH_USER'])) { //si el usuario no ha entrado se piden los datos
+            header('WWW-Authenticate: Basic realm="ejercicio02"');
             header("HTTP/1.0 401 Unauthorized");
             exit;
-        } else { //Si lo ha hecho ya comprobamos los datos con la base de datos.
+        } else { //comprobamos los datos de la base de datos
             try {
-                $baseDeDatos = new PDO(DSN, USER, PASS); //Se inicia la variable como un elemento PDO y se establece la conexión.
-                $baseDeDatos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $pass = hash('sha256', $_SERVER[PHP_AUTH_PW]); //Se vuelva en una variable el hash generado con sha256 de la contraseña introducida por el usuario.
-                $query = "select * from usuario where codUsuario=:codUsuario and pass=:pass";
-                $consulta = $baseDeDatos->prepare($query); //Se prepara la consulta.
-                $consulta->bindParam(':codUsuario', $_SERVER[PHP_AUTH_USER]);
-                $consulta->bindParam(':pass', $pass);
-                $consulta->execute(); //Se ejecuta la consulta.
-                if ($consulta->rowCount() == 0) { //Evalúa si se ha producido algún resultado, si no lo ha hecho no se muestra el contenido.
-                    header('WWW-Authenticate: Basic realm="Contenido restringido"');
+                $miBD = new PDO(DSN, USER, PASS); //objeto PDO para realizar la conexion
+                $miBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $pass = hash('sha256', $_SERVER['PHP_AUTH_PW']); //generamos un hash con la contraseña introducida
+                $usuario = $_SERVER['PHP_AUTH_USER'];
+
+                $sql = "select * from usuario where codUsuario='$usuario' and pass='$pass'"; //query para buscar los datos del usuario introducido
+                $consulta = $miBD->prepare($sql); //consulta preparada con el query anterior
+                $consulta->execute(); //ejecutamos la instruccion
+
+                if ($consulta->rowCount() == 0) { //si el resultado es 0 no ha encontrado nada y no mostrara nada
+                    header('WWW-Authenticate: Basic realm="ejercicio02"');
                     header("HTTP/1.0 401 Unauthorized");
                     exit;
-                } else {
-                    session_start();
-                    $_SESSION['usuario'] = $_SERVER[PHP_AUTH_USER];
+                } else { //sino muestra la variable superglobal $_SERVER, y crea las cookies de ultimo login y visitas
                     
-                    Header("Location: ejercicio00.php");
                     ?>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                        <table>
-                            <tr>
-                                <td><input type="submit" name="Cancelar" value="Cancelar"></td>
-                            </tr>
-                        </table>
+                        <input type="submit" name="Cerrar_Sesion" value="Cerrar_Sesion">
                     </form>
                     <?php
+                    echo "<h1>Variables Super Globales SERVER</h1>";
+                    echo "<pre>";
+                    print_r($_SERVER); //muestra el contenido de la varibble superglobal $_SERVER
+                    echo "</pre>";
+                    echo "<h3>Variables SESSION</h3>";
+                    echo "<pre>";
+                    print_r($_SESSION);
+                    echo "</pre>";
                 }
-            } catch (PDOException $error) {
-                echo "<p>Error " . $error->getMessage() . "</p>"; //Si se produce algún error en la conexión se muestra el mensaje de la excepción.
+                
+            } catch (PDOException $mensajeError) {
+                echo "Error " . $mensajeError->getMessage() . "<br>"; //mensaje de salida
+                echo "Codigo del error " . $mensajeError->getCode() . "<br>"; //mensaje de salida/codigo del error
             } finally {
-                unset($baseDeDatos); //Se cierra la conexión con la base de datos.
+                unset($miBD); //Se cierra la conexion
             }
         }
         ?>
-        
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <input type="submit" name="Cerrar_Sesion" value="Cerrar_Sesion">
+        </form>
+
     </body>
     <footer>
         <a href="../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
