@@ -2,22 +2,22 @@
 <html>
     <head>
         <title>Laura Fernandez</title>
-        <link rel="stylesheet" type="text/css" href="../webroot/css/estilos2.css"/>
+        <link rel="stylesheet" type="text/css" href="../webroot/css/programa.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <style>
             h1{
                 font-family: 'Charmonman', cursive;
             }
-           
+
         </style>
     </head>
     <body>
         <h1>Ejercicio 6</h1>	
-
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <input type="submit" name="Volver" value="Volver">
-        </form>
-
+        <div class="form">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <input type="submit" name="Volver" value="Volver">
+            </form>
+        </div>
         <?php
         /*
           Autor: Laura Fernandez
@@ -48,9 +48,9 @@
 
             if (!isset($_POST['Volver'])) {  // si no le damos a volver que nos muestre las variables            
                 //sacamos un mensaje por pantalla
-                
-                
-                
+                echo "<pre>";
+                    print_r($_COOKIE); 
+                    echo "</pre>";
                 phpinfo(); // mostramos el phpinfo
                 exit; // cerramos la conexion
             } else { // si hemos pulsado volver

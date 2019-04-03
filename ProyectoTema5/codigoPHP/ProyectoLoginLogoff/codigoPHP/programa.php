@@ -28,11 +28,12 @@
 
         setlocale(LC_TIME, 'es_ES.UTF-8'); // introducimos la hora que queremos utilizar
         date_default_timezone_set('Europe/Madrid'); // introducimos la situacion geografica
-
+        
 
         session_start(); // iniciamos la sesion
 
-
+        setcookie("animales", $_POST['animal'], time()+7600); 
+        
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
             Header("Location: login.php"); //  nos mandara al login 
         }
@@ -49,7 +50,13 @@
             Header("Location: detalle.php"); // nos llevara a detalles 
         }
 
-
+        if (isset($_POST['BuscaDepto'])) { // si pulsamos en detalles 
+            Header("Location: departamentos.php"); // nos llevara a detalles 
+        }
+        
+         if(isset($_POST['datos'])){
+            echo "tu animal es : " . $_COOKIE['animales'];
+        }
 
 
         $CodUsuario = $_SESSION['usuario_DAW210_Login']; // creamos una variable para meter el nombre del usuario 
@@ -74,13 +81,21 @@
         } finally { // y finalmente 
             unset($miDB); // cierra la sesion
         }
+        
+        
+        
+       
+        
         ?> 
-
+        <div class="form">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+            <p>Un animal: <input type="text" name="animal" /></p>
+            <input type="submit" name="datos" value="Animal"/>
             <input type="submit" name="Detallar" value="Detallar"/> 
             <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
+            <input type="submit" name="BuscaDepto" value="Busca Departamentos"/>
         </form> 
-
+        </div>
 
 
 

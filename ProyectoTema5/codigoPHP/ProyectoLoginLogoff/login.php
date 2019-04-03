@@ -72,6 +72,9 @@
             } else { // y si no  
                 $entradaOK = false; // ponemos la entrada a false
             }
+            
+            //setcookie("nombre_usuario", $_SERVER['PHP_AUTH_USER'], time()+3600);
+            
             if ($entradaOK) { // si la entrada es correcta 
                 session_start(); // iniciamos la sesion 
 
