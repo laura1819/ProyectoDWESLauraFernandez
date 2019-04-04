@@ -68,7 +68,7 @@
             }
 
         if (isset($_POST['enviar'])) {
-            $aErrores['descripcion'] = validacionFormularios::comprobarAlfanumerico($_POST['descripcion'], 255, 1, 1);
+            $aErrores['descripcion'] = validacionFormularios::comprobarAlfanumerico($_POST['descripcion'], 255, 1, 0);
 
             foreach ($aErrores as $campo => $error) {
                 if ($error != null) {

@@ -32,7 +32,7 @@
 
         session_start(); // iniciamos la sesion
 
-        setcookie("animales", $_POST['animal'], time()+7600); 
+       
         
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
             Header("Location: login.php"); //  nos mandara al login 
@@ -89,11 +89,10 @@
         ?> 
         <div class="form">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
-            <p>Un animal: <input type="text" name="animal" /></p>
-            <input type="submit" name="datos" value="Animal"/>
+           
             <input type="submit" name="Detallar" value="Detallar"/> 
             <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
-            <input type="submit" name="BuscaDepto" value="Busca Departamentos"/>
+            <input type="submit" name="BuscaDepto" value="Mto.Departamentos"/>
         </form> 
         </div>
 

@@ -26,9 +26,8 @@
        
         
         
-        if (isset($_POST['Cerrar_Sesion'])) { 
-                    //unset($_SERVER['PHP_AUTH_USER']);                    
-                    session_destroy();
+        if (isset($_POST['Volver'])) { 
+                   
                     Header("Location: ../indexProyectoTema5.php");
                 }
         
@@ -57,7 +56,7 @@
                     
                     ?>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                        <input type="submit" name="Cerrar_Sesion" value="Cerrar_Sesion">
+                        <input type="submit" name="Cerrar_Sesion" value="Volver">
                     </form>
                     <?php
                     
