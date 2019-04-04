@@ -17,6 +17,10 @@
 
 
         <?php
+        
+        
+        
+        
         /*
           Autor: Laura Fernandez
           Fecha 35/03/2019
@@ -31,7 +35,8 @@
         
 
         session_start(); // iniciamos la sesion
-
+        
+       
        
         
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
@@ -55,8 +60,11 @@
         }
         
          if(isset($_POST['datos'])){
-            echo "tu animal es : " . $_COOKIE['animales'];
+             $_COOKIE['animales'] = $_POST['animal'];
+            setcookie("animales", $_POST['animal'], time()+7600);
         }
+        
+        
 
 
         $CodUsuario = $_SESSION['usuario_DAW210_Login']; // creamos una variable para meter el nombre del usuario 
@@ -82,14 +90,19 @@
             unset($miDB); // cierra la sesion
         }
         
-        
-        
+      
+         
        
         
         ?> 
         <div class="form">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
-           
+           <p>Un animal: <input type="text" name="animal" value="<?php
+                               if (isset($_COOKIE['animales'])) {
+                                   echo $_COOKIE['animales'];
+                               }
+                               ?>"/></p>
+            <input type="submit" name="datos" value="GuardarAnimal"/>
             <input type="submit" name="Detallar" value="Detallar"/> 
             <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
             <input type="submit" name="BuscaDepto" value="Mto.Departamentos"/>
