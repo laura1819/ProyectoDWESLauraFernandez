@@ -112,6 +112,8 @@
            <input type="submit" name="datos" value="GuardarAnimal"/>
             <?php } ?>
            
+           -
+           
             
             <input type="submit" name="Detallar" value="Detallar"/> 
             <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
