@@ -60,8 +60,8 @@
         }
         
          if(isset($_POST['datos'])){
-             $_COOKIE['animales'] = $_POST['animal'];
-            setcookie("animales", $_POST['animal'], time()+7600);
+             $_COOKIE['Eanimal'] = $_POST['animal'];
+            setcookie("Eanimal", $_POST['animal'], time()+7600);
         }
         
         
@@ -91,18 +91,28 @@
         }
         
       
-         
+        
        
         
         ?> 
         <div class="form">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            
+            <?php if (isset($_COOKIE['Eanimal'])){
+                echo "<h3> Tu animal es : " . $_COOKIE['Eanimal'] . "</h3><br><br>";
+            }else{
+            
+                
+            ?>    
            <p>Un animal: <input type="text" name="animal" value="<?php
-                               if (isset($_COOKIE['animales'])) {
-                                   echo $_COOKIE['animales'];
+                               if (isset($_COOKIE['Eanimal'])) {
+                                   echo $_COOKIE['Eanimal'];
                                }
                                ?>"/></p>
-            <input type="submit" name="datos" value="GuardarAnimal"/>
+           <input type="submit" name="datos" value="GuardarAnimal"/>
+            <?php } ?>
+           
+            
             <input type="submit" name="Detallar" value="Detallar"/> 
             <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
             <input type="submit" name="BuscaDepto" value="Mto.Departamentos"/>
