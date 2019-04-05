@@ -15,7 +15,7 @@
         <?php
         /*
           Autor: Laura Fernandez
-          Fecha 35/03/2019
+          Fecha 01/03/2019
           Comentarios: conexion a la base de datos
          */
 
@@ -73,7 +73,7 @@
                 $entradaOK = false; // ponemos la entrada a false
             }
             
-            //setcookie("nombre_usuario", $_SERVER['PHP_AUTH_USER'], time()+3600);
+           
             
             if ($entradaOK) { // si la entrada es correcta 
                 session_start(); // iniciamos la sesion 
@@ -88,9 +88,9 @@
                 
 
 
-                $datos = $result->fetchObject(); // recogemos los campos necesarios
-                $visitas = $datos->numVisitas; // creamos una variable con las vosotas que ira al campo de la bd 
-                $ultConexion = $datos->fecha; // creamos una variable con la ultima conexion que ira al campo de la bd 
+                $valores = $result->fetchObject(); // recogemos los campos necesarios
+                $visitas = $valores->numVisitas; // creamos una variable con las vosotas que ira al campo de la bd 
+                $ultConexion = $valores->fecha; // creamos una variable con la ultima conexion que ira al campo de la bd 
 
 
                 $_SESSION['visitas_DAW210_Login'] = $visitas;

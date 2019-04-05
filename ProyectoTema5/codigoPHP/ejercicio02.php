@@ -56,7 +56,7 @@
                     
                     ?>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                        <input type="submit" name="Cerrar_Sesion" value="Volver">
+                        <input type="submit" name="Volver" value="Volver">
                     </form>
                     <?php
                     

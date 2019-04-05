@@ -17,14 +17,10 @@
 
 
         <?php
-        
-        
-        
-        
         /*
           Autor: Laura Fernandez
           Fecha 35/03/2019
-          Comentarios: conexion a la base de datos
+          Comentarios: conexion a la base de GuardaAnimal
          */
 
         include "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
@@ -32,13 +28,13 @@
 
         setlocale(LC_TIME, 'es_ES.UTF-8'); // introducimos la hora que queremos utilizar
         date_default_timezone_set('Europe/Madrid'); // introducimos la situacion geografica
-        
+
 
         session_start(); // iniciamos la sesion
-        
-       
-       
-        
+
+
+
+
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
             Header("Location: login.php"); //  nos mandara al login 
         }
@@ -58,13 +54,13 @@
         if (isset($_POST['BuscaDepto'])) { // si pulsamos en detalles 
             Header("Location: departamentos.php"); // nos llevara a detalles 
         }
-        
-         if(isset($_POST['datos'])){
-             $_COOKIE['Eanimal'] = $_POST['animal'];
-            setcookie("Eanimal", $_POST['animal'], time()+7600);
+
+        if (isset($_POST['GuardaAnimal'])) {
+            if (!isset($_COOKIE['Eanimal'])) {
+                setcookie("Eanimal", $_POST['Eanimal'], time() + 3600);
+                header("Refresh:0");                
+            }
         }
-        
-        
 
 
         $CodUsuario = $_SESSION['usuario_DAW210_Login']; // creamos una variable para meter el nombre del usuario 
@@ -89,36 +85,30 @@
         } finally { // y finalmente 
             unset($miDB); // cierra la sesion
         }
-        
-      
-        
-       
-        
         ?> 
         <div class="form">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            
-            <?php if (isset($_COOKIE['Eanimal'])){
-                echo "<h3> Tu animal es : " . $_COOKIE['Eanimal'] . "</h3><br><br>";
-            }else{
-            
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+ 
+                <?php 
+                if (isset($_COOKIE['Eanimal'])) { 
+                    echo "<h3> Tu animal es : " . $_COOKIE['Eanimal'] . "</h3><br><br>";
+                } else {
+                    ?>    
+                    <p>Un animal: <input type="text" name="animal" value="<?php
+                        if (isset($_POST['Eanimal'])) {
+                            echo $_POST['Eanimal'];
+                        }
+                        ?>"/></p>
+                    <input type="submit" name="GuardaAnimal" value="GuardarAnimal"/>
+                <?php } ?>
+
                 
-            ?>    
-           <p>Un animal: <input type="text" name="animal" value="<?php
-                               if (isset($_COOKIE['Eanimal'])) {
-                                   echo $_COOKIE['Eanimal'];
-                               }
-                               ?>"/></p>
-           <input type="submit" name="datos" value="GuardarAnimal"/>
-            <?php } ?>
-           
-           -
-           
-            
-            <input type="submit" name="Detallar" value="Detallar"/> 
-            <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
-            <input type="submit" name="BuscaDepto" value="Mto.Departamentos"/>
-        </form> 
+
+
+                <input type="submit" name="Detallar" value="Detallar"/> 
+                <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
+                <input type="submit" name="BuscaDepto" value="Mto.Departamentos"/>
+            </form> 
         </div>
 
 
