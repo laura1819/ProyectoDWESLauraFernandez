@@ -32,7 +32,9 @@
 
         session_start(); // iniciamos la sesion
 
-
+        if (isset($_POST['guardaSelect'])) {
+            setcookie("Eselect", $_POST['select'], time() + 7600);
+        }
 
 
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
@@ -55,11 +57,8 @@
             Header("Location: departamentos.php"); // nos llevara a detalles 
         }
 
-        if (isset($_POST['GuardaAnimal'])) {
-            if (!isset($_COOKIE['Eanimal'])) {
-                setcookie("Eanimal", $_POST['Eanimal'], time() + 3600);
-                header("Refresh:0");                
-            }
+        if (isset($_POST['preferencias'])) { // si pulsamos en detalles 
+            Header("Location: preferencias.php"); // nos llevara a detalles 
         }
 
 
@@ -80,6 +79,14 @@
                 echo '<h3>Número de visitas anteriores: ' . $_SESSION['visitas_DAW210_Login'] . '</h3>';   // con el numero de visitas              
                 echo '<h3>La última conexión: ' . $ultConexion . '</h3>'; // y con la hora de conexion correspondiente
             }
+            if (isset($_POST['select'])) {
+                echo "<h3>El idioma elegido es : " . $_POST['select'] . "</h3>";
+            } elseif (isset($_COOKIE['Eselect'])) {
+                echo "<h3>El idioma elegido es :  " . $_COOKIE['Eselect'] . "</h3>";
+            }else{
+                echo "no ha elegido idioma";
+            }
+            
         } catch (PDOException $e) { // si se produce algun error 
             print "Error de: " . $e->getMessage() . "<br/>"; // mostrara el codigo de error 
         } finally { // y finalmente 
@@ -88,36 +95,47 @@
         ?> 
         <div class="form">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
- 
-                <?php 
-                if (isset($_COOKIE['Eanimal'])) { 
-                    echo "<h3> Tu animal es : " . $_COOKIE['Eanimal'] . "</h3><br><br>";
-                } else {
-                    ?>    
-                    <p>Un animal: <input type="text" name="animal" value="<?php
-                        if (isset($_POST['Eanimal'])) {
-                            echo $_POST['Eanimal'];
-                        }
-                        ?>"/></p>
-                    <input type="submit" name="GuardaAnimal" value="GuardarAnimal"/>
-                <?php } ?>
-
-                
-
-
                 <input type="submit" name="Detallar" value="Detallar"/> 
                 <input type="submit" name="Cerrar_sesión" value="Cerrar sesión"/>
                 <input type="submit" name="BuscaDepto" value="Mto.Departamentos"/>
-            </form> 
+                <input type="submit" name="preferencias" value="Edit.Preferencias"/>
+
         </div>
+        Elegir idioma
+        <select name='select' value='<?php echo $_POST['select']; ?>'>  
+            <?php if(isset($_POST['select'])){ ?>
+            
+            
+             <option  value='español' <?php echo (isset($_POST['select']) && $_POST['select'] == 'español' ? 'selected': ''); ?>>Español</option>
+            <option  value='frances' <?php echo (isset($_POST['select']) && $_POST['select'] == 'frances' ? 'selected' : ''); ?>>Frances</option>
+            <option  value='aleman' <?php echo (isset($_POST['select']) && $_POST['select'] == 'aleman' ? 'selected' : ''); ?>>Aleman</option>
+            <option  value='ingles' <?php echo (isset($_POST['select']) && $_POST['select'] == 'ingles' ? 'selected' : ''); ?>>Ingles</option>
+            
+           
+            <?php }else{ ?>
+                
+            <option  value='español' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'español' ? 'selected': ''); ?>>Español</option>
+            <option  value='frances' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'frances' ? 'selected' : ''); ?>>Frances</option>
+            <option  value='aleman' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'aleman' ? 'selected' : ''); ?>>Aleman</option>
+            <option  value='ingles' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'ingles' ? 'selected' : ''); ?>>Ingles</option>
+                
+                
+                
+           <?php } ?>
+        </select>
+        
+        
+        <input type="submit" name="guardaSelect" value="Guardar"/>
+    </form> 
 
 
 
-        <footer>
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-            Volver al Index           
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
-        </footer>
+
+    <footer>
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+        Volver al Index           
+        <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+    </footer>
 </html>
 
 

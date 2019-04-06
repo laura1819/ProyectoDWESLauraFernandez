@@ -101,7 +101,11 @@ and open the template in the editor.
                     <td><a href="codigoPHP/ejercicio08.php">Exportar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio08.php">Mostrar código</a></td>
                 </tr>
-               
+               <tr>
+                    <td>9.- Mantenimiento de departamentos.</td>
+                    <td><a href="codigoPHP/MtoDepartamentos/index.php">Ejecutar</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio09.php">Mostrar código</a></td>
+                </tr>
             </table>
 	
      </body>
