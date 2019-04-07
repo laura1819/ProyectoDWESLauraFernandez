@@ -103,7 +103,7 @@ and open the template in the editor.
                 </tr>
                <tr>
                     <td>9.- Mantenimiento de departamentos.</td>
-                    <td><a href="codigoPHP/MtoDepartamentos/index.php">Ejecutar</a></td>
+                    <td><a href="codigoPHP/MtoDepartamentos/login.php">Ejecutar</a></td>
                     <td><a href="mostrarCodigo/muestraEjercicio09.php">Mostrar código</a></td>
                 </tr>
             </table>
