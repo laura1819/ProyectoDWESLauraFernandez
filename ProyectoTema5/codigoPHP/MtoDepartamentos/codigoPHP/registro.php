@@ -44,9 +44,9 @@
 
 
             if (isset($_POST['Registrarse'])) {     // si pulsamos en registrarse
-                $aErrores[usuario] = validacionFormularios::comprobarAlfabetico($_POST['usuario'], 15, LONGMINALFABETICO, OBLIGATORIO); // comprobamos el campo con la libreria de formularios
-                $aErrores[pass] = validacionFormularios::comprobarAlfaNumerico($_POST['pass'], 250, LONGMINALFABETICO, OBLIGATORIO); // comprobamos el campo con la libreria de formularios
-                $aErrores[descripcion] = validacionFormularios::comprobarAlfaNumerico($_POST['descripcion'], 255, LONGMINALFABETICO, OBLIGATORIO); // comprobamos el campo con la libreria de formularios
+                $aErrores[usuario] = validacionFormularios::comprobarAlfabetico($_POST['usuario'], 15, 3, 1); // comprobamos el campo con la libreria de formularios
+                $aErrores[pass] = validacionFormularios::comprobarAlfaNumerico($_POST['pass'], 250, 3, 1); // comprobamos el campo con la libreria de formularios
+                $aErrores[descripcion] = validacionFormularios::comprobarAlfaNumerico($_POST['descripcion'], 255, 3, 1); // comprobamos el campo con la libreria de formularios
 
 
                 $usuario = $_POST['usuario'];    // cogemos en la variable el nombre del usuario        

@@ -22,64 +22,30 @@
           Fecha 35/03/2019
           Comentarios: conexion a la base de GuardaAnimal
          */
-
+        echo "<pre>";
+        print_r($_COOKIE);
+        echo "</pre>";
         include "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         include "../config/configuracionDB.php";
 
-        setlocale(LC_TIME, 'es_ES.UTF-8'); // introducimos la hora que queremos utilizar
-        date_default_timezone_set('Europe/Madrid'); // introducimos la situacion geografica
 
+        // setcookie("Eselect", $_POST['select'], time() + 7600);
 
-        session_start(); // iniciamos la sesion
-
-       // echo "<pre>";
-      //  print_r($_COOKIE);
-      //  echo "</pre>";
-
+       // $username = "jorge";
         
-        
-        if (isset($_POST['nAnimal'])) {
-           $_SERVER['PHP_SELF'];
-        }
-        
-         if (isset($_POST['volver'])) {
-            header("Location: programa.php");
-        }
-        
-        if (isset($_POST['guardaAnimal'])) {
-            setcookie("Eanimal", $_POST['animal'], time() + 7600);
-            
-        }
-        
-              
         ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-            <?php
-            if (!isset($_POST['animal'])) {
-                if(isset($_COOKIE['Eanimal'])){
-                echo "<h3> Tu animal guardado es : " .  $_COOKIE['Eanimal'] . "</h3>";
-                }
-                ?>
-                <p>Un animal: <input type="text" name="animal" value="<?php
-                    if (isset($_POST['animal'])) {
-                        echo $_POST['animal'];
-                    }
-                    ?>"/></p>
-                <input type="submit" name="guardaAnimal" value="GuardarAnimal" class="boton_personalizado"/>
-                <input type="submit" name="volver" value="Volver" class="boton_personalizados"/><br><br>
-            <?php  }else {
-                echo "<h3> Su animal se ha guardado correctamente: " .$_POST['animal'] .  "</h3>";
-                ?>
-                <input type="submit" name="volver" value="Volver" class="boton_personalizados"/>
-                <input type="submit" name="nAnimal" value="NuevoAnimal" class="boton_personalizado"/><br><br>
-           <?php } ?>
-                    
-            </form>
+<!--
+        <script>
+      //      alert(<?php //echo setcookie("Username", $username, time() + 3600 * 24 * 30, '/'); ?>);
+        </script>
+-->
 
-     
+
+
+
         <footer>
-            <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
+            <a href="programa.php"><i class="fas fa-undo"></i></a>
             Volver al Index           
             <a href="../indexProyectoTema4.php"><i class="fas fa-undo"></i></a>
         </footer>

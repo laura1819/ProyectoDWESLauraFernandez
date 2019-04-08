@@ -17,7 +17,7 @@
 
 
         <?php
-         error_reporting(E_ALL);
+        error_reporting(E_ALL);
         ini_set('display_errors', '0');
         /*
           Autor: Laura Fernandez
@@ -34,9 +34,10 @@
 
         session_start(); // iniciamos la sesion
 
-        if (isset($_POST['guardaSelect'])) {
-            setcookie("Eselect", $_POST['select'], time() + 7600);
-        }
+
+
+
+
 
 
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
@@ -58,8 +59,8 @@
         if (isset($_POST['Departamentos'])) { // si pulsamos en detalles 
             Header("Location: login.php"); // nos llevara a detalles 
         }
-        
-         if (isset($_POST['edPerfil'])) { // si pulsamos en detalles 
+
+        if (isset($_POST['edPerfil'])) { // si pulsamos en detalles 
             Header("Location: edPerfil.php"); // nos llevara a detalles 
         }
 
@@ -67,6 +68,9 @@
             Header("Location: preferencias.php"); // nos llevara a detalles 
         }
 
+        if (isset($_POST['mtoUsuarios'])) {
+            Header("Location: mtoUsuarios.php");
+        }
 
         $CodUsuario = $_SESSION['usuario_DAW210_Login']; // creamos una variable para meter el nombre del usuario 
         try {
@@ -74,6 +78,14 @@
             $miDB = new PDO(DSN, USER, PASS);      // creamos una variable con pdo para guardar la conexion 
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // si hay algun error que nos lo muestre 
 
+            $query = "select * from usuario where CodUsuario=:CodUsuario";
+            $result = $miDB->prepare($query);
+            $result->bindParam(':CodUsuario', $CodUsuario);
+            $result->execute();
+
+
+            $datos = $result->fetchObject();
+            $perfil = $datos->perfil;
 
             $ultConexion = date('d-m-Y H:i:s', $_SESSION['ultConexion_DAW210_Login']); // recogemos la ultima conexion pasada por la variable sesion
 
@@ -85,62 +97,96 @@
                 echo '<h3>Número de visitas anteriores: ' . $_SESSION['visitas_DAW210_Login'] . '</h3>';   // con el numero de visitas              
                 echo '<h3>La última conexión: ' . $ultConexion . '</h3>'; // y con la hora de conexion correspondiente
             }
-            
-            
         } catch (PDOException $e) { // si se produce algun error 
             print "Error de: " . $e->getMessage() . "<br/>"; // mostrara el codigo de error 
         } finally { // y finalmente 
             unset($miDB); // cierra la sesion
         }
+        //echo "<pre>";
+       // print_r($_COOKIE);
+      //  echo "</pre>";
+
+        //if (isset($_COOKIE['Epais'])) {
+       //     echo "El idioma es : " . $_COOKIE['Epais'];
+      //  } 
         ?> 
+
         <div >
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
+               <!-- <input type="radio" id="uno" name="gender" value="male"> Male<br>
+                <input type="radio" id="dos" name="gender" value="female"> Female<br>
+                <input type="radio" id="tres" name="gender" value="other"> Other <br><br>
+                -->
+
+                    <?php
+                   
+                        
+                
+                
+                    if (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español') {
+                         ?>
+                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> checked><label>español</label>
+                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?>><label>ingles</label>
+                        <?php
+                }else{ 
+                ?>
                
-                
-        <?php
-        if (isset($_POST['select'] )) {
-                echo "<h3>El idioma elegido es : " . $_POST['select'] . "</h3><br>";
-            } elseif (isset($_COOKIE['Eselect'])) {
-                echo "<h3>El idioma elegido es :  " . $_COOKIE['Eselect'] . "</h3><br>";
-            }else{
-                echo "No ha elegido idioma";
-            }
-            ?>
-        Elige idioma
-        <select name='select' value='<?php echo $_POST['select']; ?>'>  
-            
-            <?php if(isset($_POST['select'])){ ?>
-            
-            
-            <option  value='español' <?php echo (isset($_POST['select']) && $_POST['select'] == 'español' ? 'selected': ''); ?>>Español</option>
-            <option  value='frances' <?php echo (isset($_POST['select']) && $_POST['select'] == 'frances' ? 'selected' : ''); ?>>Frances</option>
-            <option  value='aleman' <?php echo (isset($_POST['select']) && $_POST['select'] == 'aleman' ? 'selected' : ''); ?>>Aleman</option>
-            <option  value='ingles' <?php echo (isset($_POST['select']) && $_POST['select'] == 'ingles' ? 'selected' : ''); ?>>Ingles</option>
-            
-           
-            <?php }else{ ?>
-                
-            <option  value='español' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'español' ? 'selected': ''); ?>>Español</option>
-            <option  value='frances' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'frances' ? 'selected' : ''); ?>>Frances</option>
-            <option  value='aleman' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'aleman' ? 'selected' : ''); ?>>Aleman</option>
-            <option  value='ingles' <?php echo (isset($_COOKIE['Eselect']) && $_COOKIE['Eselect'] == 'ingles' ? 'selected' : ''); ?>>Ingles</option>
-                
-                
-                
-           <?php } ?>
-        </select>
-        <input type="submit" name="guardaSelect" value="Guardar" class="boton_personalizadose"/><br><br>
-        <input type="submit" class="boton_personalizados" name="Cerrar_sesión" value="Cerrar sesión"/>
-        <input type="submit" class="boton_personalizado" name="edPerfil" value="Editar Perfil"/>
-                 <input type="submit" class="boton_personalizado" name="Detallar" value="Detallar"/> 
+                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> ><label>español</label>
+                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?> checked><label>ingles</label>
+                        <?php
+                } 
+                ?>
+               
+
+                <br><br>
+                <input type="submit" class="boton_personalizados" name="Cerrar_sesión" value="Cerrar sesión"/>
+                <input type="submit" class="boton_personalizado" name="edPerfil" value="Editar Perfil"/>
+                <input type="submit" class="boton_personalizado" name="Detallar" value="Detallar"/> 
                 <input type="submit" class="boton_personalizado" name="Departamentos" value="Mto.Departamentos"/>
                 <input type="submit" class="boton_personalizado" name="preferencias" value="Edit.Preferencias"/>
+<?php
+if ($perfil == 'Administrador') {
+    ?>
+                    <style>
+                        body{
+                            background-color:#00499D ;
+                        }
+                    </style>
 
+                    <input type="submit" class="boton_personalizadoa" name="mtoUsuarios" value="Mantenimiento de Usuarios"/>
+    <?php
+}
+?>
         </div><br><br>
-        
+
     </form> 
 
+    <script type="text/javascript">
 
+        (function () {
+            var espa = function () {
+<?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>
+
+            };
+            var ingles = function () {
+<?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>
+
+            };
+            
+         
+
+            var uno = document.getElementById('uno');
+            uno.addEventListener("click", espa);
+
+            var dos = document.getElementById('dos');
+            dos.addEventListener("click", ingles);
+
+
+
+        }());
+
+    </script>
 
 
     <footer>

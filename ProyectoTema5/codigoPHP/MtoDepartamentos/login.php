@@ -132,8 +132,8 @@
                                 echo $_POST['contraseña'];
                             }
                             ?>"/>
-                            <input type="submit" name="Aceptar" value="Aceptar" >
-                            <input type="submit" name="Registro" value="Registrarse" >
+                            <input style="background-color:#1E5799;" type="submit" class="boton" name="Aceptar" value="Aceptar" >
+                            <input type="submit" style="background-color:#1E5799;"  name="Registro" value="Registrarse" >
 
                         </form>
                     </div>

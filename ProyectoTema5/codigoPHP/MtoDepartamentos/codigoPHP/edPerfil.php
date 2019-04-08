@@ -8,7 +8,7 @@
 
     </head>
     <body>
-        <h1>Añadir Departamento</h1><br><br>           
+        <h1>Editar Perfil</h1><br><br>           
 
         <?php
         error_reporting(E_ALL);
@@ -117,7 +117,7 @@
 
                         
                         <input type="submit" name="Editar" value="Editar" class="boton_personalizado">   
-                        <input type="button" name="Editar_Contraseña" class="boton_personalizado" value="Editar Contraseña" onclick="location='editarContrasena.php'">
+                        <input type="button" name="Editar_Contraseña" class="boton_personalizado" value="Editar Contraseña" onclick="location='editarcontrasena.php'">
                         <input type="button" name="Eliminar_Cuenta" class="boton_personalizados" value="Eliminar_Cuenta" onclick="location='eliminarCuenta.php'">
                         <input type="button" name="Salir" value="Salir" class="boton_personalizados" onclick="location = 'programa.php'">
                     

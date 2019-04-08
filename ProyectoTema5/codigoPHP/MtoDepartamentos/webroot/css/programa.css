@@ -58,6 +58,18 @@ footer {
     border-radius: 6px;
     border: 2px solid #0016b0;
   }
+  
+  .boton_personalizadoa{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #48F542;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+
 
    .boton_personalizados{
     text-decoration: none;
