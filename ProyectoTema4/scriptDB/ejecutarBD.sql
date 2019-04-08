@@ -8,8 +8,11 @@
 -- Mtemos los siguientes valores en la tabla que hemos creado antes
 -- Primero metemos el codigo de departamento y despues la descripcion
  
-		insert into Departamento values('CMP','Departamento Compras'), 
-                                             ('VNT','Departamento Ventas'), 
-                                             ('CNT','Departamento Contabilidad'), 
-                                             ('GST','Departamento Gestion')
-                                             ;
+INSERT INTO `Departamento` (`CodDepartamento`, `DescDepartamento`, `FechaDeBaja`) VALUES
+('DAL', 'Departamento de alumnos', '0001-01-01'),
+('DCP', 'Departamento compras', '0001-01-01'),
+('DIN', 'Informatica', '0001-01-01'),
+('DOR', 'Departamento de Ordenadores', '0001-01-01'),
+('DPF', 'Departamento de Profesores', '0001-01-01'),
+('DTC', 'Tecnologia', '0001-01-01'),
+('DVN', 'Departamento ventas', '0001-01-01');

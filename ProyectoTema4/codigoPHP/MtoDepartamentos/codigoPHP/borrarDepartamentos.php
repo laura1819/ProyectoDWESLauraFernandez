@@ -34,7 +34,7 @@
                 $borrar->bindParam(':codigo', $codigo);  // codigo del departamento elegido 
                 $borrar->execute();//Realizamos la consulta de borrar
                 
-                Header("Location: ../login.php");// poner en la cabezera el index para que nos redirecione
+                Header("Location: login.php");// poner en la cabezera el index para que nos redirecione
                 
             } else {
                 ?>
@@ -50,8 +50,8 @@
                                 <td><input type="text" name="descripcion" value="<?php echo $descripcion; ?>" disabled></td>
                             </tr>
                             <tr>
-                                <td><input type="button" value="Cancelar" onclick="location = '../login.php'"></td>
-                                <td><input type="submit" name="Aceptar" value="Aceptar"></td>
+                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'login.php'"></td>
+                                <td><input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar"></td>
                             </tr>
                         </table>
                     </div>

@@ -4,7 +4,7 @@
         <title>Ver departamentos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="stylesheet" href="../webroot/css/loginb.css" type="text/css"/>
+          <link rel="stylesheet" href="../webroot/css/estilos.css" type="text/css"/>
     </head>
     <body>
         <h1>Ver Departamento</h1>           
@@ -28,10 +28,10 @@
                     $buscar = $miDB->query("select * from Departamento where CodDepartamento='$codigo'"); //guardamos en la variable el resultado del query
                     $datos = $buscar->fetchObject(); //fetchObject Recupera una fila de resultados como un objeto
                     $descripcion = $datos->DescDepartamento; // variable para guardar la descripcion
-                    $fechaDeBaja=$datos->fechaDeBaja; // variable para guardar la fecha de baja
+                    $FechaDeBaja=$datos->FechaDeBaja; // variable para guardar la fecha de baja
             if (isset($_POST['Aceptar'])) { //y si se pusa el boton de aceptar             
                 
-                Header("Location: ../login.php");// mandamos a la cabezera en index para que nos dirija alli
+                Header("Location: login.php");// mandamos a la cabezera en index para que nos dirija alli
                 
             } else { // y si no mostramos otra vez 
                 ?>
@@ -47,17 +47,17 @@
                                 <td><input type="text" name="descripcion" value="<?php echo $descripcion; ?>" disabled></td>
                             </tr>
                             <?php
-                                if($fechaDeBaja!='0001-01-01'){
+                                if($FechaDeBaja!='0001-01-01'){
                                     ?>
                                     <tr>
                                         <td>Fecha de baja</td>
-                                        <td><input type="text" name="fechaDeBaja" value="<?php echo $fechaDeBaja;?>" disabled></td>
+                                        <td><input type="text" name="FechaDeBaja" value="<?php echo $FechaDeBaja;?>" disabled></td>
                                     </tr>
                                     <?php
                                 }
                             ?>
                             <tr>
-                                <td><input type="submit" name="Aceptar" value="Aceptar"></td>
+                                <td><input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar"></td>
                             </tr>
                         </table>
                     </div>

@@ -86,7 +86,7 @@ and open the template in the editor.
                  <tr>
                     <td>4.-Mantenimiento departamentos con login logoff.</td>
                     <td><a href="codigoPHP/MtoDepartamentos/login.php">Ejecutar</a></td>
-                    <td><a href="mostrarCodigo/muestraEjercicio03.php">Mostrar Codigo</a></td>
+                    <td><a href="mostrarCodigo/muestraEjercicio04.php">Mostrar Codigo</a></td>
                     
                 </tr>
 

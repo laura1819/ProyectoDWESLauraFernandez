@@ -50,7 +50,7 @@
                             echo "<h2>Base de datos importada con exito</h2>";
                             echo "<h2>Los registros son: </h2>";
 
-                             echo "<script>alert('Importado correctamente');window.location.href='../login.php';</script>";
+                             echo "<script>alert('Importado correctamente');window.location.href='login.php';</script>";
                         } else {
                             $myBD->rollBack(); // y si no revertimos los cambios
                             echo "<p>No pudo importarse la base de datos</p>";
@@ -61,13 +61,13 @@
                 }
             } else {
                 ?>
-                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                <form style="text-align: center;" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
 
                     Selecciona archivo
                     <input type="file" name="archivo"></br></br>
 
-                    <input type="button" value="Cancelar" onclick="location = '../login.php'">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <input type="submit" name="Aceptar" value="Aceptar">
+                    <input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'login.php'">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar">
 
                 </form>
                 <?php

@@ -35,15 +35,15 @@
                     $actualizar->execute();//Realizamos la consulta de borrar
                     
                     ?>
-                    <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
-                        <p>Estas seguro que quieres rehabilitar este registro?</p>              
-                        <input type="button" name="cancelar" value="Cancelar" onclick="location='../login.php'">
-                        <input type="submit" name="Aceptar" value="Aceptar">    
+                    <form style="text-align: center;" action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+                        <p style="color:white;">Estas seguro que quieres rehabilitar este registro?</p>              
+                        <input type="button" name="cancelar" class="boton_personalizados" value="Cancelar" onclick="location='login.php'">
+                        <input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar">    
                     </form>
         
                     <?php
                     if(isset($_POST['Aceptar'])){
-                        echo "<script>alert('REHABILITADO!!!!');window.location.href='../login.php';</script>";
+                        echo "<script>alert('REHABILITADO!!!!');window.location.href='login.php';</script>";
                     }
                     
                     

@@ -99,10 +99,10 @@
         $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // si hay algun error que lo muestre 
             
         if ($_POST['Buscar'] == "Baja") { //si pulsamos baja
-                    $sql="SELECT * FROM Departamento WHERE fechaDeBaja<>'0001-01-01' and DescDepartamento like '%$nombre%'";  // query para encontrar el departamento con el nombre                                   
+                    $sql="SELECT * FROM Departamento WHERE FechaDeBaja<>'0001-01-01' and DescDepartamento like '%$nombre%'";  // query para encontrar el departamento con el nombre                                   
                 } else { 
                     if ($_POST['Buscar'] == "Alta") {  // si le damos a alta
-                        $sql="SELECT * FROM Departamento WHERE fechaDeBaja='0001-01-01' or fechaDeBaja is null and DescDepartamento like '%$nombre%'"; // query para encontrar el departamento con el nombre 
+                        $sql="SELECT * FROM Departamento WHERE FechaDeBaja='0001-01-01' or FechaDeBaja is null and DescDepartamento like '%$nombre%'"; // query para encontrar el departamento con el nombre 
                     } else { 
                         $sql="SELECT * FROM Departamento WHERE DescDepartamento like '%$nombre%'"; // query para buscar solo por el nombre
                     } 
@@ -112,17 +112,17 @@
                 $result->execute();   //Ejecutar la consulta
              
                 while($datos=$result->fetchObject()){ // haremos un bucle
-                    $fechaDeBaja=$datos->fechaDeBaja; // con la fecha de baja en la base de datos 
+                    $FechaDeBaja=$datos->FechaDeBaja; // con la fecha de baja en la base de datos 
                 ?>
                 <tr>
-                   <td class="codigo" <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->CodDepartamento ?></td>
-                    <td class="descripcion" <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->DescDepartamento ?></td>
-                    <td class="iconos" <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>>
+                   <td class="codigo" <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->CodDepartamento ?></td>
+                    <td class="descripcion" <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->DescDepartamento ?></td>
+                    <td class="iconos" <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>>
                         <a href="borrarDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img class="borrar" src="../images/Borrar.png"></a>
-                        <a <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="editarDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/editar.png"></a>
+                        <a <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="editarDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/editar.png"></a>
                         <a href="verDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/ojo.png"></a>
-                        <a <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="bajaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/baja.png"></a>
-                        <a <?php if($fechaDeBaja=='0001-01-01' || $fechaDeBaja == null){ ?>style="display:none;" <?php } ?> href="altaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/alta.png"></a>
+                        <a <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="bajaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/baja.png"></a>
+                        <a <?php if($FechaDeBaja=='0001-01-01'){ ?>style="display:none;" <?php } ?> href="altaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/alta.png"></a>
                     </td>
                 </tr>
                     
@@ -140,18 +140,18 @@
                 $result->execute();   //Ejecutar la consulta y donde pone :nombre, ponemos %$nombre%, para decir que puede tener mas letras por ambos lados                  
 
                 while($datos=$result->fetchObject()){
-                    $fechaDeBaja=$datos->fechaDeBaja;
+                    $FechaDeBaja=$datos->FechaDeBaja;
                   
                     ?>
                 <tr>
-                    <td class="codigo" <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->CodDepartamento ?></td>
-                    <td class="descripcion" <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->DescDepartamento ?></td>
-                    <td class="iconos" <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>>
+                    <td class="codigo" <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->CodDepartamento ?></td>
+                    <td class="descripcion" <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>><?php echo $datos->DescDepartamento ?></td>
+                    <td class="iconos" <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="background-color:#ff9999" <?php } ?>>
                         <a href="borrarDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img class="borrar" src="../images/Borrar.png"></a>
-                        <a <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="editarDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/editar.png"></a>
+                        <a <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="editarDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/editar.png"></a>
                         <a href="verDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/ojo.png"></a>
-                        <a <?php if($fechaDeBaja!='0001-01-01' && $fechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="bajaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/baja.png"></a>
-                        <a <?php if($fechaDeBaja=='0001-01-01' || $fechaDeBaja == null){ ?>style="display:none;" <?php } ?> href="altaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/alta.png"></a>
+                        <a <?php if($FechaDeBaja!='0001-01-01' && $FechaDeBaja != null){ ?>style="display:none;" <?php } ?> href="bajaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/baja.png"></a>
+                        <a <?php if($FechaDeBaja=='0001-01-01'){ ?>style="display:none;" <?php } ?> href="altaLogicaDepartamentos.php?CodDepartamento=<?php echo $datos->CodDepartamento ?>"><img src="../images/alta.png"></a>
                     </td>
                 </tr>
                 <?php

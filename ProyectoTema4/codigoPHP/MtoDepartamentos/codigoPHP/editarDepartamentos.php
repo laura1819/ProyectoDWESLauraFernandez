@@ -28,7 +28,7 @@
                     $buscar = $miDB->query("select * from Departamento where CodDepartamento='$codigo'"); //guardamos en la variable el resultado de la consulta
                     $datos = $buscar->fetchObject(); //fetchObject Recupera una fila de resultados como un objeto
                     $descripcion = $datos->DescDepartamento; //variable para meter la descripcion
-                    $fechaDeBaja=$datos->FechaDeBaja; // variable para meter la fecha de baja
+                    //$fechaDeBaja=$datos->FechaDeBaja; // variable para meter la fecha de baja
             if (isset($_POST['Aceptar'])) { //si pulsamos el boton de aceptar
                 
                 $desc=$_POST['descripcion']; // guardar con post
@@ -36,7 +36,7 @@
                 $actualizar->bindParam(':codigo', $codigo); // bindParam Agrega variables a una sentencia preparada como parámetros
                 $actualizar->execute();//realizamos la consulta
                 
-                Header("Location: ../login.php");// que nos mande a la cabezera al index al terminar
+                Header("Location: login.php");// que nos mande a la cabezera al index al terminar
                 
             } else {
                 ?>
@@ -51,19 +51,10 @@
                                 <td>Descripcion</td>
                                 <td><input type="text" name="descripcion" id="descripcion"  value="<?php echo $descripcion; echo $_POST['descripcion'];?>"></td>
                             </tr>
-                            <?php
-                                if($fechaDeBaja!='0001-01-01'){
-                                    ?>
-                                    <tr>
-                                        <td>Fecha de baja</td>
-                                        <td><input type="text" name="fechaDeBaja" value="<?php echo $fechaDeBaja;?>" disabled></td>
-                                    </tr>
-                                    <?php
-                                }
-                            ?>
+                           
                             <tr>
-                                <td><input type="button" value="Cancelar" onclick="location = '../login.php'"></td>
-                                <td><input type="submit" name="Aceptar" value="Aceptar"></td>
+                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'login.php'"></td>
+                                <td><input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar"></td>
                             </tr>
                         </table>
                     </div>

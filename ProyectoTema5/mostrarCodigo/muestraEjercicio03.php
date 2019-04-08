@@ -9,5 +9,9 @@
     highlight_file("../codigoPHP/ProyectoLoginLogoff/codigoPHP/programa.php");
     echo '<h1>Detalle</h1>';
     highlight_file("../codigoPHP/ProyectoLoginLogoff/codigoPHP/detalle.php");
+     echo '<h1>Preferencias</h1>';
+    highlight_file("../codigoPHP/ProyectoLoginLogoff/codigoPHP/preferencias.php");
+    echo '<h1>Busca departamentos</h1>';
+    highlight_file("../codigoPHP/ProyectoLoginLogoff/codigoPHP/departamentos.php");
     
 ?>

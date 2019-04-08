@@ -37,6 +37,11 @@
             'usuario' => null, // con el campo del nombre 
             'contraseña' => null  // con el campo de la contraseña 
         ];
+        
+        if(isset($_POST['Registro'])){
+            Header("Location: codigoPHP/registro.php");
+        }
+        
         try {
             $miDB = new PDO(DSN, USER, PASS);               //creamos una variable para la conexion a la bd pdo 
 
@@ -127,7 +132,8 @@
                                 echo $_POST['contraseña'];
                             }
                             ?>"/>
-                            <input type="submit" name="Aceptar" value="Aceptar">
+                            <input type="submit" name="Aceptar" value="Aceptar" >
+                            <input type="submit" name="Registro" value="Registrarse" >
 
                         </form>
                     </div>

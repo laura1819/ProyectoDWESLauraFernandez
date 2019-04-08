@@ -7,7 +7,6 @@
     </head>
     <body>
         <h1>Desarrollo Web En Entorno Servidor</h1>
-
         <div class="s3-menu">
             <div id="s3-menu">
                 <ul>
@@ -32,7 +31,7 @@
                         </a>
                     </li>
                     <li>
-                         <a href="ProyectoTema5/indexProyectoTema5.php">
+                        <a href="ProyectoTema5/indexProyectoTema5.php">
                             Tema5 <span>Desarrollo de aplicaciones web</span>
                         </a>
                     </li>
@@ -47,7 +46,7 @@
         <footer>
             Laura Fernandez
             <a href="http://DAW-USGIT.sauces.local/laura.ferfer.7/ProyectoDWESLauraFernandez" target="black"><i class="fab fa-gitlab"></i></a>
-			<a href="https://github.com/laura1819/ProyectoDWESLauraFernandez" target="black"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/laura1819/ProyectoDWESLauraFernandez" target="black"><i class="fab fa-github"></i></a>
             <a href="../index.html"><i class="fas fa-home"></i></a>
         </footer>
     </body>

@@ -40,11 +40,11 @@
                     $actualizar->bindParam(':codigo', $codigo); // bindParam Agrega variables a una sentencia preparada como parámetros
                     $actualizar->execute();//Realizamos la consulta de borrar
                 }catch(PDOException $e){ // si surge un error en el formato de la fecha
-                    echo "<script>alert('Formato no correcto: AAAA-MM-DD');window.location.href='../login.php';</script>"; // sacamos el mensaje de error y le damos el formato
+                    echo "<script>alert('Formato no correcto: AAAA-MM-DD');window.location.href='login.php';</script>"; // sacamos el mensaje de error y le damos el formato
                 }
                 
                 
-                echo "<script>alert('DADO DE BAJA!!!');window.location.href='../login.php';</script>"; // si esta todo bien lo indicamos
+                echo "<script>alert('DADO DE BAJA!!!');window.location.href='login.php';</script>"; // si esta todo bien lo indicamos
             } else {
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF'] . '?CodDepartamento=' . $_GET['CodDepartamento']; ?>" method="post">
@@ -63,8 +63,8 @@
                                 <td><input type="text" name="fechaDeBaja" id="fechaDeBaja" value="<?php echo $fechaActual; echo $_POST['fechaDeBaja'];?>" ></td>
                             </tr>                                   
                             <tr>
-                                <td><input type="button" value="Cancelar" onclick="location = '../login.php'"></td>
-                                <td><input type="submit" name="Aceptar" value="Aceptar"></td>
+                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'login.php'"></td>
+                                <td><input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar"></td>
                             </tr>
                         </table>
                     </div>

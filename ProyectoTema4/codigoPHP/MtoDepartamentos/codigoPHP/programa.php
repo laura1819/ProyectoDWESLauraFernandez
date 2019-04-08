@@ -17,8 +17,6 @@
 
 
         <?php
-         error_reporting(E_ALL);
-        ini_set('display_errors', '0');
         /*
           Autor: Laura Fernandez
           Fecha 35/03/2019
@@ -58,10 +56,6 @@
         if (isset($_POST['Departamentos'])) { // si pulsamos en detalles 
             Header("Location: login.php"); // nos llevara a detalles 
         }
-        
-         if (isset($_POST['edPerfil'])) { // si pulsamos en detalles 
-            Header("Location: edPerfil.php"); // nos llevara a detalles 
-        }
 
         if (isset($_POST['preferencias'])) { // si pulsamos en detalles 
             Header("Location: preferencias.php"); // nos llevara a detalles 
@@ -98,7 +92,7 @@
                
                 
         <?php
-        if (isset($_POST['select'] )) {
+        if (isset($_POST['select'])) {
                 echo "<h3>El idioma elegido es : " . $_POST['select'] . "</h3><br>";
             } elseif (isset($_COOKIE['Eselect'])) {
                 echo "<h3>El idioma elegido es :  " . $_COOKIE['Eselect'] . "</h3><br>";
@@ -112,7 +106,7 @@
             <?php if(isset($_POST['select'])){ ?>
             
             
-            <option  value='español' <?php echo (isset($_POST['select']) && $_POST['select'] == 'español' ? 'selected': ''); ?>>Español</option>
+             <option  value='español' <?php echo (isset($_POST['select']) && $_POST['select'] == 'español' ? 'selected': ''); ?>>Español</option>
             <option  value='frances' <?php echo (isset($_POST['select']) && $_POST['select'] == 'frances' ? 'selected' : ''); ?>>Frances</option>
             <option  value='aleman' <?php echo (isset($_POST['select']) && $_POST['select'] == 'aleman' ? 'selected' : ''); ?>>Aleman</option>
             <option  value='ingles' <?php echo (isset($_POST['select']) && $_POST['select'] == 'ingles' ? 'selected' : ''); ?>>Ingles</option>
@@ -131,7 +125,6 @@
         </select>
         <input type="submit" name="guardaSelect" value="Guardar" class="boton_personalizadose"/><br><br>
         <input type="submit" class="boton_personalizados" name="Cerrar_sesión" value="Cerrar sesión"/>
-        <input type="submit" class="boton_personalizado" name="edPerfil" value="Editar Perfil"/>
                  <input type="submit" class="boton_personalizado" name="Detallar" value="Detallar"/> 
                 <input type="submit" class="boton_personalizado" name="Departamentos" value="Mto.Departamentos"/>
                 <input type="submit" class="boton_personalizado" name="preferencias" value="Edit.Preferencias"/>

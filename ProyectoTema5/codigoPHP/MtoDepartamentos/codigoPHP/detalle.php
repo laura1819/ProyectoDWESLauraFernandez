@@ -48,8 +48,17 @@
 
             if (!isset($_POST['Volver'])) {  // si no le damos a volver que nos muestre las variables            
                 //sacamos un mensaje por pantalla
+                echo '<h3>Variables de $_COOKIE</h3>';
                 echo "<pre>";
                     print_r($_COOKIE); 
+                    echo "</pre>";
+                    echo '<h3>Variables de $_SERVER</h3>';
+                     echo "<pre>";
+                    print_r($_SERVER); 
+                    echo "</pre>";
+                    echo '<h3>Variables de $_SESSION</h3>';
+                     echo "<pre>";
+                    print_r($_SESSION); 
                     echo "</pre>";
                 phpinfo(); // mostramos el phpinfo
                 exit; // cerramos la conexion

@@ -28,7 +28,7 @@
                     $buscar = $miDB->query("select * from Departamento where CodDepartamento='$codigo'"); //guardamos en la variable el resultado del query
                     $datos = $buscar->fetchObject(); //fetchObject Recupera una fila de resultados como un objeto
                     $descripcion = $datos->DescDepartamento; // variable para guardar la descripcion
-                    $fechaDeBaja=$datos->fechaDeBaja; // variable para guardar la fecha de baja
+                    $FechaDeBaja=$datos->FechaDeBaja; // variable para guardar la fecha de baja
             if (isset($_POST['Aceptar'])) { //y si se pusa el boton de aceptar             
                 
                 Header("Location: login.php");// mandamos a la cabezera en index para que nos dirija alli
@@ -47,11 +47,11 @@
                                 <td><input type="text" name="descripcion" value="<?php echo $descripcion; ?>" disabled></td>
                             </tr>
                             <?php
-                                if($fechaDeBaja!='0001-01-01'){
+                                if($FechaDeBaja!='0001-01-01'){
                                     ?>
                                     <tr>
                                         <td>Fecha de baja</td>
-                                        <td><input type="text" name="fechaDeBaja" value="<?php echo $fechaDeBaja;?>" disabled></td>
+                                        <td><input type="text" name="FechaDeBaja" value="<?php echo $FechaDeBaja;?>" disabled></td>
                                     </tr>
                                     <?php
                                 }
