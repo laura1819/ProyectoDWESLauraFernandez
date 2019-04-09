@@ -124,16 +124,15 @@
                         
                 
                 
-                    if (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español') {
+                    if (isset($_COOKIE['Epais'])) {
                          ?>
                 <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> checked><label>español</label>
                 <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?>><label>ingles</label>
                         <?php
                 }else{ 
-                ?>
-               
-                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> ><label>español</label>
-                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?> checked><label>ingles</label>
+                ?>               
+                <input type='radio' id="uno" name='radiobutton' value='español'checked><label>español</label>
+                <input type='radio' id="dos" name='radiobutton' value='ingles'><label>ingles</label>
                         <?php
                 } 
                 ?>
@@ -174,8 +173,6 @@ if ($perfil == 'Administrador') {
 
             };
             
-         
-
             var uno = document.getElementById('uno');
             uno.addEventListener("click", espa);
 
