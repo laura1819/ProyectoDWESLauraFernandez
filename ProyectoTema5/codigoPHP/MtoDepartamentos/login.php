@@ -134,7 +134,27 @@
                             ?>"/>
                             <input style="background-color:#1E5799;" type="submit" class="boton" name="Aceptar" value="Aceptar" >
                             <input type="submit" style="background-color:#1E5799;"  name="Registro" value="Registrarse" >
-
+                             <?php
+                   
+                        
+                
+                
+                    if (isset($_COOKIE['Epais'])) {
+                         ?>
+                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> checked><label>español</label>
+                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?>><label>ingles</label>
+                
+                        <?php
+                }else{ 
+                ?>               
+                <input type='radio' id="uno" name='radiobutton' value='español'checked><label>español</label>
+                <input type='radio' id="dos" name='radiobutton' value='ingles' ><label>ingles</label>
+                        <?php
+                } 
+                
+                
+              
+                    ?>
                         </form>
                     </div>
                 </div>
@@ -147,6 +167,22 @@
             unset($miDB); // cierra la conexion con la base de datos
         }
         ?>
+        <script type="text/javascript">
+
+       
+        var radioA = document.getElementById('uno');
+        var radioB = document.getElementById('dos');
+        
+        
+         radioA.addEventListener('click',function(){
+           <?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>")
+        });
+        
+        radioB.addEventListener('click',function(){
+           <?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>")
+        });
+
+    </script>
         <footer>
             <a href="../../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
             Volver al Index           

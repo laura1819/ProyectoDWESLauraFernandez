@@ -31,7 +31,7 @@
                     $FechaDeBaja=$datos->FechaDeBaja; // variable para guardar la fecha de baja
             if (isset($_POST['Aceptar'])) { //y si se pusa el boton de aceptar             
                 
-                Header("Location: login.php");// mandamos a la cabezera en index para que nos dirija alli
+                Header("Location: logind.php");// mandamos a la cabezera en index para que nos dirija alli
                 
             } else { // y si no mostramos otra vez 
                 ?>

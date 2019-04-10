@@ -67,7 +67,7 @@
                 $insertar->bindParam(':nombre', $_POST['nombre']);   //cogemos el nombre
 
                 $insertar->execute();   //Ejecutamos el prepare                
-                Header("Location: login.php"); // mandamos en la cabezera al index
+                Header("Location: logind.php"); // mandamos en la cabezera al index
             } else { // si no es correcto mandamos que salga de nuevo el formulario
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -92,7 +92,7 @@
                             <tr><td></td><td></td></tr>
                             <tr><td></td></tr>
                             <tr>
-                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'login.php'">
+                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'logind.php'">
                                     <input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar"></td>
                             </tr>
                         </table>

@@ -10,9 +10,23 @@
             }
 
         </style>
+        
     </head>
     <body>
-        <h1>Ejercicio LoginLogoff</h1>	
+        <h1>Ejercicio LoginLogoff
+            <?php
+            if (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español') {
+            
+            ?>
+        
+            <img src="../images/fotoe.PNG" width="30px" height="30px">
+        <?php
+        }else{            
+            ?>
+            <img src="../images/fotoi.PNG" width="30px" height="30px">
+            <?php
+        } 
+        ?></h1>	
 
 
 
@@ -57,7 +71,7 @@
         }
 
         if (isset($_POST['Departamentos'])) { // si pulsamos en detalles 
-            Header("Location: login.php"); // nos llevara a detalles 
+            Header("Location: logind.php"); // nos llevara a detalles 
         }
 
         if (isset($_POST['edPerfil'])) { // si pulsamos en detalles 
@@ -99,14 +113,9 @@
             print "Error de: " . $e->getMessage() . "<br/>"; // mostrara el codigo de error 
         } finally { // y finalmente 
             unset($miDB); // cierra la sesion
-        }
-        //echo "<pre>";
-       // print_r($_COOKIE);
-      //  echo "</pre>";
+        };
 
-        //if (isset($_COOKIE['Epais'])) {
-       //     echo "El idioma es : " . $_COOKIE['Epais'];
-      //  } 
+        
         ?> 
 
         <div >
@@ -117,23 +126,10 @@
                 <input type="radio" id="tres" name="gender" value="other"> Other <br><br>
                 -->
 
-                    <?php
-                   
-                        
+               
+
                 
                 
-                    if (isset($_COOKIE['Epais'])) {
-                         ?>
-                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> checked><label>español</label>
-                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?>><label>ingles</label>
-                        <?php
-                }else{ 
-                ?>               
-                <input type='radio' id="uno" name='radiobutton' value='español'checked><label>español</label>
-                <input type='radio' id="dos" name='radiobutton' value='ingles'><label>ingles</label>
-                        <?php
-                } 
-                ?>
                
 
                 <br><br>
@@ -159,29 +155,7 @@ if ($perfil == 'Administrador') {
 
     </form> 
 
-    <script type="text/javascript">
-
-        (function () {
-            var espa = function () {
-<?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>
-
-            };
-            var ingles = function () {
-<?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>
-
-            };
-            
-            var uno = document.getElementById('uno');
-            uno.addEventListener("click", espa);
-
-            var dos = document.getElementById('dos');
-            dos.addEventListener("click", ingles);
-
-
-
-        }());
-
-    </script>
+    
 
 
     <footer>

@@ -36,7 +36,7 @@
                 $actualizar->bindParam(':codigo', $codigo); // bindParam Agrega variables a una sentencia preparada como parámetros
                 $actualizar->execute();//realizamos la consulta
                 
-                Header("Location: login.php");// que nos mande a la cabezera al index al terminar
+                Header("Location: logind.php");// que nos mande a la cabezera al index al terminar
                 
             } else {
                 ?>
@@ -53,7 +53,7 @@
                             </tr>
                            
                             <tr>
-                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'login.php'"></td>
+                                <td><input type="button" value="Cancelar" class="boton_personalizados" onclick="location = 'logind.php'"></td>
                                 <td><input type="submit" name="Aceptar" class="boton_personalizado" value="Aceptar"></td>
                             </tr>
                         </table>
