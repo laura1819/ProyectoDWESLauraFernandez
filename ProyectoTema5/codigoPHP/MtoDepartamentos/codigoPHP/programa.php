@@ -64,9 +64,7 @@
             Header("Location: edPerfil.php"); // nos llevara a detalles 
         }
 
-        if (isset($_POST['preferencias'])) { // si pulsamos en detalles 
-            Header("Location: preferencias.php"); // nos llevara a detalles 
-        }
+        
 
         if (isset($_POST['mtoUsuarios'])) {
             Header("Location: mtoUsuarios.php");
@@ -143,7 +141,7 @@
                 <input type="submit" class="boton_personalizado" name="edPerfil" value="Editar Perfil"/>
                 <input type="submit" class="boton_personalizado" name="Detallar" value="Detallar"/> 
                 <input type="submit" class="boton_personalizado" name="Departamentos" value="Mto.Departamentos"/>
-                <input type="submit" class="boton_personalizado" name="preferencias" value="Edit.Preferencias"/>
+              
 <?php
 if ($perfil == 'Administrador') {
     ?>

@@ -13,7 +13,7 @@
         }
     </style>
     <body>
-        <h1>Ejercicio LoginLogoff</h1><br><br>	
+        <h1>Ejercicio LoginLogoff &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="submit" name="salir" value="Salir" class="boton_personalizados"><br><br></h1>	
 
 
 
@@ -61,20 +61,23 @@
                                                   ?>">                               
                         </td>
                         <td><input type="submit" name="Buscar" value="Buscar" class="boton_personalizado"></td>
-                        <td><input type="submit" name="salir" value="Salir" class="boton_personalizados"></td>
+                        <td></td>
                     </tr>                        
-                </table>   
-                <input type="radio" name="Buscar" id="Alta" value="Alta"<?php if ($_POST['Buscar'] == "Alta") {
+                    <tr>
+                        <td></td>
+                <td><input type="radio" name="Buscar" id="Alta" value="Alta"<?php if ($_POST['Buscar'] == "Alta") {
             echo "checked";
         } ?>>Alta
-                <input type="radio" name="Buscar" id="Baja" value="Baja" <?php if ($_POST['Buscar'] == "Baja") {
+               <input type="radio" name="Buscar" id="Baja" value="Baja" <?php if ($_POST['Buscar'] == "Baja") {
             echo "checked";
         } ?>>Baja
-                <input type="radio" name="Buscar" id="Todos" value="Todos" <?php if ($_POST['Buscar'] == "Todos" || $_POST['Buscar'] == null) {
+               <input type="radio" name="Buscar" id="Todos" value="Todos" <?php if ($_POST['Buscar'] == "Todos" || $_POST['Buscar'] == null) {
             echo "checked";
-        } ?>>Todos
-            </div>
-
+        } ?>>Todos</td>
+               <td></td>
+               <td></td>
+            </tr>
+             </table> 
         </form> 
         <a href="anadirDepartamentos.php"><button name="Añadir" value="Añadir" class="boton_personalizado">Añadir</button></a>
         <a href="importarDepartamentos.php"><button name="Importar" value="Importar" class="boton_personalizado">Importar</button></a>
