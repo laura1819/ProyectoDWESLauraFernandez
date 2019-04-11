@@ -21,7 +21,8 @@
         require "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "../config/configBDD.php";
 
-
+         
+        
         define("OBLIGATORIO", 1); //Definimos las constantes para la conexion a la base de datos
         define("NOOBLIGATORIO", 0);    //Definimos las constantes para la conexion a la base de datos
         define("LONGMINALFABETICO", 3);  //Definimos las constantes para la conexion a la base de datos

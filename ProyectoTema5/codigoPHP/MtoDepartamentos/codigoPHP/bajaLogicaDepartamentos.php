@@ -21,6 +21,8 @@
         require "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "../config/configBDD.php";
         
+         
+        
         //Coger la fecha actual y darselo como sugerencia
         setlocale(LC_TIME, 'es_ES.UTF-8'); // sacamos la hora para poder ponerla en la base de datos
         $fechaActual=strftime("%Y-%m-%d"); //le pasamos como queremos que nos muestre la hora

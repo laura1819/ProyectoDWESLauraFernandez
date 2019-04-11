@@ -21,6 +21,8 @@
         require "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "../config/configBDD.php";
         
+        
+        
        $entradaOk = true; 
         try {
             $myBD = new PDO(DSN, USER, PASS);  

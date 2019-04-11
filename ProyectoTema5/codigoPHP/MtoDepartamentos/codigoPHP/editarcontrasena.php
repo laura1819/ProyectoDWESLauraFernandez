@@ -20,7 +20,9 @@
          */
         require "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "../config/configuracionDB.php";
-
+        
+        
+        
         $entradaOK = true; // ponemos la entrada a true
 
         $aFormulario = [ // creamos un array con las posiciones del formulario

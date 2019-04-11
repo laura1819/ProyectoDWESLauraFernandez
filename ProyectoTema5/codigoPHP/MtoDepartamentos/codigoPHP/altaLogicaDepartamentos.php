@@ -21,6 +21,8 @@
         require "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "../config/configBDD.php";
         
+        
+        
             $codigo=$_GET['CodDepartamento'];
              try {                           
                     $miDB = new PDO(DSN, USER, PASS); //iniciamos la variable pdo y le pasamos los parametros de conexion

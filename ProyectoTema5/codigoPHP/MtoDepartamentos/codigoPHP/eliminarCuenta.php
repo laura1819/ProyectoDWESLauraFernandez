@@ -20,7 +20,9 @@
          */
         require "../core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "../config/configuracionDB.php";
-
+        
+         
+        
         session_start(); // iniciamos la sesion 
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario se la logueado mal  
             Header("Location: login.php"); // le mandamos al login 

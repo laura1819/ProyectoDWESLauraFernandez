@@ -15,6 +15,9 @@
     <body>
         <h1>Ejercicio LoginLogoff
             <?php
+            
+           
+            
             if (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español') {
             
             ?>
@@ -55,7 +58,7 @@
 
 
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si el usuario no esta bien identificado 
-            Header("Location: login.php"); //  nos mandara al login 
+            Header("Location: ../login.php"); //  nos mandara al login 
         }
 
 

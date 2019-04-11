@@ -32,7 +32,14 @@
         <?php
         
         include "../config/configuracionDB.php";
+        
+        session_start(); // iniciamos la sesion
 
+        
+        if (!isset($_SESSION['usuario_DAW210_Login'])) { // si la sesion que queremos iniciar no existe
+            Header("Location: ../login.php"); // te manda directamente al login
+        }
+         
         
         if(isset($_POST['salir'])){
              Header("Location: programa.php");

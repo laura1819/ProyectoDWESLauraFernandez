@@ -31,7 +31,9 @@
 
         session_start(); // iniciamos la sesion
 
-
+        
+         
+        
         if (!isset($_SESSION['usuario_DAW210_Login'])) { // si la sesion que queremos iniciar no existe
             Header("Location: ../login.php"); // te manda directamente al login
         }

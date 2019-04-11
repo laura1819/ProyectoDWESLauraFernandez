@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="webroot/css/login.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
-      
+
     </head>
     <body>
         <h1>Ejercicio LoginLogoff</h1>	
@@ -23,7 +23,7 @@
         require "core/181025validacionFormularios.php"; // incluimos la libreria de validacion
         require "config/configuracionDB.php";
 
-
+     
 
 
         $entradaOK = true; // ponemos la entrada a true 
@@ -37,11 +37,11 @@
             'usuario' => null, // con el campo del nombre 
             'contraseña' => null  // con el campo de la contraseña 
         ];
-        
-        if(isset($_POST['Registro'])){
+
+        if (isset($_POST['Registro'])) {
             Header("Location: codigoPHP/registro.php");
         }
-        
+
         try {
             $miDB = new PDO(DSN, USER, PASS);               //creamos una variable para la conexion a la bd pdo 
 
@@ -77,9 +77,9 @@
             } else { // y si no  
                 $entradaOK = false; // ponemos la entrada a false
             }
-            
-           
-            
+
+
+
             if ($entradaOK) { // si la entrada es correcta 
                 session_start(); // iniciamos la sesion 
 
@@ -90,7 +90,7 @@
                 $result = $miDB->prepare($query); // preparamos la consulta 
                 $result->bindParam(':CodUsuario', $_POST['usuario']); //cogemos el campo usuario con el de la base de datos 
                 $result->execute(); //ejecutamos la consulta 
-                
+
 
 
                 $valores = $result->fetchObject(); // recogemos los campos necesarios
@@ -101,7 +101,7 @@
                 $_SESSION['visitas_DAW210_Login'] = $visitas;
                 $_SESSION['ultConexion_DAW210_Login'] = $ultConexion;
 
-             
+
 
                 $query = "update usuario set numVisitas=numVisitas+1, fecha=:fechaActual where CodUsuario=:CodUsuario"; // hace una consulta para actualizar las visitas y la fecha 
                 $result = $miDB->prepare($query); //prepara la consulta                 
@@ -134,55 +134,50 @@
                             ?>"/>
                             <input style="background-color:#1E5799;" type="submit" class="boton" name="Aceptar" value="Aceptar" >
                             <input type="submit" style="background-color:#1E5799;"  name="Registro" value="Registrarse" >
-                             <?php
-                   
-                        
-                
-                
-                    if (isset($_COOKIE['Epais'])) {
-                         ?>
-                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : '');?> checked><label>español</label>
-                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?>><label>ingles</label>
-                
-                        <?php
-                }else{ 
-                ?>               
-                <input type='radio' id="uno" name='radiobutton' value='español'checked><label>español</label>
-                <input type='radio' id="dos" name='radiobutton' value='ingles' ><label>ingles</label>
-                        <?php
-                } 
-                
-                
-              
-                    ?>
+                            <?php
+                            if (isset($_COOKIE['Epais'])) {
+                                ?>
+                                <input type='radio' id="uno" name='radiobutton' value='español' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'español' ? 'checked' : ''); ?>><label>español</label>
+                                <input type='radio' id="dos" name='radiobutton' value='ingles' <?php echo (isset($_COOKIE['Epais']) && $_COOKIE['Epais'] == 'ingles' ? 'checked' : ''); ?>><label>ingles</label>
+
+                                <?php
+                            } else {
+                                ?>               
+                                <input type='radio' id="uno" name='radiobutton' value='español'checked><label>español</label>
+                                <input type='radio' id="dos" name='radiobutton' value='ingles' ><label>ingles</label>
+                                <?php
+                            }
+                            
+                               echo "<pre>";
+                    print_r($_COOKIE); 
+                    echo "</pre>";
+                            ?>
                         </form>
                     </div>
                 </div>
-                <?php
-            }
-        } catch (PDOException $e) { // si se produce algun error 
-            print "Error de: " . $e->getMessage() . "<br/>";    // saca el mensaje de error  
-            die(); // muere la sesion 
-        } finally { // por ultimo 
-            unset($miDB); // cierra la conexion con la base de datos
-        }
-        ?>
+                            <?php
+                        }
+                    } catch (PDOException $e) { // si se produce algun error 
+                        print "Error de: " . $e->getMessage() . "<br/>";    // saca el mensaje de error  
+                        die(); // muere la sesion 
+                    } finally { // por ultimo 
+                        unset($miDB); // cierra la conexion con la base de datos
+                    }
+                    ?>
         <script type="text/javascript">
 
-       
-        var radioA = document.getElementById('uno');
-        var radioB = document.getElementById('dos');
-        
-        
-         radioA.addEventListener('click',function(){
-           <?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>")
-        });
-        
-        radioB.addEventListener('click',function(){
-           <?php echo setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>")
-        });
+            var radioA = document.getElementById('uno');
+            var radioB = document.getElementById('dos');
+            
+            radioA.addEventListener('click', function(){
+            <?php setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>")
+            });
+             
+            radioB.addEventListener('click', function(){
+            <?php setcookie("Epais", $_POST['radiobutton'], time() + 7600); ?>")
+            });
 
-    </script>
+        </script>
         <footer>
             <a href="../../indexProyectoTema5.php"><i class="fas fa-undo"></i></a>
             Volver al Index           
